@@ -80,7 +80,8 @@
 
     <div class="separador"></div>
     <h1>HOLA PUTA</h1>
-    
+    <h2>Texto de ejemplo MOYS</h2>
+    <p>Moys Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem mollitia provident asperiores, est amet unde voluptatum, ut a accusantium modi voluptates. Veniam laudantium minus voluptatum, neque doloremque sint sed fugit!</p>
 
     <!-- App -->
     <script type="module" src="../../app/features/public/index.js"></script>
