@@ -80,10 +80,11 @@
         </a>
     </div>
     <br>
-    <!-- OFERTAS -->
-    <div class="container">
-        <h1>AQUÍ VA EL TEXTO</h1>
+    <!-- TITULO DE LA SECION -->
+    <div class="seccion--titulo">
+        <h4 class="seccion--titulo__texto">OFERTAS ESPECIALES</h3>
     </div>
+    <!-- OFERTAS -->
     <br>
     <div class="container">
         <div class="row">
@@ -126,10 +127,11 @@
         </div>
     </div>
     <br>
-    <!-- NOVEDADES -->
-    <div class="container">
-        <h1>AQUÍ VA EL TEXTO x2</h1>
+    <!-- TITULO DE LA SECION -->
+    <div class="seccion--titulo">
+        <h4 class="seccion--titulo__texto">NOVEDADES</h3>
     </div>
+    <!-- NOVEDADES -->
     <br>
     <div class="container">
         <div class="row align-items-center">

@@ -154,7 +154,22 @@
     text-decoration: underline !important;
 }
 
+/****************************** MENU ******************************/
 
+.seccion--titulo {
+    width: 90%;
+    margin: 0px 5%;
+    border-bottom: 1px solid black;
+}
+
+.seccion--titulo__texto {
+    margin-bottom: 0px;
+    margin-left: 10px;
+    width:max-content ;
+    border-bottom: 3px solid #8C000E;
+    font-weight: bold;
+    font-size: 22px;
+}
 /****************************** RESPONSIVE ******************************/
 
 @media only screen and (max-width: 1050px) {
@@ -243,6 +258,10 @@
 
     .categoria:active {
         background: white;
+    }
+
+    .seccion--titulo__texto {
+        font-size: 20px;
     }
 
 }
