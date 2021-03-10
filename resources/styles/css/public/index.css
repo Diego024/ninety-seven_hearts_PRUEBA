@@ -87,6 +87,21 @@
     height: 7px;
 }
 
+.pie {
+    background: #FBD1CF;
+    width: 100%;
+}
+
+#btn_card {
+    width: 100%;
+    background: #8C000E;
+}
+
+#btn_ver {
+    width: 95%;
+    background: #757575;
+}
+
 /****************************** MENU ******************************/
 
 .menu {
