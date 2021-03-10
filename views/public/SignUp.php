@@ -163,7 +163,7 @@
             </div> 
             <div class="col">
             <br>
-              <p><img src="../../resources/statics/images/instagram_logo.png"> @ninety-sevenheart</p>
+            <p><a href="https://www.instagram.com/ninety_sevenheart/"  class="text-dark"><img src="../../resources/statics/images/instagram_logo.png"> @ninety-sevenheart</p></a>
             </div>
             <div class="col">
             <br>

@@ -10,12 +10,10 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
-<body>
-
      <!--INICIO DEL HEADER Y NAV-->
-    <header class="cabecera">
+     <header class="cabecera">
         <div class="logo">
-            <a href="#"><img src="https://www.howdeniberia.com/wp-content/uploads/2018/05/Disney-logo-png-transparent-download.png" alt=""></a>
+            <a href="index.php"><img src="https://www.howdeniberia.com/wp-content/uploads/2018/05/Disney-logo-png-transparent-download.png" alt=""></a>
         </div>
         <div class="opciones">
             <div class="opciones--menu">
@@ -51,48 +49,23 @@
             <a href="Lenceria.php" class="categoria" id="btnLenceria">Lencería</a>
         </div>
     </nav>
-    
-    <!--FIN DEL HEADER Y NAV-->
-    <!--INICIO CARRUSEL-->
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="../../resources/statics/images/pato.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="../../resources/statics/images/pato.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="../../resources/statics/images/pato.jpg" class="d-block w-100" alt="...">
+
+    <br><!--TITULO-->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>AQUÍ VA EL TÍTULO</h1>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
     </div>
-    <br>
-    <!-- OFERTAS -->
-    <div class="container">
-        <h1>AQUÍ VA EL TEXTO</h1>
-    </div>
-    <br>
+    <br><!--CARDS-->
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="card text-center" style="width: 20rem;">
-                    <img src="../../resources/statics/images/blusa_negra.jpeg" class="card-img-top" alt="...">
+                    <img src="https://ae01.alicdn.com/kf/Ha7724f03694a40d0bee63394cbfa9a43E/Venta-caliente-vestidos-de-ni-a-con-flores-para-boda-alto-bajo-para-ni-as-peque.jpg_q50.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Blusa negra</h5>
+                        <h5 class="card-title">Vestido dorado</h5>
                         <p class="card-text">$35.99</p>
                         <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
                     </div>
@@ -100,9 +73,9 @@
             </div>
             <div class="col text-center">
                 <div class="card" style="width: 20rem;">
-                    <img src="../../resources/statics/images/blusa_blanca.jpeg" class="card-img-top" alt="...">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/41enOOnSGML.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Blusa blanca</h5>
+                        <h5 class="card-title">Vestido rojo</h5>
                         <p class="card-text">$40.99</p>
                         <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
                     </div>
@@ -110,9 +83,9 @@
             </div>
             <div class="col">
                 <div class="card text-center" style="width: 20rem;">
-                    <img src="../../resources/statics/images/blusa_dorada.jpeg" class="card-img-top" alt="...">
+                    <img src="http://sc04.alicdn.com/kf/H372c1fe0640640b598311691cddcd744N.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Blusa dorada</h5>
+                        <h5 class="card-title">Vestido amarillo</h5>
                         <p class="card-text">$36.99</p>
                         <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
                     </div>
@@ -122,33 +95,20 @@
         <br>
         <div class="row">
             <div class="col">
-            <a href="#" class="btn btn-secondary" id="btn_ver">Ver más...</a>
-            </div>
-        </div>
-    </div>
-    <br>
-    <!-- NOVEDADES -->
-    <div class="container">
-        <h1>AQUÍ VA EL TEXTO x2</h1>
-    </div>
-    <br>
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col">
                 <div class="card text-center" style="width: 20rem;">
-                    <img src="../../resources/statics/images/regalo.jpeg" class="card-img-top" alt="..." style="height: 18rem">
+                    <img src="http://sc01.alicdn.com/kf/HTB1nl1bao_rK1Rjy0Fcq6zEvVXa9.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Regalo bonito (opción 1)</h5>
+                        <h5 class="card-title">Vestido rojo con flores</h5>
                         <p class="card-text">$35.99</p>
                         <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card text-center" style="width: 20rem;">
-                    <img src="../../resources/statics/images/regalo2.jpeg" class="card-img-top" alt="..." style="height: 18rem">
+            <div class="col text-center">
+                <div class="card" style="width: 20rem;">
+                    <img src="http://sc01.alicdn.com/kf/Ha5f24c94321249ffbff9c26785399a4aW.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Regalo bonito (opción 2)</h5>
+                        <h5 class="card-title">Vestido azul con flores</h5>
                         <p class="card-text">$40.99</p>
                         <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
                     </div>
@@ -156,23 +116,38 @@
             </div>
             <div class="col">
                 <div class="card text-center" style="width: 20rem;">
-                    <img src="../../resources/statics/images/regalo3.jpeg" class="card-img-top" alt="..." style="height: 18rem">
+                    <img src="https://i.pinimg.com/originals/71/0b/c7/710bc7fcf808901207ed1f7077c23057.png" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Regalo bonito (opción 3)</h5>
+                        <h5 class="card-title">Vestido de girasoles</h5>
                         <p class="card-text">$36.99</p>
                         <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
                     </div>
                 </div>
             </div>
         </div>
-        <br>
-        <div class="row">
-            <div class="col">
-            <a href="#" class="btn btn-secondary" id="btn_ver">Ver más...</a>
-            </div>
+    </div>
+    <br> <!--PAGINATION-->
+    <div class="container">
+        <div class="row justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                    <a class="page-link text-danger" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    </li>
+                    <li class="page-item"><a class="page-link text-danger" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link text-danger" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link text-danger" href="#">3</a></li>
+                    <li class="page-item">
+                    <a class="page-link text-danger" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
-    <br>
     <div class="separador"></div>
      <!--INICIO DEL FOOTER-->
     <footer class="pie">
@@ -184,7 +159,7 @@
             </div> 
             <div class="col">
             <br>
-            <p><a href="https://www.instagram.com/ninety_sevenheart/" class="text-dark"><img src="../../resources/statics/images/instagram_logo.png"> @ninety-sevenheart</p></a>
+              <p><a href="https://www.instagram.com/ninety_sevenheart/" class="text-dark"><img src="../../resources/statics/images/instagram_logo.png"> @ninety-sevenheart</p></a>
             </div>
             <div class="col">
             <br>

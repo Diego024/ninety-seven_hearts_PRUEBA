@@ -43,13 +43,13 @@
             <a href="#" class="menu--titulo__texto">CATEGORIAS</a>
         </div>
         <div class="menu--categorias menu--hidden" id="categories">
-            <a href="#" class="categoria" id="btnVestidos">Vestidos</a>
-            <a href="#" class="categoria" id="btnPantalones">Pantalones</a>
-            <a href="#" class="categoria" id="btnTrajesBaño">Trajes de baño</a>
-            <a href="#" class="categoria" id="btnHogar">Hogareña</a>
-            <a href="#" class="categoria" id="btnCamisetas">Camisetas</a>
-            <a href="#" class="categoria" id="btnAccesorios">Accesorios</a>
-            <a href="#" class="categoria" id="btnLenceria">Lencería</a>
+            <a href="Vestidos.php" class="categoria" id="btnVestidos">Vestidos</a>
+            <a href="Pantalones.php" class="categoria" id="btnPantalones">Pantalones</a>
+            <a href="Trajes_baño.php" class="categoria" id="btnTrajesBaño">Trajes de baño</a>
+            <a href="Hogareña.php" class="categoria" id="btnHogar">Hogareña</a>
+            <a href="Camisetas.php" class="categoria" id="btnCamisetas">Camisetas</a>
+            <a href="Accesorios.php" class="categoria" id="btnAccesorios">Accesorios</a>
+            <a href="Lenceria.php" class="categoria" id="btnLenceria">Lencería</a>
         </div>
     </nav>
     <br>
@@ -192,7 +192,7 @@
             </div> 
             <div class="col">
             <br>
-              <p><img src="../../resources/statics/images/instagram_logo.png"> @ninety-sevenheart</p>
+            <p><a href="https://www.instagram.com/ninety_sevenheart/" class="text-dark"><img src="../../resources/statics/images/instagram_logo.png"> @ninety-sevenheart</p></a>
             </div>
             <div class="col">
             <br>
