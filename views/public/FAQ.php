@@ -20,7 +20,7 @@
         </div>
         <div class="opciones">
             <div class="opciones--menu">
-                <img src="../../resources/statics/icons/usuarios.png" alt="">
+                <a href="SignIn.php"><img src="../../resources/statics/icons/usuarios.png" alt=""></a>
                 <img src="../../resources/statics/icons/favoritos.png" alt="">
                 <img src="../../resources/statics/icons/carrito.png" alt="">
                 <span class="menu--carrito__texto">
@@ -70,7 +70,7 @@
     <br>
     <div class="container-fluid">
         <div class="row">
-            <div class="col">
+            <div class="col-xs-12 col-lg-6">
                 <div class="accordion" id="accordionExample">
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -120,7 +120,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-xs-12 col-lg-6">
                 <div class="accordion" id="accordionExample">
                     <div class="card">
                         <div class="card-header" id="headingFour">
@@ -188,7 +188,7 @@
           <div class="row">
             <div class="col">
             <br>
-              <a href="#"><p>Preguntas frecuentes</p></a>
+              <a href="#" class="text-dark"><p>Preguntas frecuentes</p></a>
             </div> 
             <div class="col">
             <br>

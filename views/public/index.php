@@ -19,7 +19,7 @@
         </div>
         <div class="opciones">
             <div class="opciones--menu">
-                <img src="../../resources/statics/icons/usuarios.png" alt="">
+                <a href="SignIn.php"><img src="../../resources/statics/icons/usuarios.png" alt=""></a>
                 <img src="../../resources/statics/icons/favoritos.png" alt="">
                 <img src="../../resources/statics/icons/carrito.png" alt="">
                 <span class="menu--carrito__texto">
@@ -179,7 +179,7 @@
           <div class="row">
             <div class="col">
             <br>
-              <a href="FAQ.php"><p>Preguntas frecuentes</p></a>
+              <a href="FAQ.php" class="text-dark"><p>Preguntas frecuentes</p></a>
             </div> 
             <div class="col">
             <br>
