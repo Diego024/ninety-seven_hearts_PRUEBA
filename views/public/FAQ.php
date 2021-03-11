@@ -21,7 +21,7 @@
         <div class="opciones">
             <div class="opciones--menu">
                 <a href="SignIn.php"><img src="../../resources/statics/icons/usuarios.png" alt=""></a>
-                <img src="../../resources/statics/icons/favoritos.png" alt="">
+                <a href="Favoritos.php"><img src="../../resources/statics/icons/favoritos.png" alt=""></a>
                 <img src="../../resources/statics/icons/carrito.png" alt="">
                 <span class="menu--carrito__texto">
                     Carrito

@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ninety-Seven Heart</title>
-    <!-- Style -->
-    <link rel="stylesheet" href="../../resources/styles/css/public/index.css">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-</head>
-<body>
-
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ninety-Seven Heart</title>
+        <!-- Style -->
+        <link rel="stylesheet" href="../../resources/styles/css/public/index.css">
+        <link rel="stylesheet" href="../../resources/styles/css/public/Favoritos.css">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    </head>
      <!--INICIO DEL HEADER Y NAV-->
-    <header class="cabecera">
+     <header class="cabecera">
         <div class="logo">
-            <a href="#"><img src="https://www.howdeniberia.com/wp-content/uploads/2018/05/Disney-logo-png-transparent-download.png" alt=""></a>
+            <a href="index.php"><img src="https://www.howdeniberia.com/wp-content/uploads/2018/05/Disney-logo-png-transparent-download.png" alt=""></a>
         </div>
         <div class="opciones">
             <div class="opciones--menu">
@@ -51,128 +50,111 @@
             <a href="Lenceria.php" class="categoria" id="btnLenceria">Lencería</a>
         </div>
     </nav>
-    
-    <!--FIN DEL HEADER Y NAV-->
-    <!--INICIO CARRUSEL-->
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="../../resources/statics/images/pato.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="../../resources/statics/images/pato.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="../../resources/statics/images/pato.jpg" class="d-block w-100" alt="...">
+
+    <br><!--TITULO-->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>FAVORITOOOOOOOOOOOOS</h1>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
     </div>
-    <br>
-    <!-- OFERTAS -->
-    <div class="container">
-        <h1>AQUÍ VA EL TEXTO</h1>
-    </div>
-    <br>
+    <br><!--CARDS-->
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="card text-center" style="width: 20rem;">
-                    <img src="../../resources/statics/images/blusa_negra.jpeg" class="card-img-top" alt="...">
+                    <img src="https://i.pinimg.com/originals/f5/35/00/f53500712cbe54a603f62c83f9a30233.jpg" class="card-img-top" alt="..." style="height: 20rem">
                     <div class="card-body">
-                        <h5 class="card-title">Blusa negra</h5>
+                        <h5 class="card-title">Camisa negra estampada</h5>
                         <p class="card-text">$35.99</p>
                         <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
+                        <a href="#" id="btn_eliminar"><b>Eliminar de favoritos</b></a>
                     </div>
                 </div>
             </div>
             <div class="col text-center">
                 <div class="card" style="width: 20rem;">
-                    <img src="../../resources/statics/images/blusa_blanca.jpeg" class="card-img-top" alt="...">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/614FBjWz0HL._AC_UY500_.jpg" class="card-img-top" alt="..." style="Height: 20rem">
                     <div class="card-body">
-                        <h5 class="card-title">Blusa blanca</h5>
+                        <h5 class="card-title">Pulseras "Infinito"</h5>
                         <p class="card-text">$40.99</p>
                         <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
+                        <a href="#" id="btn_eliminar"><b>Eliminar de favoritos</b></a>
                     </div>
                 </div>
             </div>
             <div class="col">
                 <div class="card text-center" style="width: 20rem;">
-                    <img src="../../resources/statics/images/blusa_dorada.jpeg" class="card-img-top" alt="...">
+                    <img src="https://image.dhgate.com/0x0s/f2-albu-g10-M00-F4-5D-rBVaWVx_Mm2AZJ8yAAWk92Qi7VU719.jpg/para-mujer-sissy-lencer-a-sexy-bikini-lace.jpg" class="card-img-top" alt="..." style="Height: 20rem">
                     <div class="card-body">
-                        <h5 class="card-title">Blusa dorada</h5>
+                        <h5 class="card-title">Set de lencería</h5>
                         <p class="card-text">$36.99</p>
                         <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
+                        <a href="#" id="btn_eliminar"><b>Eliminar de favoritos</b></a>
                     </div>
                 </div>
             </div>
         </div>
         <br>
         <div class="row">
-            <div class="col">
-            <a href="#" class="btn btn-secondary" id="btn_ver">Ver más...</a>
+            <div class="col text-center">
+                <div class="card" style="width: 20rem;">
+                    <img src="https://i.pinimg.com/564x/c0/06/32/c00632d6c85c7cce5d23cc664253ed92.jpg" class="card-img-top" alt="..." style="Height: 20rem">
+                    <div class="card-body">
+                        <h5 class="card-title">Collar estrellas</h5>
+                        <p class="card-text">$40.99</p>
+                        <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
+                        <a href="#" id="btn_eliminar"><b>Eliminar de favoritos</b></a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <br>
-    <!-- NOVEDADES -->
-    <div class="container">
-        <h1>AQUÍ VA EL TEXTO x2</h1>
-    </div>
-    <br>
-    <div class="container">
-        <div class="row align-items-center">
             <div class="col">
                 <div class="card text-center" style="width: 20rem;">
-                    <img src="../../resources/statics/images/regalo.jpeg" class="card-img-top" alt="..." style="height: 18rem">
+                    <img src="https://i.pinimg.com/originals/71/0b/c7/710bc7fcf808901207ed1f7077c23057.png" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Regalo bonito (opción 1)</h5>
+                        <h5 class="card-title">Vestido de girasoles</h5>
+                        <p class="card-text">$36.99</p>
+                        <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
+                        <a href="#" id="btn_eliminar"><b>Eliminar de favoritos</b></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card text-center" style="width: 20rem;">
+                    <img src="https://i.pinimg.com/474x/86/03/bf/8603bfa28e7debc2131a094994b47034.jpg" class="card-img-top" alt="..."  style="height: 20rem">
+                    <div class="card-body">
+                        <h5 class="card-title">Pijama con diseño ovejas</h5>
                         <p class="card-text">$35.99</p>
                         <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
+                        <a href="#" id="btn_eliminar"><b>Eliminar de favoritos</b></a>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card text-center" style="width: 20rem;">
-                    <img src="../../resources/statics/images/regalo2.jpeg" class="card-img-top" alt="..." style="height: 18rem">
-                    <div class="card-body">
-                        <h5 class="card-title">Regalo bonito (opción 2)</h5>
-                        <p class="card-text">$40.99</p>
-                        <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card text-center" style="width: 20rem;">
-                    <img src="../../resources/statics/images/regalo3.jpeg" class="card-img-top" alt="..." style="height: 18rem">
-                    <div class="card-body">
-                        <h5 class="card-title">Regalo bonito (opción 3)</h5>
-                        <p class="card-text">$36.99</p>
-                        <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col">
-            <a href="#" class="btn btn-secondary" id="btn_ver">Ver más...</a>
             </div>
         </div>
     </div>
-    <br>
+    <br> <!--PAGINATION-->
+    <div class="container">
+        <div class="row justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                    <a class="page-link text-danger" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    </li>
+                    <li class="page-item"><a class="page-link text-danger" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link text-danger" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link text-danger" href="#">3</a></li>
+                    <li class="page-item">
+                    <a class="page-link text-danger" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
     <div class="separador"></div>
      <!--INICIO DEL FOOTER-->
     <footer class="pie">
@@ -184,7 +166,7 @@
             </div> 
             <div class="col">
             <br>
-            <p><a href="https://www.instagram.com/ninety_sevenheart/" class="text-dark"><img src="../../resources/statics/images/instagram_logo.png"> @ninety-sevenheart</p></a>
+              <p><a href="https://www.instagram.com/ninety_sevenheart/" class="text-dark"><img src="../../resources/statics/images/instagram_logo.png"> @ninety-sevenheart</p></a>
             </div>
             <div class="col">
             <br>

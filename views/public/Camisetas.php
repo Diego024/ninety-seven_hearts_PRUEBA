@@ -7,6 +7,7 @@
         <title>Ninety-Seven Heart</title>
         <!-- Style -->
         <link rel="stylesheet" href="../../resources/styles/css/public/index.css">
+        <link rel="stylesheet" href="../../resources/styles/css/public/Camisetas.css">
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     </head>
@@ -18,7 +19,7 @@
         <div class="opciones">
             <div class="opciones--menu">
                 <a href="SignIn.php"><img src="../../resources/statics/icons/usuarios.png" alt=""></a>
-                <img src="../../resources/statics/icons/favoritos.png" alt="">
+                <a href="Favoritos.php"><img src="../../resources/statics/icons/favoritos.png" alt=""></a>
                 <img src="../../resources/statics/icons/carrito.png" alt="">
                 <span class="menu--carrito__texto">
                     Carrito
@@ -51,13 +52,20 @@
     </nav>
 
     <br><!--TITULO-->
-    <div class="container">
+    <!--JUMBOTRON-->
+    <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <h1>AQUÍ VA EL TÍTULO CAMISETAS</h1>
+                <div class="jumbotron jumbotron-fluid" id="jumbo-Camisetas">
+                    <div class="container">
+                        <h1 class="display-4">Camisetas</h1>
+                        <p class="lead">Camisetas a tu estilo.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
     <br><!--CARDS-->
     <div class="container">
         <div class="row">
