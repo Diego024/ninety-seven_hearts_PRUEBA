@@ -38,13 +38,45 @@
 
 .opciones img {
     width: 40px;
-    margin: 10px 5px
+    margin: 10px 10px
 }
 
 .menu--carrito__texto {
-    margin-right: 15px;
+    
     font-weight: 500;
     font-size: 18px;
+}
+
+#icono--usuario {
+    margin-right: 15px;
+}
+
+.usuario--contenedor:hover .usuario--opciones, .usuario--opciones:hover {
+    display:flex;
+}
+
+.usuario--opciones {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    /* padding-top: 5px; */
+    padding: 5px 10px 5px 10px;
+    position: absolute;
+    right: 15px;
+    top: 50px;
+    background: #FBD1CF;
+    border-radius: 15px;
+    border: 1px solid black;
+    display: none;
+}
+
+.usuario--contenedor__enlace {
+    text-decoration: none;
+    color: black;
+}
+
+.usuario--contenedor__enlace:hover {
+    color: black;
 }
 
 .opciones--buscar {

@@ -19,12 +19,20 @@
         </div>
         <div class="opciones">
             <div class="opciones--menu">
-                <img src="../../resources/statics/icons/usuarios.png" alt="">
-                <img src="../../resources/statics/icons/favoritos.png" alt="">
-                <img src="../../resources/statics/icons/carrito.png" alt="">
                 <span class="menu--carrito__texto">
                     Carrito
                 </span>
+                <img src="../../resources/statics/icons/carrito.png" alt="">
+                <img src="../../resources/statics/icons/favoritos.png" alt="">
+                
+                <div class="usuario--contenedor">
+                    <img src="../../resources/statics/icons/usuarios.png" id="icono--usuario" alt="">
+                    <div class="usuario--opciones">
+                        <a href="" class="usuario--contenedor__enlace">Cuenta</a>
+                        <a href="" class="usuario--contenedor__enlace">Cerrar Sesión</a>
+                    </div>
+                </div>
+                
             </div>
             <div class="opciones--buscar">
                 <form action="" class="buscar">
