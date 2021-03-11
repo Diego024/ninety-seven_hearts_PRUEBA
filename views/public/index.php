@@ -19,12 +19,20 @@
         </div>
         <div class="opciones">
             <div class="opciones--menu">
-                <a href="SignIn.php"><img src="../../resources/statics/icons/usuarios.png" alt=""></a>
-                <a href="Favoritos.php"><img src="../../resources/statics/icons/favoritos.png" alt=""></a>
-                <img src="../../resources/statics/icons/carrito.png" alt="">
                 <span class="menu--carrito__texto">
                     Carrito
                 </span>
+                <a href="Favoritos.php"><img src="../../resources/statics/icons/carrito.png" alt=""></a>
+                <a href="SignUp.php"><img src="../../resources/statics/icons/favoritos.png" alt=""></a>
+                
+                <div class="usuario--contenedor">
+                    <img src="../../resources/statics/icons/usuarios.png" id="icono--usuario" alt="">
+                    <div class="usuario--opciones">
+                        <a href="" class="usuario--contenedor__enlace">Cuenta</a>
+                        <a href="" class="usuario--contenedor__enlace">Cerrar Sesión</a>
+                    </div>
+                </div>
+                
             </div>
             <div class="opciones--buscar">
                 <form action="" class="buscar">
@@ -81,10 +89,11 @@
         </a>
     </div>
     <br>
-    <!-- OFERTAS -->
-    <div class="container">
-        <h1>AQUÍ VA EL TEXTO</h1>
+    <!-- TITULO DE LA SECION -->
+    <div class="seccion--titulo">
+        <h4 class="seccion--titulo__texto">OFERTAS ESPECIALES</h3>
     </div>
+    <!-- OFERTAS -->
     <br>
     <div class="container">
         <div class="row">
@@ -127,10 +136,11 @@
         </div>
     </div>
     <br>
-    <!-- NOVEDADES -->
-    <div class="container">
-        <h1>AQUÍ VA EL TEXTO x2</h1>
+    <!-- TITULO DE LA SECION -->
+    <div class="seccion--titulo">
+        <h4 class="seccion--titulo__texto">NOVEDADES</h3>
     </div>
+    <!-- NOVEDADES -->
     <br>
     <div class="container">
         <div class="row align-items-center">
