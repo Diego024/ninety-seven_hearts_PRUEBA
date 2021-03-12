@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ninety-Seven Heart</title>
-    <!-- Style -->
-    <link rel="stylesheet" href="../../resources/styles/css/public/index.css">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-</head>
-<body>
-
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ninety-Seven Heart</title>
+        <!-- Style -->
+        <link rel="stylesheet" href="../../resources/styles/css/public/index.css">
+        <link rel="stylesheet" href="../../resources/styles/css/public/Novedades.css">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    </head>
      <!--INICIO DEL HEADER Y NAV-->
-    <header class="cabecera">
+     <header class="cabecera">
         <div class="logo">
-            <a href="#"><img src="https://www.howdeniberia.com/wp-content/uploads/2018/05/Disney-logo-png-transparent-download.png" alt=""></a>
+            <a href="index.php"><img src="https://www.howdeniberia.com/wp-content/uploads/2018/05/Disney-logo-png-transparent-download.png" alt=""></a>
         </div>
         <div class="opciones">
             <div class="opciones--menu">
@@ -51,87 +50,22 @@
             <a href="Lenceria.php" class="categoria" id="btnLenceria">Lencería</a>
         </div>
     </nav>
-    
-    <!--FIN DEL HEADER Y NAV-->
-    <!--INICIO CARRUSEL-->
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="../../resources/statics/images/pato.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="../../resources/statics/images/pato.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="../../resources/statics/images/pato.jpg" class="d-block w-100" alt="...">
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-    <br>
-    <!-- OFERTAS -->
-    <div class="container">
-        <h1>AQUÍ VA EL TEXTO OFERTAS</h1>
-    </div>
-    <br>
-    <div class="container">
+
+    <br><!--TITULO-->
+    <!--JUMBOTRON-->
+    <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <div class="card text-center" style="width: 20rem;">
-                    <img src="../../resources/statics/images/blusa_negra.jpeg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Blusa negra</h5>
-                        <p class="card-text"> <s> $35.99</s> $30.00</p>
-                        <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col text-center">
-                <div class="card" style="width: 20rem;">
-                    <img src="../../resources/statics/images/blusa_blanca.jpeg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Blusa blanca</h5>
-                        <p class="card-text"><s> $40.65</s> $30.00</p>
-                        <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card text-center" style="width: 20rem;">
-                    <img src="../../resources/statics/images/blusa_dorada.jpeg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Blusa dorada</h5>
-                        <p class="card-text"><s> $36.99</s> $33.00</p>
-                        <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
+                <div class="jumbotron jumbotron-fluid" id="jumbo-Ofertas">
+                    <div class="container">
+                        <h1 class="display-4">Novedades</h1>
+                        <p class="lead">Traemos nuevas cosas para tí, ¡Ven a verlas!</p>
                     </div>
                 </div>
             </div>
         </div>
-        <br>
-        <div class="row">
-            <div class="col">
-            <a href="Ofertas.php" class="btn btn-secondary" id="btn_ver">Ver más...</a>
-            </div>
-        </div>
     </div>
-    <br>
-    <!-- NOVEDADES -->
-    <div class="container">
-        <h1>AQUÍ VA EL TEXTO NOVEDADES</h1>
-    </div>
-    <br>
+    <br><!--CARDS-->
     <div class="container">
         <div class="row align-items-center">
             <div class="col">
@@ -166,13 +100,62 @@
             </div>
         </div>
         <br>
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col">
-            <a href="Novedades.php" class="btn btn-secondary" id="btn_ver">Ver más...</a>
+                <div class="card text-center" style="width: 20rem;">
+                    <img src="https://m.media-amazon.com/images/I/41V5W01NPEL.jpg" class="card-img-top" alt="..." style="height: 18rem">
+                    <div class="card-body">
+                        <h5 class="card-title">Chaqueta roja formal</h5>
+                        <p class="card-text">$35.99</p>
+                        <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card text-center" style="width: 20rem;">
+                    <img src="https://www.dhresource.com/0x0/f2/albu/g8/M01/53/77/rBVaVF0m-FuAOBfCAAD5jfgWTfI087.jpg" class="card-img-top" alt="..." style="height: 18rem">
+                    <div class="card-body">
+                        <h5 class="card-title">Chaqueta café</h5>
+                        <p class="card-text">$40.99</p>
+                        <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card text-center" style="width: 20rem;">
+                    <img src="https://amorsales.com/_files/system_preview_detail_200040148-25a53269e6/Zapatos%20para%20mujeres%20Mayoreo%20Wholesale%20Womens%20Shoes%20Amor%20Sales%20Arider%20Footwear.jpg" class="card-img-top" alt="..." style="height: 18rem">
+                    <div class="card-body">
+                        <h5 class="card-title">Botines café para mujer</h5>
+                        <p class="card-text">$36.99</p>
+                        <a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
+                    </div>
+                </div>
             </div>
         </div>
+        <br>       
     </div>
-    <br>
+    <br> <!--PAGINATION-->
+    <div class="container">
+        <div class="row justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                    <a class="page-link text-danger" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    </li>
+                    <li class="page-item"><a class="page-link text-danger" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link text-danger" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link text-danger" href="#">3</a></li>
+                    <li class="page-item">
+                    <a class="page-link text-danger" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
     <div class="separador"></div>
      <!--INICIO DEL FOOTER-->
     <footer class="pie">
@@ -184,7 +167,7 @@
             </div> 
             <div class="col">
             <br>
-            <p><a href="https://www.instagram.com/ninety_sevenheart/" class="text-dark"><img src="../../resources/statics/images/instagram_logo.png"> @ninety-sevenheart</p></a>
+              <p><a href="https://www.instagram.com/ninety_sevenheart/" class="text-dark"><img src="../../resources/statics/images/instagram_logo.png"> @ninety-sevenheart</p></a>
             </div>
             <div class="col">
             <br>
