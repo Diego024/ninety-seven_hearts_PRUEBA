@@ -184,7 +184,7 @@
     </div>
     <br>
     <div class="separador"></div>
-     <!--INICIO DEL FOOTER-->
+    <!--INICIO DEL FOOTER-->
     <footer class="pie">
         <div class="container">
           <div class="row">
