@@ -19,14 +19,15 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
+        <!-- RESOLUCIÓN DE LAS IMAGENES DEL CAROUSEL  1850X700 -->
         <div class="carousel-item active">
-            <img src="../../resources/statics/images/pato.jpg" class="d-block w-100" alt="...">
+            <img src="https://png.pngtree.com/thumb_back/fw800/background/20190221/ourmid/pngtree-clothing-girl-fashion-snatch-image_17004.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-            <img src="../../resources/statics/images/pato.jpg" class="d-block w-100" alt="...">
+            <img src="https://png.pngtree.com/thumb_back/fw800/background/20190222/ourmid/pngtree-tanabata-jewelry-jewelry-banner-poster-background-jewelryfashion-accessoriesmothers-dayvalentines-image_60077.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-            <img src="../../resources/statics/images/pato.jpg" class="d-block w-100" alt="...">
+            <img src="https://png.pngtree.com/thumb_back/fw800/background/20190222/ourmid/pngtree-creative-minimalist-fashion-banner-background-backgroundcosmetic-backgroundpinkfashion-image_58373.jpg" class="d-block w-100" alt="...">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
