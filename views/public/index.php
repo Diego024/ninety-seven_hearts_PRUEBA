@@ -59,8 +59,8 @@
             <a href="Lenceria.php" class="categoria" id="btnLenceria">Lencería</a>
         </div>
     </nav>
-    
     <!--FIN DEL HEADER Y NAV-->
+
     <!--INICIO CARRUSEL-->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -89,12 +89,14 @@
         </a>
     </div>
     <br>
+
     <!-- TITULO DE LA SECION -->
     <div class="seccion--titulo">
         <h4 class="seccion--titulo__texto">OFERTAS ESPECIALES</h3>
     </div>
-    <!-- OFERTAS -->
     <br>
+
+    <!-- OFERTAS -->
     <div class="container">
         <div class="row">
             <div class="col">
@@ -136,6 +138,7 @@
         </div>
     </div>
     <br>
+   
     <!-- TITULO DE LA SECION -->
     <div class="seccion--titulo">
         <h4 class="seccion--titulo__texto">NOVEDADES</h3>
@@ -183,7 +186,9 @@
         </div>
     </div>
     <br>
+
     <div class="separador"></div>
+    
     <!--INICIO DEL FOOTER-->
     <footer class="pie">
         <div class="container">
@@ -210,6 +215,7 @@
           </div>        
         </div>
     </footer>
+    
     <!-- App -->
     <script type="module" src="../../app/features/public/index.js"></script>
     <!-- Bootstrap -->

@@ -212,7 +212,7 @@
                                     </button>
                                 </div>
                             </div>
-                            
+                        
                             <!-- Modal -->
                             <div class="modal fade" id="confirmarPedido" tabindex="-1" aria-labelledby="confirmarPedidoLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -224,7 +224,7 @@
                                     </button>
                                     </div>
                                     <div class="modal-body">
-                                    ...
+                                    Al confirmar el pedido nos contactaremos con usted para acordar la entrega.
                                     </div>
                                     <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -260,31 +260,31 @@
         </div>
 
         <!--INICIO DEL FOOTER-->
-    <footer class="pie">
-        <div class="container">
-          <div class="row">
-            <div class="col">
-            <br>
-              <a href="FAQ.php" class="text-dark"><p>Preguntas frecuentes</p></a>
-            </div> 
-            <div class="col">
-            <br>
-            <p><a href="https://www.instagram.com/ninety_sevenheart/" class="text-dark"><img src="../../resources/statics/images/instagram_logo.png"> @ninety-sevenheart</p></a>
+        <footer class="pie">
+            <div class="container">
+            <div class="row">
+                <div class="col">
+                <br>
+                <a href="FAQ.php" class="text-dark"><p>Preguntas frecuentes</p></a>
+                </div> 
+                <div class="col">
+                <br>
+                <p><a href="https://www.instagram.com/ninety_sevenheart/" class="text-dark"><img src="../../resources/statics/images/instagram_logo.png"> @ninety-sevenheart</p></a>
+                </div>
+                <div class="col">
+                <br>
+                <p><img src="../../resources/statics/images/facebook.png"> Ninety-Seven Heart</p>
+                </div>
+                <div class="col">
+                <br>
+                <p><img src="../../resources/statics/images/whatsapp.png">2222-2222</p>
+                </div>
+            </div>   
+            <div class="row justify-content-center">
+                    <p>Derechos reservados - Ninety-Seven Heart 2021</p>
+            </div>        
             </div>
-            <div class="col">
-            <br>
-              <p><img src="../../resources/statics/images/facebook.png"> Ninety-Seven Heart</p>
-            </div>
-            <div class="col">
-            <br>
-              <p><img src="../../resources/statics/images/whatsapp.png">2222-2222</p>
-            </div>
-          </div>   
-          <div class="row justify-content-center">
-                <p>Derechos reservados - Ninety-Seven Heart 2021</p>
-          </div>        
-        </div>
-    </footer>
+        </footer>
 
         <!-- Bootstrap -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
