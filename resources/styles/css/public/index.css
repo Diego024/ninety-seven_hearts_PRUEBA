@@ -54,7 +54,7 @@
 .usuario--contenedor:hover .usuario--opciones, .usuario--opciones:hover {
     display:flex;
     animation-name: slide;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
 }
 
 .usuario--opciones {
@@ -139,13 +139,6 @@
     height: 7px;
 }
 
-/****************************** FOOTER ******************************/
-
-.pie {
-    background: #FBD1CF;
-    width: 100%;
-}
-
 /****************************** CARTAS ******************************/
 
 #btn_card {
@@ -225,6 +218,13 @@
     border-bottom: 3px solid #8C000E;
     font-weight: bold;
     font-size: 22px;
+}
+
+/****************************** FOOTER ******************************/
+
+.pie {
+    background: #FBD1CF;
+    width: 100%;
 }
 
 /****************************** RESPONSIVE ******************************/
@@ -324,6 +324,10 @@
     .usuario--opciones {
         right: 0px;
         top: 135px;
+    }
+
+    .pie {
+        text-align: center;
     }
 
 }
