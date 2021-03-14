@@ -94,7 +94,7 @@
         </div>
     </div>
 </div>
-
+<div class="separador"></div>
 <?php
     Public_Page::footerTemplate();
 ?>

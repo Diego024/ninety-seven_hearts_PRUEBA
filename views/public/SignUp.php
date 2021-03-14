@@ -11,7 +11,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <div class="jumbotron jumbotron-fluid" id="jumbo-SignIn">
+            <div class="jumbotron jumbotron-fluid" id="jumbo-SignUp">
                 <div class="container">
                     <h1 class="display-4">Registrarse</h1>
                     <p class="lead">Crear una cuenta es muy fácil, solo tienes que llenar los datos que se te piden a continuación.</p>
