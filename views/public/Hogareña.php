@@ -4,7 +4,7 @@
 
     Public_Page::headerTemplate('Hogareña', 'Hogareña');
 ?>
-
+<div class="separador"></div>
 <?php
     Public_Page::navbarTemplate('Hogar')
 ?>
