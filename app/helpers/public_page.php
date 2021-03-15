@@ -169,9 +169,13 @@
                 <footer class="pie">
                     <div class="container">
                     <div class="row">
-                        <div class="col-sm-12 col-lg-3">
+                        <div class="col-sm-12 col-lg-2">
                         <br>
                         <a href="FAQ.php" class="text-dark"><p>Preguntas frecuentes</p></a>
+                        </div> 
+                        <div class="col-sm-12 col-lg-2">
+                        <br>
+                        <a href="SobreNosotros.php" class="text-dark"><p>Sobre Nosotros</p></a>
                         </div> 
                         <div class="col-sm-12 col-lg-3">
                         <br>
@@ -181,7 +185,7 @@
                         <br>
                         <p><img src="../../resources/statics/images/facebook.png"> Ninety-Seven Heart</p>
                         </div>
-                        <div class="col-sm-12 col-lg-3">
+                        <div class="col-sm-12 col-lg-2">
                         <br>
                         <p><img src="../../resources/statics/images/whatsapp.png">2222-2222</p>
                         </div>
