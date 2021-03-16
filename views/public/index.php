@@ -84,7 +84,7 @@
     <br>
     <div class="row">
         <div class="col">
-        <a href="D" class="btn btn-secondary" id="btn_ver">Ver más...</a>
+        <a href="Ofertas.php" class="btn btn-secondary" id="btn_ver">Ver más...</a>
         </div>
     </div>
 </div>
@@ -132,7 +132,7 @@
     <br>
     <div class="row">
         <div class="col">
-        <a href="#" class="btn btn-secondary" id="btn_ver">Ver más...</a>
+        <a href="Novedades.php" class="btn btn-secondary" id="btn_ver">Ver más...</a>
         </div>
     </div>
 </div>
