@@ -120,7 +120,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="#" id="logout--button" class="list-group-item list-group-item-action btn--boton__texto">
+                                    <a href="LogIn.php" id="logout--button" class="list-group-item list-group-item-action btn--boton__texto">
                                         <img class="btn--boton__icon" src="../../resources/statics/icons/logout.png" alt=""> 
                                         Cerrar Sesión
                                     </a>
