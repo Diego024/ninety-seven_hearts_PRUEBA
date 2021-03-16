@@ -4,6 +4,7 @@
     Private_Page::sidebarTemplate('Pedidos');
 ?>
 <!-- TITULO DE LA SECCIÓN -->
+<br>
 <?php
     include('../../app/helpers/public_page.php');
     Public_Page::titleTemplate('PEDIDOS');

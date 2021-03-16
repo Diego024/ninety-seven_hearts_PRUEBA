@@ -25,7 +25,9 @@
                         <!-- Sidebar -->
                         <div class="bg-light border-right" id="sidebar-wrapper">
                             <div class="sidebar--img">
-                                <img src="https://www.howdeniberia.com/wp-content/uploads/2018/05/Disney-logo-png-transparent-download.png" alt="" id="sidebar--img__logo">
+                                <a href="Index.php">
+                                    <img src="../../resources/statics/images/logo-ready.png" alt="" id="sidebar--img__logo">
+                                </a>
                             </div>
                             <div class="sidebar--separator">
                                 <div class="sidebar--separator__line"></div>
@@ -54,29 +56,41 @@
                                         </div>
                                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                             <div class="card-body">
-                                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
+                                                <a href="Administradores.php" class="list-group-item list-group-item-action btn--boton__texto">
                                                     <img class="btn--boton__icon" src="../../resources/statics/icons/administrators.png" alt=""> 
                                                     Administradores
                                                 </a>
-                                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
+                                                <a href="Clientes.php" class="list-group-item list-group-item-action btn--boton__texto">
                                                     <img class="btn--boton__icon" src="../../resources/statics/icons/clientes.png" alt=""> 
                                                     Clientes
                                                 </a>
-                                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
+                                                <a href="Categorias.php" class="list-group-item list-group-item-action btn--boton__texto">
                                                     <img class="btn--boton__icon" src="../../resources/statics/icons/categoria.png" alt=""> 
                                                     Categorías
                                                 </a>
-                                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
+                                                <a href="Catalogo.php" class="list-group-item list-group-item-action btn--boton__texto">
                                                     <img class="btn--boton__icon" src="../../resources/statics/icons/productos.png" alt=""> 
-                                                    Productos
+                                                    Catalogo
                                                 </a>
-                                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
-                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/ofertas.png" alt=""> 
-                                                    Ofertas
+                                                <a href="Inventario.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/inventario.png" alt=""> 
+                                                    Inventario
                                                 </a>
-                                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
+
+                                                ' .
+                                                // <a href="" class="list-group-item list-group-item-action btn--boton__texto">
+                                                //     <img class="btn--boton__icon" src="../../resources/statics/icons/ofertas.png" alt=""> 
+                                                //     Ofertas
+                                                // </a>
+                                                '
+
+                                                <a href="FAQs.php" class="list-group-item list-group-item-action btn--boton__texto">
                                                     <img class="btn--boton__icon" src="../../resources/statics/icons/faqs.png" alt=""> 
                                                     FAQs
+                                                </a>
+                                                <a href="Comentarios.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/comentario.png" alt=""> 
+                                                    Comentarios
                                                 </a>
                                             </div>
                                         </div>
@@ -91,16 +105,16 @@
                                         </div>
                                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                             <div class="card-body">
-                                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
-                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/faqs.png" alt=""> 
+                                                <a href="Pedidos.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/pedidos.png" alt=""> 
                                                     Ordenes de compra
                                                 </a>
-                                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
-                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/faqs.png" alt=""> 
+                                                <a href="HistorialVentas.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/historialPedidos.png" alt=""> 
                                                     Historial de ventas
                                                 </a>
-                                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
-                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/faqs.png" alt=""> 
+                                                <a href="Estadisticas.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/estadisticas.png" alt=""> 
                                                     Estadísticas
                                                 </a>
                                             </div>

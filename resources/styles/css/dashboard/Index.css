@@ -159,6 +159,32 @@
     width: 25px;
 }
 
+/****************************** SEPARADOR ******************************/
+
+.separador {
+    background: #822659;
+    width: 100%;
+    height: 7px;
+}
+
+
+/************************* TITULO DE LA SECCION **************************/
+
+.seccion--titulo {
+    width: 90%;
+    margin: 0px 5%;
+    border-bottom: 1px solid black;
+}
+
+.seccion--titulo__texto {
+    margin-bottom: 0px;
+    margin-left: 10px;
+    width:max-content ;
+    border-bottom: 3px solid #822659;
+    font-weight: bold;
+    font-size: 22px;
+}
+
 /****************************** RESPONSIVE *********************************/
 
 
