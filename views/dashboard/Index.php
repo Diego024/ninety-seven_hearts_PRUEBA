@@ -38,19 +38,37 @@
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left btn--header__texto" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="btn btn-link btn-block text-left btn--header__texto" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
                                     Mantenimientos
                                 </button>
                             </h2>
                         </div>
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">
-                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">Dashboard</a>
-                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">Shortcuts</a>
-                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">Overview</a>
-                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">Events</a>
-                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">Profile</a>
-                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">Status</a>
+                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
+                                    <img class="btn--boton__icon" src="../../resources/statics/icons/administrators.png" alt=""> 
+                                    Administradores
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
+                                    <img class="btn--boton__icon" src="../../resources/statics/icons/clientes.png" alt=""> 
+                                    Clientes
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
+                                    <img class="btn--boton__icon" src="../../resources/statics/icons/categoria.png" alt=""> 
+                                    Categorías
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
+                                    <img class="btn--boton__icon" src="../../resources/statics/icons/productos.png" alt=""> 
+                                    Productos
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
+                                    <img class="btn--boton__icon" src="../../resources/statics/icons/ofertas.png" alt=""> 
+                                    Ofertas
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
+                                    <img class="btn--boton__icon" src="../../resources/statics/icons/faqs.png" alt=""> 
+                                    FAQs
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -64,13 +82,25 @@
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                             <div class="card-body">
-                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">Events</a>
-                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">Profile</a>
-                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">Status</a>
+                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
+                                    <img class="btn--boton__icon" src="../../resources/statics/icons/faqs.png" alt=""> 
+                                    Ordenes de compra
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
+                                    <img class="btn--boton__icon" src="../../resources/statics/icons/faqs.png" alt=""> 
+                                    Historial de ventas
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action btn--boton__texto">
+                                    <img class="btn--boton__icon" src="../../resources/statics/icons/faqs.png" alt=""> 
+                                    Estadísticas
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <a href="#" id="logout--button" class="list-group-item list-group-item-action btn--boton__texto">Status</a>
+                    <a href="#" id="logout--button" class="list-group-item list-group-item-action btn--boton__texto">
+                        <img class="btn--boton__icon" src="../../resources/statics/icons/logout.png" alt=""> 
+                        Cerrar Sesión
+                    </a>
                 </div>
             </div>
         </div>
@@ -80,8 +110,13 @@
         <div id="page-content-wrapper">
     
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+                <button class="btn btn--boton__menu" id="menu-toggle">
+                    <img src="../../resources/statics/icons/menu.png" class="boton--menu__icon" alt="">
+                </button>
             </nav>
+
+            
+
         </div>
         <!-- /#page-content-wrapper -->
     </div>

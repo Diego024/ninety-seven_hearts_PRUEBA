@@ -112,10 +112,6 @@
     color: rgb(155, 155, 155);
 }
 
-.group--item__title {
-
-}
-
 .card {
     border: none !important;
     border-radius: none !important;
@@ -151,19 +147,40 @@
     bottom: 0px;
 }
 
+.btn--boton__icon {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.btn--boton__menu {
+    background: #822659 !important;
+}
+
+.boton--menu__icon {
+    width: 25px;
+}
+
 /****************************** RESPONSIVE *********************************/
 
+
 @media (min-width: 768px) {
-  #sidebar-wrapper {
-    margin-left: 0;
-  }
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
 
-  #page-content-wrapper {
-    min-width: 0;
-    width: 100%;
-  }
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
 
-  #wrapper.toggled #sidebar-wrapper {
-    margin-left: -15rem;
-  }
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}
+
+
+@media only screen and (max-width: 660px) {
+    .btn--boton__icon {
+        display: none;
+    }
 }
