@@ -25,7 +25,7 @@
                     <!--INICIO DEL HEADER Y NAV-->
                     <header class="cabecera">
                         <div class="logo">
-                            <a href="index.php"><img src="https://www.howdeniberia.com/wp-content/uploads/2018/05/Disney-logo-png-transparent-download.png" alt=""></a>
+                            <a href="index.php"><img src="../../resources/statics/images/logo-ready.png" alt=""></a>
                         </div>
                         <div class="opciones">
                             <div class="opciones--menu">
