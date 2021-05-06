@@ -160,6 +160,12 @@
                         });
                     </script>
 
+                    <!-- LINKS DEL BUNDLE DE COMPONENTS -->
+                    <script src="../../app/helpers/components.js"></script>
+
+                    <!-- LINKS DE SWEET ALERT -->
+                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
                     <!-- LINKS PARA LA LIBRERÍA DE LA TABLA -->
                     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
                     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
