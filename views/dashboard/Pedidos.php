@@ -69,29 +69,11 @@
                     <td>Ver detalle...</td>
                 </tr>
                 <tr>
-                    <td>4</td>
-                    <td>Elmer Argueta</td>
-                    <td>$36.99</td>
-                    <td>15/03/2021</td>
-                    <td>Av. Venezuela, San Salvador, San Salvador</td>
-                    <td>Pendiente</td>
-                    <td>Ver detalle...</td>
-                </tr>
-                <tr>
                     <td>5</td>
                     <td>Diego Estrada</td>
                     <td>$368.00</td>
                     <td>01/01/2021</td>
                     <td>Mejicanos, San Salvador</td>
-                    <td>Pendiente</td>
-                    <td>Ver detalle...</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Elmer Argueta</td>
-                    <td>$38.35</td>
-                    <td>18/03/2021</td>
-                    <td>Av. Venezuela, San Salvador, San Salvador</td>
                     <td>Pendiente</td>
                     <td>Ver detalle...</td>
                 </tr>

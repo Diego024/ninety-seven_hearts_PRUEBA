@@ -11,9 +11,9 @@ class Database {
     private static function connect() {
         // Credenciales de la base de datos
         $server = 'localhost';
-        $database = 'coffeeshop';
+        $database = 'Ninety-Seven_Heart_2';
         $username = 'postgres';
-        $password = 'hola';
+        $password = '123';
         $port = 5432;
 
         // Se crea la conexión mediante la extensión PDO y el controlador para PostgreSQL.

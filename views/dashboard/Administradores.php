@@ -11,29 +11,8 @@
     Public_Page::titleTemplate('ADMINISTRADORES');
 ?>
 <br>
-<!-- COMIENZO DEL FORM -->
-<div class="container">
 
-<!-- ESTE DIV ESTÁ OCULTANDO EL FORMULARIO -->
-<div style="display: none">
-        <form>
-            
-            
-
-            <br>
-            <!-- BOTONES -->
-            <button type="submit" class="btn btn-primary" id="btn-Inventario">Agregar administrador</button>
-            <button type="submit" class="btn btn-primary" id="btn-Inventario">Editar administrador</button>
-            <button type="submit" class="btn btn-primary" id="btn-Inventario">Eliminar administrador</button>
-        </form>
-    </div>
-    <br>
-    <div class="separador"></div>
-    <br>
-</div>
-<!-- ----------------- -->
-
-
+<!------------BOTÓN PARA AGREGAR ADMIN----------- -->
 <div class="add--icon__container">
     <a href="" data-toggle="modal" data-target="#insertAdmin">
         <span class="material-icons green">

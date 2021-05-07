@@ -9,11 +9,28 @@
     Public_Page::titleTemplate('CATÁLOGO');
 ?>
 <br>
-<!-- COMIENZO DEL FORM -->
-<div class="container">
-    <form>
-        <!-- PRODUCTO Y PMP -->
-        <div class="form-row">
+<!-- BOTÓN PARA EL MODAL DE CATÁLOGO -->
+<div class="add--icon__container">
+    <a href="" data-toggle="modal" data-target="#insertCatalogo">
+        <span class="material-icons green">
+        add
+        </span>
+    </a>
+</div>
+
+<!-- INICIO DEL MODAL DE CLIENTES -->
+<div class="modal fade" id="insertCatalogo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agrege un producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                <!-- PRODUCTO Y PMP -->
+                <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputCity">Producto</label>
                 <input type="text" class="form-control" id="inputCity">
@@ -64,15 +81,15 @@
                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
             </div>
         </div>
-        <!-- BOTONES -->
-        <button type="submit" class="btn btn-primary" id="btn-Inventario">Agregar producto</button>
-        <button type="submit" class="btn btn-primary" id="btn-Inventario">Editar producto</button>
-        <button type="submit" class="btn btn-primary" id="btn-Inventario">Eliminar producto</button>
-    </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
 </div>
-<br>
-<div class="separador"></div>
-<br>
+
 <!-- COMIENZO DE LA TABLA -->
 <div class="container">
     <table class="table table-striped table-bordered mydatatable" >
@@ -85,6 +102,7 @@
                 <th>Precio</th>
                 <th>Categoría</th>
                 <th>Descripción</th>
+                <th>Acciones</th>
             </tr>
         </thead>
 
@@ -97,6 +115,18 @@
                 <td>$35.99</td>
                 <td>Pantalones</td>
                 <td>Pantalón color negro de tela. Tallas desde XS hasta M.</td>
+                <td class="icons">
+                    <a href="">
+                        <span class="material-icons red">   
+                            delete
+                        </span>
+                    </a>
+                    <a href="" data-toggle="modal" data-target="#insertCatalogo">
+                        <span class="material-icons blue">
+                            edit
+                        </span>
+                    </a>
+                </td>
             </tr>
             <tr>
                 <td>2</td>
@@ -106,6 +136,18 @@
                 <td>$15.99</td>
                 <td>Camisetas</td>
                 <td>Camiseta con estampado de caricaturas.</td>
+                <td class="icons">
+                    <a href="">
+                        <span class="material-icons red">   
+                            delete
+                        </span>
+                    </a>
+                    <a href="" data-toggle="modal" data-target="#insertCatalogo">
+                        <span class="material-icons blue">
+                            edit
+                        </span>
+                    </a>
+                </td>
             </tr>
             <tr>
                 <td>4</td>
@@ -115,6 +157,18 @@
                 <td>$46.25</td>
                 <td>Vestidos</td>
                 <td>Vestido color rojo con estampado de flores rojas. Tllas desde XS hasta L.</td>
+                <td class="icons">
+                    <a href="">
+                        <span class="material-icons red">   
+                            delete
+                        </span>
+                    </a>
+                    <a href="" data-toggle="modal" data-target="#insertCatalogo">
+                        <span class="material-icons blue">
+                            edit
+                        </span>
+                    </a>
+                </td>
             </tr>
                 <tr>
                 <td>5</td>
@@ -124,6 +178,18 @@
                 <td>$45.99</td>
                 <td>Hogareña</td>
                 <td>Pijama de cuerpo completo con diseño de unicornio azul. Tallas desde XS hasta XL.</td>
+                <td class="icons">
+                    <a href="">
+                        <span class="material-icons red">   
+                            delete
+                        </span>
+                    </a>
+                    <a href="" data-toggle="modal" data-target="#insertCatalogo">
+                        <span class="material-icons blue">
+                            edit
+                        </span>
+                    </a>
+                </td>
             </tr>
             <tr>
                 <td>6</td>
@@ -133,20 +199,20 @@
                 <td>$38.99</td>
                 <td>Lencería</td>
                 <td>Juego de 3 piezas de lencería, colores surtidos. Tallas desde XS hasta M.</td>
+                <td class="icons">
+                    <a href="">
+                        <span class="material-icons red">   
+                            delete
+                        </span>
+                    </a>
+                    <a href="" data-toggle="modal" data-target="#insertCatalogo">
+                        <span class="material-icons blue">
+                            edit
+                        </span>
+                    </a>
+                </td>
             </tr>
         </tbody>
-
-        <tfoot>
-            <tr>
-                <th>Código</th>
-                <th>Producto</th>
-                <th>Existencia</th>
-                <th>PMP</th>
-                <th>Precio</th>
-                <th>Categoría</th>
-                <th>Descripción</th>
-            </tr>
-        </tfoot>
     </table>
 </div>
 <?php

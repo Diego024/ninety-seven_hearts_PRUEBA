@@ -10,11 +10,27 @@
     Public_Page::titleTemplate('INVENTARIO');
 ?>
 <br>
-<!-- COMIENZO DEL FORM -->
-<div class="container">
-    <form>
-        <!-- PRODUCTO Y FECHA DE INGRESO -->
-        <div class="form-row"> 
+<!-- BOTÓN PARA EL MODAL DE INVENTARIO -->
+<div class="add--icon__container">
+    <a href="" data-toggle="modal" data-target="#insertInventario">
+        <span class="material-icons green">
+        add
+        </span>
+    </a>
+</div>
+<!-- INICIO DEL MODAL DE CLIENTES -->
+<div class="modal fade" id="insertInventario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agrege un producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                <!-- PRODUCTO Y FECHA DE INGRESO -->
+                <div class="form-row"> 
             <div class="form-group col-md-6 search_select_box">
                 <label for="inputState">Producto</label>
                 <select id="inputState" class="form-control" data-live-search="true">
@@ -41,15 +57,15 @@
                 <input type="text" class="form-control" id="inlineFormInputGroupUsername2">
             </div>
         </div>
-        <!-- BOTONES -->
-        <button type="submit" class="btn btn-primary" id="btn-Inventario">Agregar entrada</button>
-        <button type="submit" class="btn btn-primary" id="btn-Inventario">Editar entrada</button>
-        <button type="submit" class="btn btn-primary" id="btn-Inventario">Eliminar entrada</button>
-    </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
 </div>
-<br>
-<div class="separador"></div>
-<br>
+
 <!-- COMIENZO DE LA TABLA -->
 <div class="container">
     <table class="table table-striped table-bordered mydatatable" >
@@ -60,6 +76,7 @@
                 <th>Cantidad</th>
                 <th>Fecha de ingreso</th>
                 <th>Precio adquirido</th>
+                <th>Acciones</th>
             </tr>
         </thead>
 
@@ -70,6 +87,18 @@
                 <td>100</td>
                 <td>15/03/2021</td>
                 <td>$100.00</td>
+                <td class="icons">
+                    <a href="">
+                        <span class="material-icons red">   
+                            delete
+                        </span>
+                    </a>
+                    <a href="" data-toggle="modal" data-target="#insertInventario">
+                        <span class="material-icons blue">
+                            edit
+                        </span>
+                    </a>
+                </td>
             </tr>
             <tr>
                 <td>2</td>
@@ -77,6 +106,18 @@
                 <td>100</td>
                 <td>02/03/2021</td>
                 <td>$110.00</td>
+                <td class="icons">
+                    <a href="">
+                        <span class="material-icons red">   
+                            delete
+                        </span>
+                    </a>
+                    <a href="" data-toggle="modal" data-target="#insertInventario">
+                        <span class="material-icons blue">
+                            edit
+                        </span>
+                    </a>
+                </td>
             </tr>
             <tr>
                 <td>3</td>
@@ -84,6 +125,18 @@
                 <td>50</td>
                 <td>01/02/2021</td>
                 <td>$40.00</td>
+                <td class="icons">
+                    <a href="">
+                        <span class="material-icons red">   
+                            delete
+                        </span>
+                    </a>
+                    <a href="" data-toggle="modal" data-target="#insertInventario">
+                        <span class="material-icons blue">
+                            edit
+                        </span>
+                    </a>
+                </td>
             </tr>
             <tr>
                 <td>4</td>
@@ -91,6 +144,18 @@
                 <td>15</td>
                 <td>15/03/2021</td>
                 <td>$30.50</td>
+                <td class="icons">
+                    <a href="">
+                        <span class="material-icons red">   
+                            delete
+                        </span>
+                    </a>
+                    <a href="" data-toggle="modal" data-target="#insertInventario">
+                        <span class="material-icons blue">
+                            edit
+                        </span>
+                    </a>
+                </td>
             </tr>
             <tr>
                 <td>5</td>
@@ -98,6 +163,18 @@
                 <td>50</td>
                 <td>01/01/2021</td>
                 <td>$120.00</td>
+                <td class="icons">
+                    <a href="">
+                        <span class="material-icons red">   
+                            delete
+                        </span>
+                    </a>
+                    <a href="" data-toggle="modal" data-target="#insertInventario">
+                        <span class="material-icons blue">
+                            edit
+                        </span>
+                    </a>
+                </td>
             </tr>
                 <tr>
                 <td>6</td>
@@ -105,6 +182,18 @@
                 <td>10</td>
                 <td>02/02/2021</td>
                 <td>$110.99</td>
+                <td class="icons">
+                    <a href="">
+                        <span class="material-icons red">   
+                            delete
+                        </span>
+                    </a>
+                    <a href="" data-toggle="modal" data-target="#insertInventario">
+                        <span class="material-icons blue">
+                            edit
+                        </span>
+                    </a>
+                </td>
             </tr>
             <tr>
                 <td>7</td>
@@ -112,18 +201,20 @@
                 <td>25</td>
                 <td>05/01/2021</td>
                 <td>$63.55</td>
+                <td class="icons">
+                    <a href="">
+                        <span class="material-icons red">   
+                            delete
+                        </span>
+                    </a>
+                    <a href="" data-toggle="modal" data-target="#insertInventario">
+                        <span class="material-icons blue">
+                            edit
+                        </span>
+                    </a>
+                </td>
             </tr>
         </tbody>
-
-        <tfoot>
-            <tr>
-                <th>Código</th>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Fecha de ingreso</th>
-                <th>Precio adquirido</th>
-            </tr>
-        </tfoot>
     </table>
 </div>
 

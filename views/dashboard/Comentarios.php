@@ -10,12 +10,19 @@
     Public_Page::titleTemplate('COMENTARIOS');
 ?>
 <br>
-<!-- COMIENZO DEL FORM -->
-<div class="container">
-    <form>
-
-        <!-- PREGUNTA Y RESPUESTA -->
-        <div class="form-row">
+<!-- INICIO DEL MODAL DE COMENTARIOS -->
+<div class="modal fade" id="insertComentarios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agrege un cliente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                <!-- PREGUNTA Y RESPUESTA -->
+                <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputCity">Usuario</label>
                 <input type="text" class="form-control" id="inputCity" readonly>
@@ -40,17 +47,15 @@
                 </select>
             </div>
         </div>
-
-        <br>
-        <!-- BOTONES -->
-        <div class="row justify-content-center">
-            <button type="submit" class="btn btn-primary" id="btn-Inventario">Deshabilitar comentario</button>
-        </div>
-    </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
 </div>
-<br>
-<div class="separador"></div>
-<br>
+
 <!-- COMIENZO DE LA TABLA -->
 <div class="container">
     <table class="table table-striped table-bordered mydatatable" >
@@ -60,6 +65,7 @@
                 <th>Usuario</th>
                 <th>Comentario</th>
                 <th>Estado</th>
+                <th>Acciones</th>
             </tr>
         </thead>
 
@@ -69,6 +75,18 @@
                 <td>Moys</td>
                 <td>Me pareció buen producto y el horario de entrega bastante óptimo para acoplarse a mis horarios.</td>
                 <td>Activo</td>
+                <td class="icons">
+                    <a href="">
+                        <span class="material-icons red">   
+                            delete
+                        </span>
+                    </a>
+                    <a href="" data-toggle="modal" data-target="#insertComentarios">
+                        <span class="material-icons blue">
+                            edit
+                        </span>
+                    </a>
+                </td>
 
             </tr>
             <tr>
@@ -76,17 +94,20 @@
                 <td>Ninety-Seven_Hearts</td>
                 <td>Muchas gracias por tu comentario, apreciamos tu valoración</td>
                 <td>Activo</td>
+                <td class="icons">
+                    <a href="">
+                        <span class="material-icons red">   
+                            delete
+                        </span>
+                    </a>
+                    <a href="" data-toggle="modal" data-target="#insertComentarios">
+                        <span class="material-icons blue">
+                            edit
+                        </span>
+                    </a>
+                </td>
             </tr>
         </tbody>
-
-        <tfoot>
-            <tr>
-                <th>Código</th>
-                <th>Usuario</th>
-                <th>Comentario</th>
-                <th>Estado</th>
-            </tr>
-        </tfoot>
     </table>
 </div>
 
