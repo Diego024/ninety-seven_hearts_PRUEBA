@@ -2,14 +2,16 @@
 
 // Función para listar los registros de una tabla
 const readRows = api => {
-    fetch(api + 'readAll')
+    fetch(api + 'readAll', {
+        method: "get",
+    })
     .then( request => {
-        //Se verifica que la request se completó correctamente
         if(request.ok) {
             return request.json()
         } else {
-            console.log(`${request.status} ${request.statusText}`)
+            console.log(`${request.status} ${request.statusText}`);
         }
+        
     })
     .then( response => {
         let data = []
@@ -23,7 +25,7 @@ const readRows = api => {
         fillTable(data)
     })
     .catch( error => {
-        console.log(error)
+        console.log(error);
     })
 }
 
@@ -36,6 +38,7 @@ const saveRow = (api, action, form, modal)  => {
     .then( request => {
         //Se verifica que la request se completó correctamente
         if(request.ok) {
+            //Error
             return request.json()
         } else {
             console.log(`${request.status} ${request.statusText}`)
@@ -45,6 +48,7 @@ const saveRow = (api, action, form, modal)  => {
         //Se comprueba que el status de la request sea satisfactorio
         if(response.status) {
             //Se cerraría el modal del form automáticamente
+            $(modal).modal('hide');
             readRows(api)
             sweetAlert(1, response.message, null)
         } else {
@@ -56,44 +60,86 @@ const saveRow = (api, action, form, modal)  => {
 }
 
 // Función para confirmar que desea eliminar un registro
-const confirmDelete = (api, data) => {
+// const confirmDelete = (api, data) => {
+//     swal({
+//         title: 'Advertencia',
+//         text: '¿Desea eliminar el registro?',
+//         icon: 'warning',
+//         buttons: ['No', 'Sí'],
+//         closeOnClickOutside: false,
+//         closeonEsc: false,
+//     }).then( value => {
+//         if(value) {
+//             return ( 
+//                 fetch(api + 'delete', {
+//                 method: 'post',
+//                 body: data
+//                 }) 
+//             )
+//         }
+//     }).then( request => {
+//         //Verificando que la request sea correcta
+//         if(request.ok) {
+//             return request.json()
+//         } else {
+//             console.log(`${request.status} ${request.statusText}`)
+//         }
+//     })
+//     .then( response => {
+//         //Se comprueba que el status de la request sea satisfactorio
+//         if(response.status) {
+//             //Se recarga la vista de los registros en la tabla
+//             readRows(api);
+//             sweetAlert(1, response.message, null);
+//         } else {
+//             sweetAlert(2, response.exception, null);
+//         }
+//     }).catch(error => {
+//         console.log(error)
+//     })
+// }
+
+
+//Funcion para manejar los mensajes de notificación
+
+
+function confirmDelete(api, data) {
     swal({
         title: 'Advertencia',
         text: '¿Desea eliminar el registro?',
         icon: 'warning',
         buttons: ['No', 'Sí'],
         closeOnClickOutside: false,
-        closeonEsc: false,
-    }).then( value => {
-        return ( 
+        closeOnEsc: false
+    }).then(function (value) {
+        // Se verifica si fue cliqueado el botón Sí para hacer la petición de borrado, de lo contrario no se hace nada.
+        if (value) {
             fetch(api + 'delete', {
-            method: 'post',
-            body: data
-            }) 
-        )
-    }).then( request => {
-        //Verificando que la request sea correcta
-        if(request.ok) {
-            return request.json()
-        } else {
-            console.log(`${request.status} ${request.statusText}`)
+                method: 'post',
+                body: data
+            }).then(request => {
+                // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
+                if (request.ok) {
+                    console.log(request.text())
+                    return request.json();
+                } else {
+                    console.log(request.status + ' ' + request.statusText);
+                }
+            }).then(response => {
+                if (response.status) {
+                    readRows(api);
+                    sweetAlert(1, response.message, null);
+                } else {
+                    sweetAlert(2, response.exception, null);
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         }
-    })
-    .then( response => {
-        //Se comprueba que el status de la request sea satisfactorio
-        if(response.status) {
-            //Se recarga la vista de los registros en la tabla
-            readRows(api);
-            sweetAlert(1, response.message, null);
-        } else {
-            sweetAlert(2, response.exception, null);
-        }
-    }).catch(error => {
-        console.log(error)
-    })
+    });
 }
 
-//Funcion para manejar los mensajes de notificación
 const sweetAlert = (type, text, url) => {
     switch (type) {
         case 1:

@@ -4,6 +4,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+a:hover {
+    cursor:pointer;
+}
+
  #wrapper {
     overflow-x: hidden;
  }

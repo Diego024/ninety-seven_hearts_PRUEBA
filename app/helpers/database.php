@@ -3,7 +3,7 @@
 // Clase para realizar las operaciones en la base de datos.
 class Database {
     // Propiedades de la clase para manejar las acciones
-    private static $connections = null;
+    private static $connection = null;
     private static $statement = null;
     private static $error = null;
 
@@ -11,13 +11,12 @@ class Database {
     private static function connect() {
         // Credenciales de la base de datos
         $server = 'localhost';
-        $database = 'coffeeshop';
+        $database = 'Ninety-Seven_Heart';
         $username = 'postgres';
         $password = 'hola';
-        $port = 5432;
 
         // Se crea la conexión mediante la extensión PDO y el controlador para PostgreSQL.
-        self::$connection = new PDO('pgsql:host='.$server.';dbname='.$database.';port='.$port, $username, $password);
+        self::$connection = new PDO('pgsql:host='.$server.';dbname='.$database.';port=5432', $username, $password);
     }
 
     // Función para ejecutar las siguientes sentencias SQL:
@@ -26,7 +25,7 @@ class Database {
         try {
             self::connect();
             self::$statement = self::$connection->prepare($query);
-            $state = selft::$statement->execute($values);
+            $state = self::$statement->execute($values);
             //Se anula la conexión con el servidor de la base de datos
             self::$connection = null;
             return $state;
@@ -48,7 +47,7 @@ class Database {
             }
             self::$connection = null;
             return $id;
-        } catch (PDO Exception $error) {
+        } catch (PDOException $error) {
             self::setException($error->getCode(), $error-> getMessage());
             return 0;
         }
@@ -56,12 +55,13 @@ class Database {
 
     // Funcion para obtener un registro de una sentencia SQL tipo SELECT.
     public static function getRow($query, $values) {
-        try{
+        try {
             self::connect();
-            self::$statement = self::$connection-> prepare($query);
+            self::connect();
+            self::$statement = self::$connection->prepare($query);
             self::$statement->execute($values);
             self::$connection = null;
-            return self::$statement->fetch(PDO::FETCH__ASSOC);
+            return self::$statement->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $error) {
             self::setException($error->getCode(), $error->getMessage());
             return false;
@@ -75,7 +75,7 @@ class Database {
             self::$statement = self::$connection->prepare($query);
             self::$statement->execute($values);
             self::$connection = null;
-            return self::$statement->fetchAll(PDO::FETCH__ASSOC);
+            return self::$statement->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $error) {
             self::setException($error->getCode(), $error->getMessage());
             return false;
@@ -88,7 +88,7 @@ class Database {
     private static function setException($code, $message) {
         // Se evalua el código del error recibido
         switch ($code) {
-            case: '7':
+            case '7':
                 self::$error = 'Existe un problema al conectar con el servidor';
                 break;
             case '42703':
