@@ -36,49 +36,49 @@
                     <!-- NOMBRES Y APELLIDO -->
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                        <label for="inputCity">Nombres</label>
-                        <input type="text" class="form-control" id="nombres">
+                        <label for="nombres">Nombres</label>
+                        <input type="text" class="form-control" id="nombres" name="nombres">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="inputCity">Apellidos</label>
-                            <input type="text" class="form-control" id="apellidos">
+                            <input type="text" class="form-control" id="apellidos" name="apellidos">
                         </div>
                     </div>
                     <!-- USUARIO Y EMAIL -->
                     <div class="form-row">
                         <div class="form-group col-md-6">
                         <label for="inputCity">Usuario</label>
-                        <input type="text" class="form-control" id="usuario">
+                        <input type="text" class="form-control" id="usuario" name="usuario">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="inputCity">Email</label>
-                            <input type="text" class="form-control" id="email">
+                            <input type="text" class="form-control" id="correo_electronico" name="correo_electronico">
                         </div>
                     </div>
                     <!-- CLAVE Y CONFIRMACIÓN -->
                     <div class="form-row">
                         <div class="form-group col-md-6">
                         <label for="inputCity">Contraseña</label>
-                        <input type="password" class="form-control" id="clave">
+                        <input type="password" class="form-control" id="clave" name="clave">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="inputCity">Confirme la contraseña</label>
-                            <input type="password" class="form-control" id="confirmar_clave">
+                            <input type="password" class="form-control" id="confirmar_clave" name="confirmar_clave">
                         </div>
                     </div>
                     <!-- TELEFONO Y GENERO -->
                     <div class="form-row">
                         <div class="form-group col-md-6">
                         <label for="inputCity">Teléfono</label>
-                        <input type="text" class="form-control" id="telefono">
+                        <input type="text" class="form-control" id="telefono" name="telefono">
                         </div>
 
                         <div class="form-group col-md-6 search_select_box">
                             <label for="inputState">Genero</label>
-                            <select id="genero" class="form-control">
+                            <select id="genero" class="form-control" name="genero">
                                 <option selected value=2>Femenino</option>
                                 <option value=1>Masculino</option>
                             </select>
@@ -88,7 +88,7 @@
                     <div class="form-row"> 
                         <div class="form-group col-md-6 search_select_box">
                             <label for="inputState">Estado de la cuenta</label>
-                            <select id="estado_cuenta" class="form-control">
+                            <select id="estado_cuenta" class="form-control" name="estado_cuenta">
                                 <option selected>Activa</option>
                                 <option>Inactiva</option>
                                 <option>Bloqueada</option>
@@ -96,18 +96,18 @@
                         </div>
                         <div class="col">
                             <label for="inputState">Fecha de nacimiento</label>
-                            <input type="date" class="form-control" id="fecha_nacimiento" placeholder="1234 Main St">
+                            <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="1234 Main St">
                         </div>
                     </div>
                     <!-- DIRECCION Y FOTO -->
                     <div class="form-row"> 
                         <div class="form-group col-md-6">
                             <label for="inputCity">Dirección</label>
-                            <textarea class="form-control" id="direccion" rows="3"></textarea>
+                            <textarea class="form-control" id="direccion" name="direccion" rows="3"></textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputCity">Foto</label>
-                            <input type="file" class="form-control-file" id="foto_administrador">
+                            <input type="file" class="form-control-file" id="foto_administrador" name="foto_administrador">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -121,7 +121,8 @@
 </div>
 
 <!-- COMIENZO DE LA TABLA -->
-<div class="container">
+<div class="container" id="table-container">
+    <h4 id="warning-message" style="text-align:center"></h4>
     <table class="table table-striped table-bordered mydatatable" id="tbody-rows">
     </table>
 </div>

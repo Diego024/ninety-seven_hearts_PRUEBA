@@ -14,20 +14,20 @@
             </div>
             <!-- AQUÍ VA EL LOGIN -->
             <div class="login-container">
-                <form action="LogIn.php">
+                <form method="post" id="session-form">
                     <img class="Avatar" src="../../resources/statics/images/user1.svg" alt="">
                     <h2>Bienvenido</h2>
                     <!-- INPUTS -->
                     <div class="input-div one">
                         <div>
                             <h5>Usuario</h5>
-                            <input type="text" class="input">
+                            <input id="usuario" type="text" name="usuario" class="input" require>
                         </div>
                     </div>
                     <div class="input-div two">
                         <div>
                             <h5>Contraseña</h5>
-                            <input type="password" class="input">
+                            <input id="clave" type="password" name="clave" class="input">
                         </div>
                     </div>
                     <input type="submit" class="btn" value="Login">

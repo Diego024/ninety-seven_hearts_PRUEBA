@@ -10,57 +10,63 @@ document.addEventListener('DOMContentLoaded', () => {
 // Función para llenar la tabla con los datos de los registros. Se usa en la función readRows()
 const fillTable = dataset => {
     let content = '';
-    //Se agregan los titulos de las columnas
-    content += `
-        <tr>
-            <th>Código</th>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Usuario</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-        </tr>
-    `
-
-    //Recorremos el arreglo de registros fila por fila, a travez del objeto row
-    dataset.map( row => {
-        //Se crean y concatenan las filas de la tabla con los datos del registro
+    if(dataset.lenght == 0) {
+        content+=`<h4>No hay Administradores registradas</h4>`
+        document.getElementById('warning-message').innerHTML = content
+    } else {
+        console.log(dataset)
+        //Se agregan los titulos de las columnas
         content += `
             <tr>
-                <td>${row.id_administrador}</td>
-                <td>${row.nombres}</td>
-                <td>${row.apellidos}</td>
-                <td>${row.usuario}</td>
-                <td>${row.estado_cuenta}</td>
-                <td class="icons">
-                    <a onclick="openUpdateDialog(${row.id_administrador})" data-toggle="tooltip" data-placement="bottom" title="Editar">
-                        <span class="material-icons blue" data-tooltip="Actualizar">
-                            edit
-                        </span>
-                    </a>
-                    <a onclick="openDeleteDialog(${row.id_administrador})" title="Eliminar">
-                        <span class="material-icons red" data-tooltip="Eliminar">   
-                            delete
-                        </span>
-                    </a>
-                </td>
+                <th>Código</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Usuario</th>
+                <th>Estado</th>
+                <th>Acciones</th>
             </tr>
-        `;  
-    })
+        `
+        //Recorremos el arreglo de registros fila por fila, a travez del objeto row
+        dataset.map( row => {
+            //Se crean y concatenan las filas de la tabla con los datos del registro
+            content += `
+                <tr>
+                    <td>${row.id_administrador}</td>
+                    <td>${row.nombres}</td>
+                    <td>${row.apellidos}</td>
+                    <td>${row.usuario}</td>
+                    <td>${row.estado_cuenta}</td>
+                    <td class="icons">
+                        <a onclick="openUpdateDialog(${row.id_administrador})" data-toggle="tooltip" data-placement="bottom" title="Editar">
+                            <span class="material-icons blue" data-tooltip="Actualizar">
+                                edit
+                            </span>
+                        </a>
+                        <a onclick="openDeleteDialog(${row.id_administrador})" title="Eliminar">
+                            <span class="material-icons red" data-tooltip="Eliminar">   
+                                delete
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+            `;  
+        })
 
-    content+=`
-        <tr>
-            <th>Código</th>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Usuario</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-        </tr>
-    `
-    //Se agrega el contenido a la tabla mediante su id
-    document.getElementById('tbody-rows').innerHTML = content;
-    //Se debería ver todos los registros
+        content+=`
+            <tr>
+                <th>Código</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Usuario</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        `
+        //Se agrega el contenido a la tabla mediante su id
+        document.getElementById('tbody-rows').innerHTML = content;
+        //Se debería ver todos los registros
+    }
+    
 }
 
 const toggleDisableAtributtes = state => {
@@ -82,7 +88,6 @@ const openCreateDialog = () => {
 }
 
 const openUpdateDialog = id => {
-    console.log(id)
     //Se restauran los elementos del form
     document.getElementById('save-form').reset();
     //Se abre el form
@@ -109,12 +114,11 @@ const openUpdateDialog = id => {
     }).then( response => {
         //Se comprueba si la request es satisfactoria
         if(response.status) {
-            console.log(response.dataset[0].nombres)
             document.getElementById('id_administrador').value = response.dataset[0].id_administrador
             document.getElementById('nombres').value = response.dataset[0].nombres
             document.getElementById('apellidos').value = response.dataset[0].apellidos
             document.getElementById('usuario').value = response.dataset[0].usuario
-            document.getElementById('email').value = response.dataset[0].correo_electronico
+            document.getElementById('correo_electronico').value = response.dataset[0].correo_electronico
             document.getElementById('clave').value = response.dataset[0].clave
             document.getElementById('confirmar_clave').value = response.dataset[0].clave
             document.getElementById('telefono').value = response.dataset[0].telefono

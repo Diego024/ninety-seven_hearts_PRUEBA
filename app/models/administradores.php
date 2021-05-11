@@ -1,6 +1,6 @@
 <?php
 
-// Clase para manejar los mantenimientos de las categorías
+// Clase para manejar los mantenimientos de los administradores
 
 // Es una clase hija de Validator
 class Administradores extends Validator {
@@ -66,7 +66,7 @@ class Administradores extends Validator {
     }
     
     public function setDireccion($direccion) {
-        if($this->validateAlphanumeric($direccion, 1, 500)) {
+        if(strlen($direccion) <= 500) {
             $this->direccion = $direccion;
             return true;
         } else {
@@ -182,6 +182,29 @@ class Administradores extends Validator {
     }
 
     //Funciones para realizar los mantenimientos a la tabla
+
+    public function checkUser($usuario) {
+        $query = 'SELECT id_administrador FROM administradores WHERE usuario = ?';
+        $params = array($usuario);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id_adminsitrador = $data['id_administrador'];
+            $this->usuario = $usuario;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function checkPassword($password) {
+        $query = 'SELECT clave FROM administradores WHERE id_administrador = ?';
+        $params = array($this->id);
+        $data = Database::getRow($query, $params);
+        if(password_verify($password, $data['clave'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public function insertAdmin() {
         $query = 'INSERT INTO administradores (nombres, apellidos, fecha_nacimiento, telefono, direccion, correo_electronico, foto_administrador, usuario, clave,id_estado_cuenta, id_genero) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';

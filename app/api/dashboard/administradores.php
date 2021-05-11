@@ -17,6 +17,14 @@ if( isset($_GET['action'])) {
     if (true) {
         //Se evalua la acción a realizar
         switch ($_GET['action']) {
+            case 'logOut':
+                if(session_destroy()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Sesión cerrada correctamente';
+                } else {
+                    $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
+                }
+                break;
             case 'readAll':
                 if ($result['dataset'] = $administrador->selectAdmins()) {
                     $result['status'] = 1;
@@ -106,55 +114,63 @@ if( isset($_GET['action'])) {
                 break;
             case 'update':
                 $_POST = $administrador->validateForm($_POST);
-                if ($administrador->setNombres($_POST['nombres'])) {
-                    if($administrador->setApellidos($_POST['apellidos'])) {
-                        if($administrador->setFechaNacimiento($_POST['fecha_nacimiento'])) {
-                            if($administrador->setTelefono($_POST['telefono'])) {
-                                if($administrador->setDireccion($_POST['direccion'])) {
-                                    if($administrador->setCorreo($_POST['correo_electronico'])) {
-                                        if(is_uploaded_file($_FILES['foto_administrador']['tmp_name'])) {
-                                            if($administrador->setFotoAdministrador($_FILES['foto_administrador'])) {
-                                                if($administrador->setEstadoCuenta($_POST['id_estado_cuenta'])) {
-                                                    if($administrador->setGenero($_POST['id_genero'])) {
-                                                        if($administrador->updateAdmin($data['foto_administrador'])) {
-                                                            $result['status'] = 1;
-                                                            if ($administrador->saveFile($_FILES['foto_administrador'], $administrador->getRuta(), $administrador->getFotoAdministrador())) {
-                                                                $result['message'] = 'Administrador modificado correctamente';
+                if($administrador->setIdAdministrador($_POST['id_administrador'])) {   
+                    if($data = $administrador->selectOneAdmin()) {
+                        if ($administrador->setNombres($_POST['nombres'])) {
+                            if($administrador->setApellidos($_POST['apellidos'])) {
+                                if($administrador->setFechaNacimiento($_POST['fecha_nacimiento'])) {
+                                    if($administrador->setTelefono($_POST['telefono'])) {
+                                        if($administrador->setDireccion($_POST['direccion'])) {
+                                            if($administrador->setCorreo($_POST['correo_electronico'])) {
+                                                if(is_uploaded_file($_FILES['foto_administrador']['tmp_name'])) {
+                                                    if($administrador->setFotoAdministrador($_FILES['foto_administrador'])) {
+                                                        if($administrador->setEstadoCuenta($_POST['id_estado_cuenta'])) {
+                                                            if($administrador->setGenero($_POST['id_genero'])) {
+                                                                if($administrador->updateAdmin($data['foto_administrador'])) {
+                                                                    $result['status'] = 1;
+                                                                    if ($administrador->saveFile($_FILES['foto_administrador'], $administrador->getRuta(), $administrador->getFotoAdministrador())) {
+                                                                        $result['message'] = 'Administrador modificado correctamente';
+                                                                    } else {
+                                                                        $result['message'] = 'Administrador modificado pero no se guardó la imagen';
+                                                                    }
                                                                 } else {
-                                                                    $result['message'] = 'Administrador modificado pero no se guardó la imagen';
+                                                                    $result['exception'] = Database::getException();;
                                                                 }
+                                                            } else {
+                                                                $result['exception'] = 'Seleccione un genero';
+                                                            }
                                                         } else {
-                                                            $result['exception'] = Database::getException();;
+                                                            $result['exception'] = 'Seleccione un estado de cuenta';
                                                         }
                                                     } else {
-                                                        $result['exception'] = 'Seleccione un genero';
+                                                        $result['exception'] = $Administrador->getImageError();
                                                     }
                                                 } else {
-                                                    $result['exception'] = 'Seleccione un estado de cuenta';
+                                                    $result['exception'] = 'Seleccione una imagen';
                                                 }
                                             } else {
-                                                $result['exception'] = $Administrador->getImageError();
+                                                $result['exception'] = 'Correo electrónico incorrecto';
                                             }
                                         } else {
-                                            $result['exception'] = 'Seleccione una imagen';
+                                            $result['exception'] = 'Dirección incorrecta';
                                         }
                                     } else {
-                                        $result['exception'] = 'Correo electrónico incorrecto';
+                                        $result['exception'] = 'Teléfono incorrecto';
                                     }
                                 } else {
-                                    $result['exception'] = 'Dirección incorrecta';
+                                    $result['exception'] = 'Fecha de nacimiento incorrecta';    
                                 }
                             } else {
-                                $result['exception'] = 'Teléfono incorrecto';
+                                $result['exception'] = 'Apellidos incorrectos';
                             }
                         } else {
-                            $result['exception'] = 'Fecha de nacimiento incorrecta';    
+                            $result['exception'] = 'Nombres incorrectos';
                         }
                     } else {
-                        $result['exception'] = 'Apellidos incorrectos';
+                        $result['exception'] = 'Administrador inexistente';
                     }
                 } else {
-                    $result['exception'] = 'Nombres incorrectos';
+                    $result['exception'] = 'Administrador incorrecto';
                 }
                 break;
             case 'delete':
@@ -181,13 +197,53 @@ if( isset($_GET['action'])) {
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
-        // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
-        header('content-type: application/json; charset=utf-8');
-        // Se imprime el resultado en formato JSON y se retorna al controlador.
-        print(json_encode($result));
     } else {
-        print(json_encode('Acceso denegado'));
+        switch ($_GET['action']) {
+            case 'readAll':
+                if($usuario->readAll()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existe al menos un usuario registrado';
+                } else {
+                    if (Database::getException()) {
+                        $result['error'] = 1;
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No existen usuarios registrados';
+                    }
+                }
+                break;
+            case 'logIn':
+                $_POST = $administrador->validateForm($_POST);
+                if ($administrador->checkUser($_POST['usuario'])) {
+                    if($usuario->checkPassword($_POST['clave'])) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Autenticación correcta';
+                        $_SESSION['id_administrador'] = $administrador->getIdAdministrador();
+                        $_SESSION['usuario'] = $administrador->getUsuario();
+                    } else {
+                        if(Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'Contraseña incorrecta';
+                        }
+                    }
+                } else {
+                    if(Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'Usuario inexistente';
+                    }
+                }
+                break;
+            default:
+                $result['exception'] = 'Acción no disponible fuera de la sesión';
+                break;
+        }
     }
+    // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
+    header('content-type: application/json; charset=utf-8');
+    // Se imprime el resultado en formato JSON y se retorna al controlador.
+    print(json_encode($result));
 } else {
     print(json_encode('Recurso no disponible'));
 }
