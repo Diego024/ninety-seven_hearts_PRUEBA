@@ -224,7 +224,7 @@ class Administradores extends Validator {
     }
 
     public function selectOneAdmin() {
-        $query = 'SELECT a.id_administrador, a.nombres, a.apellidos, a.fecha_nacimiento, a.telefono, a.direccion, a.correo_electronico, a.foto_administrador, a.usuario, a.clave, ea.estado_cuenta, g.genero FROM administradores a INNER JOIN generos g ON g.id_genero = a.id_genero INNER JOIN estado_cuenta ea ON ea.id_estado_cuenta = a.id_estado_cuenta WHERE a.id_administrador = ?';
+        $query = 'SELECT id_administrador, nombres, apellidos, fecha_nacimiento, telefono, direccion, correo_electronico, foto_administrador, usuario, id_estado_cuenta, id_genero  FROM administradores WHERE id_administrador = ?';
         $params = array($this->id_administrador);
         return Database::getRow($query, $params);
     }
@@ -233,9 +233,9 @@ class Administradores extends Validator {
 
         ($this->foto_administrador) ? $this->deleteFile($this->getRuta(), $current_image) : $this->foto_administrador = $current_image;
 
-        $query = 'UPDATE administradores SET nombres = ?, apellidos = ?, fecha_nacimiento = ?, telefono = ?, direccion = ?, correo_electronico = ?, foto_administrador, id_estado_cuenta = ?, id_genero = ? WHERE id_administrador = ?';
+        $query = 'UPDATE administradores SET nombres = ?, apellidos = ?, fecha_nacimiento = ?, telefono = ?, direccion = ?, correo_electronico = ?, foto_administrador = ?, id_estado_cuenta = ?, id_genero = ? WHERE id_administrador = ?';
         $params = array($this->nombres, $this->apellidos, $this->fecha_nacimiento, $this->telefono, $this->direccion, $this->correo_electronico, $this->foto_administrador, $this->id_estado_cuenta, $this->id_genero, $this->id_administrador);
-        return Database::executeRow($sql, $params);
+        return Database::executeRow($query, $params);
     }
 
     public function deleteAdmin() {

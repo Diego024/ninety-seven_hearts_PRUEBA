@@ -32,6 +32,10 @@ const readRows = api => {
 
 //Funciones para crear o actualizar un registro.
 const saveRow = (api, action, form, modal)  => {
+    // let formulario = new FormData(document.getElementById(form)).entries();
+    // for(value of formulario) {
+    //     console.log(value)
+    // }
     fetch(api + action, {
         method: 'post',
         body: new FormData(document.getElementById(form))
@@ -39,7 +43,7 @@ const saveRow = (api, action, form, modal)  => {
     .then( request => {
         //Se verifica que la request se completó correctamente
         if(request.ok) {
-            // console.log(request.text())
+            console.log(request.text())
             return request.json()
         } else {
             console.log(`${request.status} ${request.statusText}`)

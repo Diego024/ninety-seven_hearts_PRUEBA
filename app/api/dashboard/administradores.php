@@ -122,34 +122,39 @@ if( isset($_GET['action'])) {
                                     if($administrador->setTelefono($_POST['telefono'])) {
                                         if($administrador->setDireccion($_POST['direccion'])) {
                                             if($administrador->setCorreo($_POST['correo_electronico'])) {
-                                                if(is_uploaded_file($_FILES['foto_administrador']['tmp_name'])) {
-                                                    if($administrador->setFotoAdministrador($_FILES['foto_administrador'])) {
-                                                        if($administrador->setEstadoCuenta($_POST['id_estado_cuenta'])) {
-                                                            if($administrador->setGenero($_POST['id_genero'])) {
-                                                                if($administrador->updateAdmin($data['foto_administrador'])) {
-                                                                    $result['status'] = 1;
-                                                                    if ($administrador->saveFile($_FILES['foto_administrador'], $administrador->getRuta(), $administrador->getFotoAdministrador())) {
-                                                                        $result['message'] = 'Administrador modificado correctamente';
-                                                                    } else {
-                                                                        $result['message'] = 'Administrador modificado pero no se guardó la imagen';
-                                                                    }
-                                                                } else {
-                                                                    $result['exception'] = Database::getException();;
-                                                                }
+                                                if($administrador->setEstadoCuenta($_POST['id_estado_cuenta'])) {
+                                                    if($administrador->setGenero($_POST['id_genero'])) {
+                                                        if(is_uploaded_file($_FILES['foto_administrador']['tmp_name'])) {
+                                                            if($administrador->setFotoAdministrador($_FILES['foto_administrador'])) {
+                                                                 if($administrador->updateAdmin($data['foto_administrador'])) {
+                                                                     $result['status'] = 1;
+                                                                     if($administrador->saveFile($_FILES['foto_administrador'], $administrador->getRuta(), $administrador->getFotoAdministrador())) {
+                                                                         $result['message'] = 'Producto modificado correctamente';
+                                                                     } else {
+                                                                         $result['message'] = 'Producto modificado pero no se guardó la imagen';
+                                                                     }
+                                                                 } else {
+                                                                     $result['exception'] = Database::getException();
+                                                                 }
                                                             } else {
-                                                                $result['exception'] = 'Seleccione un genero';
+                                                                 $result['exception'] = $administrador->getImageError();
                                                             }
-                                                        } else {
-                                                            $result['exception'] = 'Seleccione un estado de cuenta';
-                                                        }
+                                                         } else {
+                                                             if ($administrador->updateAdmin($data['foto_administrador'])) {
+                                                                 $result['status'] = 1;
+                                                                 $result['status'] = 'Administrador actualizado correctamente';
+                                                             } else {
+                                                                 $result['exception'] = Database::getException();
+                                                             }
+                                                         }
                                                     } else {
-                                                        $result['exception'] = $Administrador->getImageError();
+                                                        $result['exception'] = 'Seleccione un genero';
                                                     }
                                                 } else {
-                                                    $result['exception'] = 'Seleccione una imagen';
+                                                    $result['exception'] = 'Seleccione un estado de cuenta';
                                                 }
                                             } else {
-                                                $result['exception'] = 'Correo electrónico incorrecto';
+                                                $result['exception'] = 'Correo electrónico incorrecto';    
                                             }
                                         } else {
                                             $result['exception'] = 'Dirección incorrecta';

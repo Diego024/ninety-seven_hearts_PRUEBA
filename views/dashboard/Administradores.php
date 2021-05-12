@@ -31,7 +31,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" id="save-form">
+                <form method="post" id="save-form" enctype="multipart/form-data">
+                    <!-- Campo invicible del ID -->
                     <input class="d-none" type="number" id="id_administrador" name="id_administrador"/>
                     <!-- NOMBRES Y APELLIDO -->
                     <div class="form-row">
@@ -78,7 +79,7 @@
 
                         <div class="form-group col-md-6 search_select_box">
                             <label for="inputState">Genero</label>
-                            <select id="genero" class="form-control" name="genero">
+                            <select id="id_genero" class="form-control" name="id_genero">
                                 <option selected value=2>Femenino</option>
                                 <option value=1>Masculino</option>
                             </select>
@@ -88,10 +89,10 @@
                     <div class="form-row"> 
                         <div class="form-group col-md-6 search_select_box">
                             <label for="inputState">Estado de la cuenta</label>
-                            <select id="estado_cuenta" class="form-control" name="estado_cuenta">
-                                <option selected>Activa</option>
-                                <option>Inactiva</option>
-                                <option>Bloqueada</option>
+                            <select id="id_estado_cuenta" class="form-control" name="id_estado_cuenta">
+                                <option selected value=1>Activa</option>
+                                <option value=2>Inactiva</option>
+                                <!-- <option value=3>Bloqueada</option> -->
                             </select>
                         </div>
                         <div class="col">
@@ -107,13 +108,11 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputCity">Foto</label>
-                            <input type="file" class="form-control-file" id="foto_administrador" name="foto_administrador">
+                            <input type="file" id="foto_administrador" name="foto_administrador" class="form-control-file" accept=".gif, .jpg, .png">
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                    </div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
             </div>
         </div>

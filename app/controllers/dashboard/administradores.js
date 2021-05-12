@@ -10,11 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // Función para llenar la tabla con los datos de los registros. Se usa en la función readRows()
 const fillTable = dataset => {
     let content = '';
-    if(dataset.lenght == 0) {
-        content+=`<h4>No hay Administradores registradas</h4>`
-        document.getElementById('warning-message').innerHTML = content
-    } else {
-        console.log(dataset)
+    console.log(dataset)
+    if(dataset) {
         //Se agregan los titulos de las columnas
         content += `
             <tr>
@@ -65,6 +62,9 @@ const fillTable = dataset => {
         //Se agrega el contenido a la tabla mediante su id
         document.getElementById('tbody-rows').innerHTML = content;
         //Se debería ver todos los registros
+    } else {
+        content+=`<h4>No hay Administradores registradas</h4>`
+        document.getElementById('warning-message').innerHTML = content
     }
     
 }
@@ -95,6 +95,8 @@ const openUpdateDialog = id => {
     document.getElementById('modal-title').textContent = 'Actualizar administrador'
     //Se deshabilitan los campos de alias y contraseña
     toggleDisableAtributtes(true);
+    // Se establece el campo de archivo como opcional.
+    document.getElementById('foto_administrador').required = false
 
     //Se define un objeto con los datos del registro seleccionado
     const data = new FormData();
@@ -122,9 +124,9 @@ const openUpdateDialog = id => {
             document.getElementById('clave').value = response.dataset[0].clave
             document.getElementById('confirmar_clave').value = response.dataset[0].clave
             document.getElementById('telefono').value = response.dataset[0].telefono
-            document.getElementById('genero').selected = response.dataset[0].genero
-            document.getElementById('estado_cuenta').selected = response.dataset[0].estado_cuenta
-            // document.getElementById('fecha_nacimiento').value = response.dataset[0].fecha_nacimiento
+            document.getElementById('id_genero').selected = response.dataset[0].genero
+            document.getElementById('id_estado_cuenta').selected = response.dataset[0].estado_cuenta
+            document.getElementById('fecha_nacimiento').value = response.dataset[0].fecha_nacimiento
             document.getElementById('direccion').value = response.dataset[0].direccion
             
         } else {
