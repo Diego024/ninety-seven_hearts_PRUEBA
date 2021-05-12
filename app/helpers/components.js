@@ -6,6 +6,7 @@ const readRows = api => {
     .then( request => {
         //Se verifica que la request se completó correctamente
         if(request.ok) {
+            console.log(request.text())
             return request.json()
         } else {
             console.log(`${request.status} ${request.statusText}`)

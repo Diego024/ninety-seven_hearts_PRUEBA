@@ -31,9 +31,17 @@
       <div class="modal-body">
           <!-- PREGUNTA Y RESPUESTA -->
         <div class="form-row">
-        <div class="form-group col-md-12">
+            <div class="form-group col-md-12">
                 <label for="inputCity">Categoría</label>
-                <input type="text" class="form-control" id="inputCity">
+                <input type="text" class="form-control" id="categoria">
+            </div>
+            <div class="form-group col-md-12">
+                <label for="inputCity">Descripción</label>
+                <input type="text" class="form-control" id="descripcion_categoria">
+            </div>
+            <div class="form-group col-md-12"  style="display: none">
+                <label for="inputCity">Descripción</label>
+                <input type="text" class="form-control" id="id_categoria">
             </div>
         </div>
         <br>
@@ -45,8 +53,26 @@
     </div>
   </div>
 </div>
+
+<!-- Tabla para mostrar los registros existentes -->
+<table class="table">
+    <!-- Cabeza de la tabla para mostrar los títulos de las columnas -->
+    <thead>
+        <tr>
+            <!-- <th>IMAGEN</th> -->
+            <th>NOMBRE</th>
+            <th>DESCRIPCIÓN</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+    <!-- Cuerpo de la tabla para mostrar un registro por fila -->
+    <tbody id="tbody-categorias">
+    </tbody>
+</table>
+
+
 <!-- COMIENZO DE LA TABLA -->
-<div class="container">
+<!-- <div class="container">
     <table class="table table-striped table-bordered mydatatable" >
         <thead>
             <tr>
@@ -138,7 +164,7 @@
             </tr>
         </tbody>
     </table>
-</div>
+</div> -->
 
 <?php
     Private_Page::footerTemplate();
