@@ -2,15 +2,17 @@
 
 // Función para listar los registros de una tabla
 const readRows = api => {
-    fetch(api + 'readAll')
+    fetch(api + 'readAll', {
+        method: "get",
+    })
     .then( request => {
-        //Se verifica que la request se completó correctamente
         if(request.ok) {
-            console.log(request.text())
+            // console.log(request.text())
             return request.json()
         } else {
-            console.log(`${request.status} ${request.statusText}`)
+            console.log(`${request.status} ${request.statusText}`);
         }
+        
     })
     .then( response => {
         let data = []
@@ -24,19 +26,20 @@ const readRows = api => {
         fillTable(data)
     })
     .catch( error => {
-        console.log(error)
+        console.log(error);
     })
 }
 
 //Funciones para crear o actualizar un registro.
 const saveRow = (api, action, form, modal)  => {
-    fetch(api + action , {
+    fetch(api + action, {
         method: 'post',
         body: new FormData(document.getElementById(form))
     })
     .then( request => {
         //Se verifica que la request se completó correctamente
         if(request.ok) {
+            // console.log(request.text())
             return request.json()
         } else {
             console.log(`${request.status} ${request.statusText}`)
@@ -46,6 +49,7 @@ const saveRow = (api, action, form, modal)  => {
         //Se comprueba que el status de la request sea satisfactorio
         if(response.status) {
             //Se cerraría el modal del form automáticamente
+            $(modal).modal('hide');
             readRows(api)
             sweetAlert(1, response.message, null)
         } else {
@@ -66,15 +70,18 @@ const confirmDelete = (api, data) => {
         closeOnClickOutside: false,
         closeonEsc: false,
     }).then( value => {
-        return ( 
-            fetch(api + 'delete', {
-            method: 'post',
-            body: data
-            }) 
-        )
+        if(value) {
+            return ( 
+                fetch(api + 'delete', {
+                method: 'post',
+                body: data
+                }) 
+            )
+        }
     }).then( request => {
         //Verificando que la request sea correcta
         if(request.ok) {
+            // console.log(request.text())
             return request.json()
         } else {
             console.log(`${request.status} ${request.statusText}`)
@@ -94,7 +101,6 @@ const confirmDelete = (api, data) => {
     })
 }
 
-//Funcion para manejar los mensajes de notificación
 const sweetAlert = (type, text, url) => {
     switch (type) {
         case 1:

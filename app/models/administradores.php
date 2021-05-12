@@ -1,6 +1,6 @@
 <?php
 
-// Clase para manejar los mantenimientos de las categorías
+// Clase para manejar los mantenimientos de los administradores
 
 // Es una clase hija de Validator
 class Administradores extends Validator {
@@ -17,7 +17,7 @@ class Administradores extends Validator {
     private $clave = null;
     private $id_estado_cuenta = null;
     private $id_genero = null;
-    private $ruta = '../../resources/imageFiles/dashboard/administradores/'
+    private $ruta = '../../resources/imageFiles/dashboard/administradores/';
 
     //Funciones para asignar valores a los atributos
     public function setIdAdministrador($idAdministrador) {
@@ -66,7 +66,7 @@ class Administradores extends Validator {
     }
     
     public function setDireccion($direccion) {
-        if($this->validateAlphanumeric($direccion, 1, 500)) {
+        if(strlen($direccion) <= 500) {
             $this->direccion = $direccion;
             return true;
         } else {
@@ -85,7 +85,7 @@ class Administradores extends Validator {
 
     public function setFotoAdministrador($imagen) {
         if($this->validateImageFile($imagen, 1000, 1000)) {
-            $this->foto_administrador = $this->getImageFile();
+            $this->foto_administrador = $this->getImageName();
             return true;
         } else {
             return false;
@@ -183,6 +183,29 @@ class Administradores extends Validator {
 
     //Funciones para realizar los mantenimientos a la tabla
 
+    public function checkUser($usuario) {
+        $query = 'SELECT id_administrador FROM administradores WHERE usuario = ?';
+        $params = array($usuario);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id_adminsitrador = $data['id_administrador'];
+            $this->usuario = $usuario;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function checkPassword($password) {
+        $query = 'SELECT clave FROM administradores WHERE id_administrador = ?';
+        $params = array($this->id);
+        $data = Database::getRow($query, $params);
+        if(password_verify($password, $data['clave'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function insertAdmin() {
         $query = 'INSERT INTO administradores (nombres, apellidos, fecha_nacimiento, telefono, direccion, correo_electronico, foto_administrador, usuario, clave,id_estado_cuenta, id_genero) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->nombres, $this->apellidos, $this->fecha_nacimiento, $this->telefono, $this->direccion, $this->correo_electronico, $this->foto_administrador, $this->usuario, $this->clave, $this->id_estado_cuenta, $this->id_genero);
@@ -190,15 +213,20 @@ class Administradores extends Validator {
     }
 
     public function selectAdmins() {
-        $query = 'SELECT a.id_administrador, a.nombres, a.apellidos, a.fecha_nacimiento, a.telefono, a.direccion, a.correo_electronico, a.foto_administrador, a.usuario, ea.estado_cuenta, g.genero FROM administradores a INNER JOIN generos g ON g.id_genero = a.id_genero INNER JOIN estado_cuenta ea ON ea.id_estado_cuenta = a.id_estado_cuenta';
+        $query = 'SELECT a.id_administrador, a.nombres, a.apellidos, a.fecha_nacimiento, a.telefono, a.direccion, a.correo_electronico, a.foto_administrador, a.usuario, ea.estado_cuenta, g.genero 
+                  FROM administradores a 
+                  INNER JOIN generos g 
+                    ON g.id_genero = a.id_genero 
+                  INNER JOIN estado_cuenta ea 
+                    ON ea.id_estado_cuenta = a.id_estado_cuenta';
         $params = null;
-        return Database::($query, $params);
+        return Database::getRow($query, $params);
     }
 
     public function selectOneAdmin() {
-        $query = 'SELECT a.id_administrador, a.nombres, a.apellidos, a.fecha_nacimiento, a.telefono, a.direccion, a.correo_electronico, a.foto_administrador, a.usuario, ea.estado_cuenta, g.genero FROM administradores a INNER JOIN generos g ON g.id_genero = a.id_genero INNER JOIN estado_cuenta ea ON ea.id_estado_cuenta = a.id_estado_cuenta WHERE a.id_administrador = ?';
+        $query = 'SELECT a.id_administrador, a.nombres, a.apellidos, a.fecha_nacimiento, a.telefono, a.direccion, a.correo_electronico, a.foto_administrador, a.usuario, a.clave, ea.estado_cuenta, g.genero FROM administradores a INNER JOIN generos g ON g.id_genero = a.id_genero INNER JOIN estado_cuenta ea ON ea.id_estado_cuenta = a.id_estado_cuenta WHERE a.id_administrador = ?';
         $params = array($this->id_administrador);
-        return Database::($query, $params);
+        return Database::getRow($query, $params);
     }
 
     public function updateAdmin($current_image) {
@@ -212,7 +240,7 @@ class Administradores extends Validator {
 
     public function deleteAdmin() {
         $query = 'DELETE FROM administradores WHERE id_administrador = ?';
-        $params = array($this->administrador);
+        $params = array($this->id_administrador);
         return Database::executeRow($query, $params);
     }
 }

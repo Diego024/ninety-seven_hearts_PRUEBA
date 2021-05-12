@@ -11,13 +11,12 @@ class Database {
     private static function connect() {
         // Credenciales de la base de datos
         $server = 'localhost';
-        $database = 'Ninety-Seven_Heart_2';
+        $database = 'Ninety-Seven_Heart';
         $username = 'postgres';
-        $password = '123';
-        $port = 5432;
+        $password = 'hola';
 
         // Se crea la conexión mediante la extensión PDO y el controlador para PostgreSQL.
-        self::$connection = new PDO('pgsql:host='.$server.';dbname='.$database.';port='.$port, $username, $password);
+        self::$connection = new PDO('pgsql:host='.$server.';dbname='.$database.';port=5432', $username, $password);
     }
 
     // Función para ejecutar las siguientes sentencias SQL:
@@ -56,12 +55,13 @@ class Database {
 
     // Funcion para obtener un registro de una sentencia SQL tipo SELECT.
     public static function getRow($query, $values) {
-        try{
+        try {
             self::connect();
-            self::$statement = self::$connection-> prepare($query);
+            self::connect();
+            self::$statement = self::$connection->prepare($query);
             self::$statement->execute($values);
             self::$connection = null;
-            return self::$statement->fetch(PDO::FETCH_ASSOC);
+            return self::$statement->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $error) {
             self::setException($error->getCode(), $error->getMessage());
             return false;
