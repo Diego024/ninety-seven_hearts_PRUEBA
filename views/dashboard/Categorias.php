@@ -47,7 +47,7 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="foto">Imagen de la categoría</label>
-                <input type="file" class="form-control-file" id="archivo_categoria" name="archivo_categoria">
+                <input type="file" class="form-control-file" id="archivo_categoria" name="archivo_categoria" accept=".gif, .jpg, .png">
               </div>
             </div>
             <!-- BOTONES DEL FORM -->

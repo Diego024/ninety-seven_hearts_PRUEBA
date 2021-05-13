@@ -57,10 +57,10 @@ if (isset($_GET['action'])) {
                             //     $result['message'] = 'La categoría no se guardó correctamente';
                             // }
                         } else {
-                            $result['exception'] = 'Categoría incorrecta';
+                            $result['exception'] = 'Descripción incorrecta';
                         }
                     } else {
-                        $result['exception'] = 'Descripción incorrecta incorrecta';
+                        $result['exception'] = 'Categoría incorrecta';
                     }
             break;    
             case 'readOne':

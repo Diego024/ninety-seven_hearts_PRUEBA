@@ -18,7 +18,6 @@ const fillTable = dataset => {
         //Se agregan los titulos de las columnas
         content += `
             <tr>
-                <!--<th>Imagen</th>-->
                 <th>Categoría</th>
                 <th>Descripción</th>
                 <th>Acciones</th>
@@ -27,7 +26,6 @@ const fillTable = dataset => {
         dataset.map( row => {
             content+= `
                 <tr>
-                    <!--<td><img src="../../../resources/statics/images/categorias/${row.foto_categoria}" class="img-thumbnail" height="100"</td>-->
                     <td>${row.categoria}</td>
                     <td>${row.descripcion_categoria}</td>
                     <td class="icons">
