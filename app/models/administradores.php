@@ -17,7 +17,7 @@ class Administradores extends Validator {
     private $clave = null;
     private $id_estado_cuenta = null;
     private $id_genero = null;
-    private $ruta = '../../resources/imageFiles/dashboard/administradores/';
+    private $ruta = '../../../resources/imageFiles/dashboard/administradores/';
 
     //Funciones para asignar valores a los atributos
     public function setIdAdministrador($idAdministrador) {
@@ -207,8 +207,10 @@ class Administradores extends Validator {
     }
 
     public function insertAdmin() {
+        $hash = password_hash($this->clave, PASSWORD_DEFAULT);
+
         $query = 'INSERT INTO administradores (nombres, apellidos, fecha_nacimiento, telefono, direccion, correo_electronico, foto_administrador, usuario, clave,id_estado_cuenta, id_genero) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombres, $this->apellidos, $this->fecha_nacimiento, $this->telefono, $this->direccion, $this->correo_electronico, $this->foto_administrador, $this->usuario, $this->clave, $this->id_estado_cuenta, $this->id_genero);
+        $params = array($this->nombres, $this->apellidos, $this->fecha_nacimiento, $this->telefono, $this->direccion, $this->correo_electronico, $this->foto_administrador, $this->usuario, $hash, $this->id_estado_cuenta, $this->id_genero);
         return Database::executeRow($query, $params);
     }
 

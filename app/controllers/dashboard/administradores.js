@@ -9,9 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Función para llenar la tabla con los datos de los registros. Se usa en la función readRows()
 const fillTable = dataset => {
+    $('#warning-message').empty();
+    $('#tbody-rows').empty();
     let content = '';
-    console.log(dataset)
-    if(dataset) {
+    // console.log(dataset)
+    if(dataset == [].length) {
+        content+=`<h4>No hay Administradores registradas</h4>`
+        document.getElementById('warning-message').innerHTML = content
+    } else {
         //Se agregan los titulos de las columnas
         content += `
             <tr>
@@ -62,9 +67,6 @@ const fillTable = dataset => {
         //Se agrega el contenido a la tabla mediante su id
         document.getElementById('tbody-rows').innerHTML = content;
         //Se debería ver todos los registros
-    } else {
-        content+=`<h4>No hay Administradores registradas</h4>`
-        document.getElementById('warning-message').innerHTML = content
     }
     
 }

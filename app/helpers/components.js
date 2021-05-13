@@ -43,7 +43,7 @@ const saveRow = (api, action, form, modal)  => {
     .then( request => {
         //Se verifica que la request se completó correctamente
         if(request.ok) {
-            console.log(request.text())
+            // console.log(request.text())
             return request.json()
         } else {
             console.log(`${request.status} ${request.statusText}`)
@@ -52,10 +52,11 @@ const saveRow = (api, action, form, modal)  => {
     .then( response => {
         //Se comprueba que el status de la request sea satisfactorio
         if(response.status) {
-            //Se cerraría el modal del form automáticamente
-            $(modal).modal('hide');
-            readRows(api)
+            //Se cierra el modal
+            console.log(modal)
+            $(`#${modal}`).modal('hide');
             sweetAlert(1, response.message, null)
+            readRows(api)
         } else {
             sweetAlert(2, response.exception, null)
         }
@@ -95,8 +96,8 @@ const confirmDelete = (api, data) => {
         //Se comprueba que el status de la request sea satisfactorio
         if(response.status) {
             //Se recarga la vista de los registros en la tabla
-            readRows(api);
             sweetAlert(1, response.message, null);
+            readRows(api);
         } else {
             sweetAlert(2, response.exception, null);
         }

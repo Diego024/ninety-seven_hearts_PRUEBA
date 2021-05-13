@@ -47,27 +47,34 @@ if( isset($_GET['action'])) {
                                         if(is_uploaded_file($_FILES['foto_administrador']['tmp_name'])) {
                                             if($administrador->setFotoAdministrador($_FILES['foto_administrador'])) {
                                                 if($administrador->setUsuario($_POST['usuario'])) {
-                                                    if($administrador->setClave($_POST['clave'])) {
-                                                        if($administrador->setEstadoCuenta($_POST['id_estado_cuenta'])) {
-                                                            if($administrador->setGenero($_POST['id_genero'])) {
-                                                                if($administrador->insertAdmin()) {
-                                                                    $result['status'] = 1;
-                                                                    if ($administrador->saveFile($_FILES['foto_administrador'], $administrador->getRuta(), $administrador->getFotoAdministrador())) {
-                                                                        $result['message'] = 'Administrador creado correctamente';
-                                                                        } else {
-                                                                            $result['message'] = 'Administrador creado pero no se guardó la imagen';
-                                                                        }
+                                                    if ($_POST['clave'] == $_POST['confirmar_clave']) {
+                                                        if($administrador->setClave($_POST['clave'])) {
+                                                            if($administrador->setEstadoCuenta($_POST['id_estado_cuenta'])) {
+                                                                if($administrador->setGenero($_POST['id_genero'])) {
+                                                                    if($administrador->insertAdmin()) {
+                                                                        $result['status'] = 1;
+                                                                        // print_r($_FILES['foto_administrador']);
+                                                                        // print($administrador->getRuta());
+                                                                        // print($administrador->getFotoAdministrador());
+                                                                        if ($administrador->saveFile($_FILES['foto_administrador'], $administrador->getRuta(), $administrador->getFotoAdministrador())) {
+                                                                            $result['message'] = 'Administrador creado correctamente';
+                                                                            } else {
+                                                                                $result['message'] = 'Administrador creado pero no se guardó la imagen';
+                                                                            }
+                                                                    } else {
+                                                                        $result['exception'] = Database::getException();;
+                                                                    }
                                                                 } else {
-                                                                    $result['exception'] = Database::getException();;
+                                                                    $result['exception'] = 'Seleccione un genero';
                                                                 }
                                                             } else {
-                                                                $result['exception'] = 'Seleccione un genero';
+                                                                $result['exception'] = 'Seleccione un estado de cuenta';
                                                             }
                                                         } else {
-                                                            $result['exception'] = 'Seleccione un estado de cuenta';
-                                                        }
+                                                            $result['exception'] = $usuario->getPasswordError();
+                                                        }                                                        
                                                     } else {
-                                                        $result['exception'] = 'Contraseña incorrecta';
+                                                        $result['exception'] = 'Claves diferentes';
                                                     }
                                                 } else {
                                                     $result['exception'] = 'Usuario incorrecto';
@@ -126,26 +133,27 @@ if( isset($_GET['action'])) {
                                                     if($administrador->setGenero($_POST['id_genero'])) {
                                                         if(is_uploaded_file($_FILES['foto_administrador']['tmp_name'])) {
                                                             if($administrador->setFotoAdministrador($_FILES['foto_administrador'])) {
-                                                                 if($administrador->updateAdmin($data['foto_administrador'])) {
+                                                                if($administrador->updateAdmin($data[0]['foto_administrador'])) {
                                                                      $result['status'] = 1;
-                                                                     if($administrador->saveFile($_FILES['foto_administrador'], $administrador->getRuta(), $administrador->getFotoAdministrador())) {
+                                                                    if ($administrador->saveFile($_FILES['foto_administrador'], $administrador->getRuta(), $administrador->getImageName())) {
                                                                          $result['message'] = 'Producto modificado correctamente';
-                                                                     } else {
-                                                                         $result['message'] = 'Producto modificado pero no se guardó la imagen';
-                                                                     }
-                                                                 } else {
-                                                                     $result['exception'] = Database::getException();
-                                                                 }
+                                                                    } else {
+                                                                        $result['message'] = 'Producto modificado pero no se guardó la imagen';
+                                                                    }
+                                                                } else {
+                                                                    $result['exception'] = Database::getException();
+                                                                }
                                                             } else {
                                                                  $result['exception'] = $administrador->getImageError();
                                                             }
                                                          } else {
-                                                             if ($administrador->updateAdmin($data['foto_administrador'])) {
-                                                                 $result['status'] = 1;
-                                                                 $result['status'] = 'Administrador actualizado correctamente';
-                                                             } else {
-                                                                 $result['exception'] = Database::getException();
-                                                             }
+                                                            // print_r($data[0]['foto_administrador']);
+                                                            if ($administrador->updateAdmin($data[0]['foto_administrador'])) {
+                                                                $result['status'] = 1;
+                                                                $result['status'] = 'Administrador actualizado correctamente';
+                                                            } else {
+                                                                $result['exception'] = Database::getException();
+                                                            }
                                                          }
                                                     } else {
                                                         $result['exception'] = 'Seleccione un genero';
@@ -183,7 +191,7 @@ if( isset($_GET['action'])) {
                     if ($data = $administrador->selectOneAdmin()) {
                         if ($administrador->deleteAdmin()) {
                             $result['status'] = 1;
-                            if($administrador->deleteFile($administrador->getRuta(), $data['foto_administrador'])) { 
+                            if($administrador->deleteFile($administrador->getRuta(), $data[0]['foto_administrador'])) { 
                                 $result['message'] = 'Administrador eliminado correctamente';
                             } else {
                                 $result['message'] = 'Administrador eliminado pero no se borró la imagen';
