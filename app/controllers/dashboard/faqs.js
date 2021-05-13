@@ -8,8 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Función para llenar la tabla con los datos de los registros. Se usa en la función readRows()
 const fillTable = dataset => {
+    $('#warning-message').empty();
+    $('#tbody-rows').empty();
     let content = ''
-    if(dataset.lenght == 0) {
+    if(dataset == [].length) {
         //console.log(dataset)
         content+=`<h4>No hay FAQs registradas</h4>`
         document.getElementById('warning-message').innerHTML = content
