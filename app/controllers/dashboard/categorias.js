@@ -1,5 +1,5 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
-const API_CATEGORIAS = '../../api/dashboard/categorias.php?action=';
+const API_CATEGORIAS = '../../app/api/dashboard/categorias.php?action=';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
@@ -8,110 +8,113 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Función para llenar la tabla con los datos de los registros. Se manda a llamar en la función readRows().
-function fillTable(dataset) {
-    console.log(dataset)
-    let content = '';
-    // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
-    dataset.map(function (row) {
-        // Se crean y concatenan las filas de la tabla con los datos de cada registro.
+const fillTable = dataset => {
+    let content = ''
+    if(dataset.lenght == 0) {
+        console.log(dataset)
+        content+=`<h4>No hay categorías registradas</h4>`
+        document.getElementById('warning-message').innerHTML = content
+    } else {
+        //Se agregan los titulos de las columnas
         content += `
             <tr>
-                <!--<td><img src="../../../resources/statics/images/${row.foto_categoria}" class="img-thumbnail" height="100"></td>-->
-                <td>${row.categoria}</td>
-                <td>${row.descripcion_categoria}</td>
-                <td>
-                    <a href="#" onclick="openUpdateDialog(${row.id_categoria})" class="btn btn-primary"></a>
-                    <a href="#" onclick="openDeleteDialog(${row.id_categoria})" class="btn btn-primary"></a>
-                </td>
+                <!--<th>Imagen</th>-->
+                <th>Categoría</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
             </tr>
-        `;
-    });
-    // Se agregan las filas al cuerpo de la tabla mediante su id para mostrar los registros.
-    document.getElementById('tbody-categorias').innerHTML = content;
-    // Se inicializa el componente Material Box asignado a las imagenes para que funcione el efecto Lightbox.
-    // M.Materialbox.init(document.querySelectorAll('.materialboxed'));
-    // Se inicializa el componente Tooltip asignado a los enlaces para que funcionen las sugerencias textuales.
-    // M.Tooltip.init(document.querySelectorAll('.tooltipped'));
+        `
+        dataset.map( row => {
+            content+= `
+                <tr>
+                    <!--<td><img src="../../../resources/statics/images/categorias/${row.foto_categoria}" class="img-thumbnail" height="100"</td>-->
+                    <td>${row.categoria}</td>
+                    <td>${row.descripcion_categoria}</td>
+                    <td class="icons">
+                        <a onclick="openUpdateDialog(${row.id_categoria})" data-toggle="tooltip" data-placement="bottom" title="Editar">
+                            <span class="material-icons blue" data-tooltip="Actualizar">
+                                edit
+                            </span>
+                        </a>
+                        <a onclick="openDeleteDialog(${row.id_categoria})" title="Eliminar">
+                            <span class="material-icons red" data-tooltip="Eliminar">   
+                                delete
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+            `
+        })
+        content += `
+            <tr>
+                <th>Categoría</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>            `
+            //Se agrega el contenido a la tabla mediante su id
+            document.getElementById('tbody-categorias').innerHTML = content;
+    }
 }
 
-// Método manejador de eventos que se ejecuta cuando se envía el formulario de buscar.
-document.getElementById('search-form').addEventListener('submit', function (event) {
-    // Se evita recargar la página web después de enviar el formulario.
-    event.preventDefault();
-    // Se llama a la función que realiza la búsqueda. Se encuentra en el archivo components.js
-    searchRows(API_CATEGORIAS, 'search-form');
-});
-
-// Función para preparar el formulario al momento de insertar un registro.
-function openCreateDialog() {
-    // Se restauran los elementos del formulario.
+//Evento ejecutado para preparar el form antes de hacer un insert
+const openCreateDialog = () => {
+    //Se restauran los elementos del form
     document.getElementById('save-form').reset();
-    // Se abre la caja de dialogo (modal) que contiene el formulario.
-    let instance = M.Modal.getInstance(document.getElementById('save-modal'));
-    instance.open();
-    // Se asigna el título para la caja de dialogo (modal).
-    document.getElementById('modal-title').textContent = 'Crear categoría';
-    // Se establece el campo de archivo como obligatorio.
-    document.getElementById('archivo_categoria').required = true;
+    //Se abre el form
+    $('#Form-categorias').modal('show');
+    //Asignamos el titulo al modal
+    document.getElementById('modal-title').textContent = 'Registrar Categoría'
 }
 
-// Función para preparar el formulario al momento de modificar un registro.
-function openUpdateDialog(id) {
-    // Se restauran los elementos del formulario.
+const openUpdateDialog = id => {
+    console.log(id)
+    //Se restauran los elementos del form
     document.getElementById('save-form').reset();
-    // Se abre la caja de dialogo (modal) que contiene el formulario.
-    let instance = M.Modal.getInstance(document.getElementById('save-modal'));
-    instance.open();
-    // Se asigna el título para la caja de dialogo (modal).
-    document.getElementById('modal-title').textContent = 'Actualizar categoría';
-    // Se establece el campo de archivo como opcional.
-    document.getElementById('archivo_categoria').required = false;
+    $('#Form-categorias').modal('show');
+    document.getElementById('modal-title').textContent = 'Actualizar Categoría'
 
-    // Se define un objeto con los datos del registro seleccionado.
     const data = new FormData();
-    data.append('id_categoria', id_categoria);
+    data.append('id_categoria', id)
 
     fetch(API_CATEGORIAS + 'readOne', {
         method: 'post',
         body: data
-    }).then(function (request) {
-        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
-        if (request.ok) {
-            request.json().then(function (response) {
-                // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-                if (response.status) {
-                    // Se inicializan los campos del formulario con los datos del registro seleccionado.
-                    document.getElementById('id_categoria').value = response.dataset.id_categoria;
-                    document.getElementById('categoria').value = response.dataset.categoria;
-                    document.getElementById('descripcion_categoria').value = response.dataset.descripcion_categoria;
-                    // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-                    M.updateTextFields();
-                } else {
-                    sweetAlert(2, response.exception, null);
-                }
-            });
+    })
+    .then( request => {
+        if(request.ok) {
+            //console.log(request.text())
+            return request.json()
         } else {
-            console.log(request.status + ' ' + request.statusText);
+            console.log(`${request.status}  ${request.statusText}`);
         }
-    }).catch(function (error) {
-        console.log(error);
-    });
+    }).then(response => {
+        if(response.status) {
+            document.getElementById('id_categoria').value = response.dataset[0].id_categoria
+            document.getElementById('categoria').value = response.dataset[0].categoria
+            document.getElementById('descripcion_categoria').value = response.dataset[0].descripcion_categoria
+        } else {
+            sweetAlert(2, response.exception, null);
+        }
+    }).catch( error => {
+        console.error(error);
+    })
 }
 
-// Método manejador de eventos que se ejecuta cuando se envía el formulario de guardar.
-document.getElementById('save-form').addEventListener('submit', function (event) {
-    // Se evita recargar la página web después de enviar el formulario.
+// Función para manejar el evento de enviar el form
+document.getElementById('save-form').addEventListener('submit', event => {
+    //Se evita que se recargue la página
     event.preventDefault();
-    // Se define una variable para establecer la acción a realizar en la API.
-    let action = '';
-    // Se comprueba si el campo oculto del formulario esta seteado para actualizar, de lo contrario será para crear.
-    if (document.getElementById('id_categoria').value) {
-        action = 'update';
+    //Se declara la variable para definir la action para la API
+    let action = ''
+    //Se comprueba que exista un id en el campo oculto
+    if(document.getElementById('id_categoria').value) {
+        action = 'update'
     } else {
-        action = 'create';
+        action = 'create'
     }
-    saveRow(API_CATEGORIAS, action, 'save-form', 'save-modal');
-});
+    saveRow(API_CATEGORIAS, action, 'save-form', 'modal-form');
+    $('#Form-categorias').modal('hide');
+})
 
 // Función para establecer el registro a eliminar y abrir una caja de dialogo de confirmación.
 function openDeleteDialog(id) {

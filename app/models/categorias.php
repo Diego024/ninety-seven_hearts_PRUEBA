@@ -9,9 +9,9 @@ class Categorias extends Validator
     private $categoria = null;
     private $descripcion_categoria = null;
     private $foto_categoria = null;
-    // private $ruta = '../../../resources/img/categorias/'; 
+    private $ruta = '../../resources/statics/images/categorias/'; 
 
-        /*
+    /*
     *   Métodos para asignar valores a los atributos.
     */
     public function setIdCategoria($value)
@@ -91,73 +91,52 @@ class Categorias extends Validator
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
 
-    public function searchRows($value)
+    public function InsertCategoria()
     {
-        $sql = 'SELECT id_categoria, categoria, descripcion_categoria, foto_categoria
-                FROM categorias
-                WHERE categoria ILIKE ? OR descripcion_categoria ILIKE ?
-                ORDER BY categoria';
-        $params = array("%$value%", "%$value%");
-        return Database::getRows($sql, $params);
-    }
-
-    public function createRow()
-    {
-        $sql = 'INSERT INTO categorias(nombre_categoria, imagen_categoria, descripcion_categoria)
-                VALUES(?, ?, ?)';
-        $params = array($this->nombre, $this->imagen, $this->descripcion);
+        $sql = 'INSERT INTO categorias(
+            categoria, descripcion_categoria, foto_categoria)
+            VALUES (?, ?, ?)';
+        $params = array($this->categoria, $this->descripcion_categoria, $this->foto_categoria);
         return Database::executeRow($sql, $params);
     }
 
-    public function readAll()
+    public function SelectCategoria()
     {
-        $sql = 'SELECT id_categoria, categoria, descripcion_categoria
+        $sql = 'SELECT id_categoria, categoria, descripcion_categoria, foto_categoria
                 FROM categorias
                 ORDER BY categoria';
         $params = null;
         return Database::getRows($sql, $params);
     }
 
-    public function readOne()
+    public function SelectOneCategoria()
     {
-        $sql = 'SELECT id_categoria, categoria, descripcion_categoria
+
+
+        $sql = 'SELECT id_categoria, categoria, descripcion_categoria, foto_categoria
                 FROM categorias
                 WHERE id_categoria = ?';
         $params = array($this->id_categoria);
         return Database::getRow($sql, $params);
     }
 
-    public function updateRow($current_image)
-    {
-        // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
-        if ($this->imagen) {
+    public function updateCategoria($current_image) {
+
+        //Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
+        if ($this->foto_categoria) {
             $this->deleteFile($this->getRuta(), $current_image);
         } else {
-            $this->imagen = $current_image;
+            $this->foto_categoria = $current_image;
         }
 
-        $sql = 'UPDATE categorias
-                SET imagen_categoria = ?, nombre_categoria = ?, descripcion_categoria = ?
-                WHERE id_categoria = ?';
-        $params = array($this->imagen, $this->nombre, $this->descripcion, $this->id);
-        return Database::executeRow($sql, $params);
+        $query = "UPDATE categorias SET categoria=?, descripcion_categoria=?, foto_categoria=?  WHERE id_categoria = ?";
+        $params = array($this->categoria, $this->descripcion_categoria, $this->id_categoria, $this->foto_categoria);
+        return Database::executeRow($query, $params);
     }
 
-    public function deleteRow()
-    {
-        $sql = 'DELETE FROM categorias
-                WHERE id_categoria = ?';
-        $params = array($this->id);
-        return Database::executeRow($sql, $params);
-    }
-
-    public function readProductosCategoria()
-    {
-        $sql = 'SELECT nombre_categoria, id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto
-                FROM productos INNER JOIN categorias USING(id_categoria)
-                WHERE id_categoria = ? AND estado_producto = true
-                ORDER BY nombre_producto';
-        $params = array($this->id);
-        return Database::getRows($sql, $params);
+    public function deleteCategoria() {
+        $query = "DELETE FROM categorias WHERE id_categoria = ?";
+        $params = array($this->id_categoria);
+        return Database::executeRow($query, $params);
     }
 }

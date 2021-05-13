@@ -3,11 +3,11 @@
 // Función para listar los registros de una tabla
 const readRows = api => {
     fetch(api + 'readAll', {
-        method: "get",
+        method: 'get',
     })
     .then( request => {
         if(request.ok) {
-            // console.log(request.text())
+            console.log(request.text())
             return request.json()
         } else {
             console.log(`${request.status} ${request.statusText}`);
