@@ -81,7 +81,7 @@ if (isset($_GET['action'])) {
                             if($categoria->setDescripcionCategoria($_POST['descripcion_categoria'])) {
                                 if (is_uploaded_file($_FILES['archivo_categoria']['tmp_name'])) {
                                     if ($categoria->setFotoCategoria($_FILES['archivo_categoria'])) {
-                                        if ($categoria->updateCategoria($data['foto_categoria'])) {
+                                        if ($categoria->updateCategoria($data[0]['foto_categoria'])) {
                                             $result['status'] = 1;
                                             if ($categoria->saveFile($_FILES['archivo_categoria'], $categoria->getRuta(), $categoria->getFotoCategoria())) {
                                                 $result['message'] = 'Categoría modificada correctamente';
@@ -95,8 +95,8 @@ if (isset($_GET['action'])) {
                                         $result['exception'] = $categoria->getImageError();
                                     }
                                 } else {
-                                    if ($categoria->updateCategoria($data['foto_categoria'])) {
-                                        print_r($categoria->updateCategoria($data['foto_categoria']));
+                                    if ($categoria->updateCategoria($data[0]['foto_categoria'])) {
+                                        //print_r($categoria->updateCategoria($data['foto_categoria']));
                                         $result['status'] = 1;
                                         $result['message'] = 'Categoría modificada correctamente';
                                     } else {

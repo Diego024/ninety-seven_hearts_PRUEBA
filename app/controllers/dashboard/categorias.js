@@ -27,7 +27,7 @@ const fillTable = dataset => {
         dataset.map( row => {
             content+= `
                 <tr>
-                    <td><img src="../../resources/statics/imageFiles/categorias/${row.foto_categoria}" height="100" width="100"></td>
+                    <td><img class="img-fluid" src="../../resources/imageFiles/dashboard/categorias/${row.foto_categoria}" height="100" width="100"></td>
                     <td>${row.categoria}</td>
                     <td>${row.descripcion_categoria}</td> 
                     <td class="icons">

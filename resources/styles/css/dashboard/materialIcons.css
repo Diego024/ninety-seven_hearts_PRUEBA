@@ -36,3 +36,16 @@
     margin-right: 10px;
     margin-bottom: 20px;
 }
+
+tr th{
+    text-align: center;
+}
+
+tr td{
+    text-align: center;
+}
+
+.img-fluid {
+    max-height: 170px !important;
+    max-width:  100px;
+}

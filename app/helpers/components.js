@@ -44,7 +44,7 @@ const saveRow = (api, action, form, modal)  => {
     .then( request => {
         //Se verifica que la request se completó correctamente
         if(request.ok) {
-            console.log(request.text())
+            //console.log(request.text())
             return request.json()
         } else {
             console.log(`${request.status} ${request.statusText}`)
@@ -54,7 +54,7 @@ const saveRow = (api, action, form, modal)  => {
         //Se comprueba que el status de la request sea satisfactorio
         if(response.status) {
             //Se cierra el modal
-            console.log(modal)
+            // console.log(modal)
             $(`#${modal}`).modal('hide');
             sweetAlert(1, response.message, null)
             readRows(api)
@@ -156,6 +156,7 @@ const fillSelect = (endpoint, select, selected) => {
     fetch(endpoint)
     .then( request => {
         if(request.ok) {
+            // console.log(request.text())
             return request.json()
         } else {
             console.log(`${request.status} ${request.statusText}`)
@@ -170,7 +171,7 @@ const fillSelect = (endpoint, select, selected) => {
             //Se recorre el dataset del response
             response.dataset.map( row => {
                 //Se obtiene el valor del primer campo del script
-                values = Object.values(row)[0]
+                value = Object.values(row)[0]
                 //Se obtiene el valor del segundo campo del script
                 text = Object.values(row)[1];
                 // Se verifica si el valor de la API es diferente al valor seleccionado para enlistar una opción, de lo contrario se establece la opción como seleccionada.

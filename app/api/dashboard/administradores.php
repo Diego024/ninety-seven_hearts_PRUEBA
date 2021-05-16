@@ -134,11 +134,11 @@ if( isset($_GET['action'])) {
                                                         if(is_uploaded_file($_FILES['foto_administrador']['tmp_name'])) {
                                                             if($administrador->setFotoAdministrador($_FILES['foto_administrador'])) {
                                                                 if($administrador->updateAdmin($data[0]['foto_administrador'])) {
-                                                                     $result['status'] = 1;
+                                                                    $result['status'] = 1;
                                                                     if ($administrador->saveFile($_FILES['foto_administrador'], $administrador->getRuta(), $administrador->getImageName())) {
-                                                                         $result['message'] = 'Producto modificado correctamente';
+                                                                         $result['message'] = 'Administrador modificado correctamente';
                                                                     } else {
-                                                                        $result['message'] = 'Producto modificado pero no se guardó la imagen';
+                                                                        $result['message'] = 'Administrador modificado pero no se guardó la imagen';
                                                                     }
                                                                 } else {
                                                                     $result['exception'] = Database::getException();
@@ -150,7 +150,7 @@ if( isset($_GET['action'])) {
                                                             // print_r($data[0]['foto_administrador']);
                                                             if ($administrador->updateAdmin($data[0]['foto_administrador'])) {
                                                                 $result['status'] = 1;
-                                                                $result['status'] = 'Administrador actualizado correctamente';
+                                                                $result['message'] = 'Administrador actualizado correctamente';
                                                             } else {
                                                                 $result['exception'] = Database::getException();
                                                             }

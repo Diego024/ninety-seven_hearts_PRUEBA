@@ -6,16 +6,16 @@
         <link rel="stylesheet" href="../../resources/styles/css/dashboard/Login.css">
     </head>
     <body>
-        <img class="fondo" src="../../resources/statics/imageFiles/fondo.png" alt="">
+        <img class="fondo" src="../../resources/imageFiles/dashboard/index/fondo.png" alt="">
         <div class="container">
         <!-- IMAGEN DE FONDO -->
             <div class="img">
-                <img src="../../resources/statics/imageFiles/data1.svg" alt="">
+                <img src="../../resources/imageFiles/dashboard/index/data1.svg" alt="">
             </div>
             <!-- AQUÍ VA EL LOGIN -->
             <div class="login-container">
                 <form method="post" id="session-form">
-                    <img class="Avatar" src="../../resources/statics/imageFiles/user1.svg" alt="">
+                    <img class="Avatar" src="../../resources/imageFiles/dashboard/index/user1.svg" alt="">
                     <h2>Bienvenido</h2>
                     <!-- INPUTS -->
                     <div class="input-div one">

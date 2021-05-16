@@ -9,7 +9,7 @@ class Categorias extends Validator
     private $categoria = null;
     private $descripcion_categoria = null;
     private $foto_categoria = null;
-    private $ruta = '../../../resources/statics/imageFiles/categorias/'; 
+    private $ruta = '../../../resources/imageFiles/dashboard/categorias/'; 
 
     /*
     *   Métodos para asignar valores a los atributos.
