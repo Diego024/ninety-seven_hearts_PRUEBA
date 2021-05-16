@@ -15,14 +15,15 @@ if (isset($_GET['action'])) {
     // if (isset($_SESSION['id_usuario'])) {
     if(true){
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
-        // print($$_GET['action']);
+        //print($_GET['action']);
         switch ($_GET['action']) {
             case 'readAll':
-                if ($result['dataset'] = $categoria->SelectCategoria()) {
+                if($result['dataset'] = $categoria->SelectCategoria()) {
+                    //print_r($result['dataset'] = $categoria->SelectCategoria());
                     $result['status'] = 1;
                 } else {
-                    if (Database::getException()) {
-                        $result['exception'] = Database::getException();
+                    if(Database::getException()) {
+                        $result['exception'] = Database::getException(); 
                     } else {
                         $result['exception'] = 'No hay categorías registradas';
                     }
@@ -50,12 +51,6 @@ if (isset($_GET['action'])) {
                             } else {
                                 $result['exception'] = 'Seleccione una imagen';
                             }
-                            // if($categoria->InsertCategoria()) {
-                            //     $result['status'] = 1;
-                            //     $result['message'] = 'Categoría registrada correctamente';
-                            // } else {
-                            //     $result['message'] = 'La categoría no se guardó correctamente';
-                            // }
                         } else {
                             $result['exception'] = 'Descripción incorrecta';
                         }
@@ -81,14 +76,14 @@ if (isset($_GET['action'])) {
             case 'update':
                 $_POST = $categoria->validateForm($_POST);
                 if($categoria->setIdCategoria($_POST['id_categoria'])) {
-                    if($categoria->SelectOneCategoria()) {
+                    if($data = $categoria->SelectOneCategoria()) {
                         if($categoria->setCategoria($_POST['categoria'])) {
                             if($categoria->setDescripcionCategoria($_POST['descripcion_categoria'])) {
-                                if (is_uploaded_file($_FILES['foto_categoria']['tmp_name'])) {
-                                    if ($categoria->setFotoCategoria($_FILES['foto_categoria'])) {
+                                if (is_uploaded_file($_FILES['archivo_categoria']['tmp_name'])) {
+                                    if ($categoria->setFotoCategoria($_FILES['archivo_categoria'])) {
                                         if ($categoria->updateCategoria($data['foto_categoria'])) {
                                             $result['status'] = 1;
-                                            if ($categoria->saveFile($_FILES['foto_categoria'], $categoria->getRuta(), $categoria->getFotoCategoria())) {
+                                            if ($categoria->saveFile($_FILES['archivo_categoria'], $categoria->getRuta(), $categoria->getFotoCategoria())) {
                                                 $result['message'] = 'Categoría modificada correctamente';
                                             } else {
                                                 $result['message'] = 'Categoría modificada pero no se guardó la imagen';
@@ -101,18 +96,13 @@ if (isset($_GET['action'])) {
                                     }
                                 } else {
                                     if ($categoria->updateCategoria($data['foto_categoria'])) {
+                                        print_r($categoria->updateCategoria($data['foto_categoria']));
                                         $result['status'] = 1;
                                         $result['message'] = 'Categoría modificada correctamente';
                                     } else {
                                         $result['exception'] = Database::getException();
                                     }
                                 }
-                                // if($categoria->updateCategoria($current_image)) {
-                                //     $result['status'] = 1;
-                                //     $result['message'] = 'Categoría actualizada correctamente';
-                                // } else {
-                                //     $result['message'] = Database::getException();
-                                // }
                             } else {
                                 $result['exception'] = 'Descripción incorrecta';
                             }
@@ -150,10 +140,10 @@ if (isset($_GET['action'])) {
         header('content-type: application/json; charset=utf-8');
         // Se imprime el resultado en formato JSON y se retorna al controlador.
         print(json_encode($result));
-    // } else {
-    //     print(json_encode('Acceso denegado'));
-    // }
     } else {
-       print(json_encode('Recurso no disponible'));
+        print(json_encode('Acceso denegado'));
     }
+} else {
+    print(json_encode('Recurso no disponible'));
 }
+?>

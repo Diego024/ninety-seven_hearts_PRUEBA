@@ -9,7 +9,7 @@ class Categorias extends Validator
     private $categoria = null;
     private $descripcion_categoria = null;
     private $foto_categoria = null;
-    private $ruta = '../../resources/statics/images/categorias/'; 
+    private $ruta = '../../../resources/statics/imageFiles/categorias/'; 
 
     /*
     *   Métodos para asignar valores a los atributos.
@@ -106,13 +106,13 @@ class Categorias extends Validator
                 FROM categorias
                 ORDER BY categoria';
         $params = null;
+        //print_r(Database::getRows($sql, $params));
+        print($params);
         return Database::getRows($sql, $params);
     }
 
     public function SelectOneCategoria()
     {
-
-
         $sql = 'SELECT id_categoria, categoria, descripcion_categoria, foto_categoria
                 FROM categorias
                 WHERE id_categoria = ?';
@@ -130,7 +130,7 @@ class Categorias extends Validator
         }
 
         $query = "UPDATE categorias SET categoria=?, descripcion_categoria=?, foto_categoria=?  WHERE id_categoria = ?";
-        $params = array($this->categoria, $this->descripcion_categoria, $this->id_categoria, $this->foto_categoria);
+        $params = array($this->categoria, $this->descripcion_categoria, $this->foto_categoria, $this->id_categoria);
         return Database::executeRow($query, $params);
     }
 

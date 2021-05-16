@@ -7,12 +7,12 @@ const readRows = api => {
     })
     .then( request => {
         if(request.ok) {
-            console.log(request.text())
+            //console.log(request.text())
             return request.json()
         } else {
+            
             console.log(`${request.status} ${request.statusText}`);
-        }
-        
+        }        
     })
     .then( response => {
         let data = []
@@ -26,6 +26,7 @@ const readRows = api => {
         fillTable(data)
     })
     .catch( error => {
+    
         console.log(error);
     })
 }
@@ -43,7 +44,7 @@ const saveRow = (api, action, form, modal)  => {
     .then( request => {
         //Se verifica que la request se completó correctamente
         if(request.ok) {
-            // console.log(request.text())
+            console.log(request.text())
             return request.json()
         } else {
             console.log(`${request.status} ${request.statusText}`)

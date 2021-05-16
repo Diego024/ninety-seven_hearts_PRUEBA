@@ -2,7 +2,7 @@
 const API_CATEGORIAS = '../../app/api/dashboard/categorias.php?action=';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js
     readRows(API_CATEGORIAS);
 });
@@ -10,14 +10,15 @@ document.addEventListener('DOMContentLoaded', function () {
 // Función para llenar la tabla con los datos de los registros. Se manda a llamar en la función readRows().
 const fillTable = dataset => {
     let content = ''
-    if(dataset.lenght == 0) {
-        console.log(dataset)
+    if(dataset.length == 0) {
+        //console.log(dataset)
         content+=`<h4>No hay categorías registradas</h4>`
         document.getElementById('warning-message').innerHTML = content
     } else {
         //Se agregan los titulos de las columnas
         content += `
             <tr>
+                <th>Imagen</th>
                 <th>Categoría</th>
                 <th>Descripción</th>
                 <th>Acciones</th>
@@ -26,8 +27,9 @@ const fillTable = dataset => {
         dataset.map( row => {
             content+= `
                 <tr>
+                    <td><img src="../../resources/statics/imageFiles/categorias/${row.foto_categoria}" height="100" width="100"></td>
                     <td>${row.categoria}</td>
-                    <td>${row.descripcion_categoria}</td>
+                    <td>${row.descripcion_categoria}</td> 
                     <td class="icons">
                         <a onclick="openUpdateDialog(${row.id_categoria})" data-toggle="tooltip" data-placement="bottom" title="Editar">
                             <span class="material-icons blue" data-tooltip="Actualizar">
@@ -45,6 +47,7 @@ const fillTable = dataset => {
         })
         content += `
             <tr>
+                <th>Imagen</th>
                 <th>Categoría</th>
                 <th>Descripción</th>
                 <th>Acciones</th>

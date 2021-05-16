@@ -29,7 +29,7 @@
                         <div class="bg-light border-right" id="sidebar-wrapper">
                             <div class="sidebar--img">
                                 <a href="Index.php">
-                                    <img src="../../resources/statics/images/logo-ready.png" alt="" id="sidebar--img__logo">
+                                    <img src="../../resources/statics/imageFiles/logo-ready.png" alt="" id="sidebar--img__logo">
                                 </a>
                             </div>
                             <div class="sidebar--separator">
@@ -37,7 +37,7 @@
                             </div>
                             <div class="sidebar--info__container">
                                 <div class="sidebar--info__img">
-                                    <img src="../../resources/statics/images/profile-cuadrado.jpg" alt="" id="info--img__user">
+                                    <img src="../../resources/statics/imageFiles/profile-cuadrado.jpg" alt="" id="info--img__user">
                                 </div>
                                 <div class="sidebar--info__data">
                                     <p class="sidebar--info__text">Bienvenido,</p>
