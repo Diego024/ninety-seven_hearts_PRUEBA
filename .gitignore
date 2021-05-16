@@ -1,3 +1,11 @@
 node_modules
 
-resources/imageFiles/*
+# Ignorando las imágenes de los administradores
+resources/imageFiles/dashboard/administradores/*jpg
+resources/imageFiles/dashboard/administradores/*png
+resources/imageFiles/dashboard/administradores/*gif
+
+# Ignorando las imagenes del catalogo
+resources/imageFiles/dashboard/catalogo/*jpg
+resources/imageFiles/dashboard/catalogo/*png
+resources/imageFiles/dashboard/catalogo/*gif

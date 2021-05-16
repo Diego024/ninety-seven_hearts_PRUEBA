@@ -4,217 +4,89 @@
     Private_Page::sidebarTemplate('Inventario');
 ?>
 <!-- TITULO DE LA SECCIÓN -->
+<br>
 <?php
     include('../../app/helpers/public_page.php');
     Public_Page::titleTemplate('CATÁLOGO');
 ?>
 <br>
+
 <!-- BOTÓN PARA EL MODAL DE CATÁLOGO -->
-<div class="add--icon__container">
-    <a href="" data-toggle="modal" data-target="#insertCatalogo">
+<div class="add--icon__container" data-toggle="tooltip" data-placement="bottom" title="Agregar">
+    <a onclick="openCreateDialog()">
         <span class="material-icons green">
         add
         </span>
     </a>
 </div>
 
-<!-- INICIO DEL MODAL DE CLIENTES -->
-<div class="modal fade" id="insertCatalogo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agrege un producto</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-                <!-- PRODUCTO Y PMP -->
-                <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputCity">Producto</label>
-                <input type="text" class="form-control" id="inputCity">
+<!-- MODAL DEL FORM -->
+<div class="modal fade" id="modal-form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <div class="modal-body">
+                <form method="post" id="save-form" enctype="multipart/form-data">
+                    <!-- Campo invicible del ID -->
+                    <input class="d-none" type="number" id="id_catalogo_producto" name="id_catalogo_producto"/>
+                    <!-- PRODUCTO Y DESCRIPCIÓN -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="catalogo_producto">Producto</label>
+                            <input type="text" class="form-control" id="catalogo_producto" name="catalogo_producto">
+                        </div>
 
-            <div class="form-group col-md-6">
-                <label for="inputCity">PMP($)</label>
-                <input type="text" class="form-control" id="inlineFormInputGroupUsername2">
-            </div>
-        </div>
-        <!-- EXISTENCIA Y PRECIO DE VENTA -->
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputCity">Existencia</label>
-                <input type="text" class="form-control" id="inputCity">
-            </div>
+                        <div class="form-group col-md-6">
+                            <label for="descripcion">Descripción</label>
+                            <textarea class="form-control" id="descripcion" name="descripcion" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <!-- EXISTENCIA Y PMP -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="existencia">Existencia</label>
+                            <input class="form-control" type="number" id="existencia" min="0" max="100000" name="existencia"/>                        
+                        </div>
 
-            <div class="form-group col-md-6">
-                <label for="inputCity">Precio de venta($)</label>
-                <input type="text" class="form-control" id="inlineFormInputGroupUsername2">
-            </div>
-        </div>
-        <!-- CATEGORÍA Y DESCUENTO -->
-        <div class="form-row"> 
-            <div class="form-group col-md-6 search_select_box">
-                <label for="inputState">Categoría</label>
-                <select id="inputState" class="form-control">
-                    <option selected>Camisetas</option>
-                    <option>Pantalones</option>
-                    <option>Vestidos</option>
-                    <option>Lencería</option>
-                </select>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputCity">Descuento(%)</label>
-                <input type="text" class="form-control" id="inputCity">
-            </div>
-        </div>
-        <!-- DESCRIPCIÓN Y FOTO -->
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputCity">Descripción</label>
-                <input type="text" class="form-control" id="inputCity">
-            </div>
+                        <div class="form-group col-md-6">
+                            <label for="precio_venta">Precio de venta</label>
+                            <input class="form-control" type="number" id="precio_venta" min="0" max="99999" name="precio_venta"/>                        
+                        </div>
+                    </div>
+                    <!-- CATEGORIA Y FOTO -->
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-6">
+                            <label for="id_categoria">Categoria</label>
+                            <select id="id_categoria" name="id_categoria" class="form-control">
+                            </select>
+                        </div>
 
-            <div class="form-group col-md-6">
-                <label for="inputCity">Foto</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <div class="form-group col-md-6">
+                            <label for="foto_producto">Foto del Producto</label>
+                            <input type="file" id="foto_producto" name="foto_producto" class="form-control-file" accept=".gif, .jpg, .png">
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
             </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
-      </div>
     </div>
-  </div>
 </div>
 
 <!-- COMIENZO DE LA TABLA -->
-<div class="container">
-    <table class="table table-striped table-bordered mydatatable" >
-        <thead>
-            <tr>
-                <th>Código</th>
-                <th>Producto</th>
-                <th>Existencia</th>
-                <th>PMP</th>
-                <th>Precio</th>
-                <th>Categoría</th>
-                <th>Descripción</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Pantalón negro</td>
-                <td>100</td>
-                <td>$15.65</td>
-                <td>$35.99</td>
-                <td>Pantalones</td>
-                <td>Pantalón color negro de tela. Tallas desde XS hasta M.</td>
-                <td class="icons">
-                    <a href="">
-                        <span class="material-icons red">   
-                            delete
-                        </span>
-                    </a>
-                    <a href="" data-toggle="modal" data-target="#insertCatalogo">
-                        <span class="material-icons blue">
-                            edit
-                        </span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Camiseta negra estampada</td>
-                <td>50</td>
-                <td>$6.55</td>
-                <td>$15.99</td>
-                <td>Camisetas</td>
-                <td>Camiseta con estampado de caricaturas.</td>
-                <td class="icons">
-                    <a href="">
-                        <span class="material-icons red">   
-                            delete
-                        </span>
-                    </a>
-                    <a href="" data-toggle="modal" data-target="#insertCatalogo">
-                        <span class="material-icons blue">
-                            edit
-                        </span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Vestido rojo de flores</td>
-                <td>15</td>
-                <td>$39.68</td>
-                <td>$46.25</td>
-                <td>Vestidos</td>
-                <td>Vestido color rojo con estampado de flores rojas. Tllas desde XS hasta L.</td>
-                <td class="icons">
-                    <a href="">
-                        <span class="material-icons red">   
-                            delete
-                        </span>
-                    </a>
-                    <a href="" data-toggle="modal" data-target="#insertCatalogo">
-                        <span class="material-icons blue">
-                            edit
-                        </span>
-                    </a>
-                </td>
-            </tr>
-                <tr>
-                <td>5</td>
-                <td>Pijama de unicornio</td>
-                <td>10</td>
-                <td>$15.88</td>
-                <td>$45.99</td>
-                <td>Hogareña</td>
-                <td>Pijama de cuerpo completo con diseño de unicornio azul. Tallas desde XS hasta XL.</td>
-                <td class="icons">
-                    <a href="">
-                        <span class="material-icons red">   
-                            delete
-                        </span>
-                    </a>
-                    <a href="" data-toggle="modal" data-target="#insertCatalogo">
-                        <span class="material-icons blue">
-                            edit
-                        </span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Juegos de lencería</td>
-                <td>25</td>
-                <td>$20.45</td>
-                <td>$38.99</td>
-                <td>Lencería</td>
-                <td>Juego de 3 piezas de lencería, colores surtidos. Tallas desde XS hasta M.</td>
-                <td class="icons">
-                    <a href="">
-                        <span class="material-icons red">   
-                            delete
-                        </span>
-                    </a>
-                    <a href="" data-toggle="modal" data-target="#insertCatalogo">
-                        <span class="material-icons blue">
-                            edit
-                        </span>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
+<div class="container" id="table-container">
+    <h4 id="warning-message" style="text-align:center"></h4>
+    <table class="table table-striped table-bordered mydatatable" id="tbody-rows">
     </table>
 </div>
 <?php
-    Private_Page::footerTemplate();
+    Private_Page::footerTemplate('catalogo');
 ?>
