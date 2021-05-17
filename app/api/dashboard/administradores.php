@@ -13,14 +13,14 @@ if( isset($_GET['action'])) {
     //Creamos un array donde guardaremos los resultados de la API
     $result = array('status' => 0, 'message' => null, 'exception' => null);
     //Se verifica que haya una sesión iniciada por un administrador
-    // if ( isset($_SESSION['id_administrador'])) {
-    if (true) {
+    if ( isset($_SESSION['id_administrador'])) {
+    // if () {
         //Se evalua la acción a realizar
         switch ($_GET['action']) {
             case 'logOut':
-                if(session_destroy()) {
+                if (session_destroy()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Sesión cerrada correctamente';
+                    $result['message'] = 'Sesión eliminada correctamente';
                 } else {
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
                 }
@@ -71,7 +71,7 @@ if( isset($_GET['action'])) {
                                                                 $result['exception'] = 'Seleccione un estado de cuenta';
                                                             }
                                                         } else {
-                                                            $result['exception'] = $usuario->getPasswordError();
+                                                            $result['exception'] = $administrador->getPasswordError();
                                                         }                                                        
                                                     } else {
                                                         $result['exception'] = 'Claves diferentes';
@@ -213,7 +213,7 @@ if( isset($_GET['action'])) {
     } else {
         switch ($_GET['action']) {
             case 'readAll':
-                if($usuario->readAll()) {
+                if($administrador->selectAdmins()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existe al menos un usuario registrado';
                 } else {
@@ -227,8 +227,9 @@ if( isset($_GET['action'])) {
                 break;
             case 'logIn':
                 $_POST = $administrador->validateForm($_POST);
-                if ($administrador->checkUser($_POST['usuario'])) {
-                    if($usuario->checkPassword($_POST['clave'])) {
+                if ($data = $administrador->checkUser($_POST['usuario'])) {
+                    $administrador->setIdAdministrador($data[0]['id_administrador']);
+                    if($administrador->checkPassword($_POST['clave'])) {
                         $result['status'] = 1;
                         $result['message'] = 'Autenticación correcta';
                         $_SESSION['id_administrador'] = $administrador->getIdAdministrador();

@@ -28,7 +28,7 @@
                         <!-- Sidebar -->
                         <div class="bg-light border-right" id="sidebar-wrapper">
                             <div class="sidebar--img">
-                                <a href="Index.php">
+                                <a href="Home.php">
                                     <img src="../../resources/statics/images/logo-ready.png" alt="" id="sidebar--img__logo">
                                 </a>
                             </div>
@@ -123,7 +123,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="LogIn.php" id="logout--button" class="list-group-item list-group-item-action btn--boton__texto">
+                                    <a onclick="logOut()" id="logout--button" class="list-group-item list-group-item-action btn--boton__texto">
                                         <img class="btn--boton__icon" src="../../resources/statics/icons/logout.png" alt=""> 
                                         Cerrar Sesión
                                     </a>
@@ -145,7 +145,7 @@
 
         public static function footerTemplate($controller) {
             print('
-                        </div>
+                    </div>
                         <!-- /#page-content-wrapper -->
                     </div>
 
@@ -163,6 +163,7 @@
                     <!-- LINKS DEL BUNDLE DE COMPONENTS -->
                     <script src="../../app/helpers/components.js"></script>
                     <script src="../../app/controllers/dashboard/'.$controller.'.js"></script>
+                    <script src="../../app/controllers/dashboard/cuenta.js"></script>
 
                     <!-- LINKS DE SWEET ALERT -->
                     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

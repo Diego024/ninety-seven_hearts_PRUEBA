@@ -1,144 +1,46 @@
-<?php
-    include('../../app/helpers/private_page.php');
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Inicio de Sesión</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../resources/styles/css/dashboard/Login.css">
+    </head>
+    <body>
+        <img class="fondo" src="../../resources/statics/images/fondo.png" alt="">
+        <div class="container">
+        <!-- IMAGEN DE FONDO -->
+            <div class="img">
+                <img src="../../resources/statics/images/data1.svg" alt="">
+            </div>
+            <!-- AQUÍ VA EL LOGIN -->
+            <div class="login-container">
+                <form method="post" id="session-form" >
+                    <img class="Avatar" src="../../resources/statics/images/user1.svg" alt="">
+                    <h2>Bienvenido</h2>
+                    <!-- INPUTS -->
+                    <div class="input-div one">
+                        <div>
+                            <h5>Usuario</h5>
+                            <input id="usuario" type="text" name="usuario" class="input" require>
+                        </div>
+                    </div>
+                    <div class="input-div two">
+                        <div>
+                            <h5>Contraseña</h5>
+                            <input id="clave" type="password" name="clave" class="input">
+                        </div>
+                    </div>
+                    <input type="submit" class="btn"  data-tooltip="Ingresar">
+                </form>
+            </div>
+        </div>
 
-    Private_Page::sidebarTemplate('Index');
-?>
-<br>
-<?php
-    include('../../app/helpers/public_page.php');
-    Public_Page::titleTemplate('NUEVOS PEDIDOS');
-?>
-<br>
+        <!-- LINKS DEL JS DEL INDEX -->
+        <script type="text/javascript" src="../../app/features/public/dashboard/Login.js"></script>
+        <script src="../../app/helpers/components.js"></script>
+        <script src="../../app/controllers/dashboard/index.js"></script>
 
-<div class="container">
-    <table class="table table-striped table-bordered mydatatable" >
-        <thead>
-            <tr>
-                <th>Orden</th>
-                <th>Cliente</th>
-                <th>Fecha</th>
-                <th>Detalles</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Diego Moys</td>
-                <td>15/03/2021</td>
-                <td>Ver detalle...</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Diego Pacheco</td>
-                <td>25/02/2021</td>
-                <td>Ver detalle...</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Fernando Alvarenga</td>
-                <td>01/02/2021</td>
-                <td>Ver detalle...</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Elmer Argueta</td>
-                <td>15/03/2021</td>
-                <td>Ver detalle...</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Diego Estrada</td>
-                <td>01/01/2021</td>
-                <td>Ver detalle...</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Elmer Argueta</td>
-                <td>18/03/2021</td>
-                <td>Ver detalle...</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>Diego Estrada</td>
-                <td>05/01/2021</td>
-                <td>Ver detalle...</td>
-            </tr>
-        </tbody>
-
-        <tfoot>
-            <tr>
-                <th>Orden</th>
-                <th>Cliente</th>
-                <th>Fecha</th>
-                <th>Detalles</th>
-            </tr>
-        </tfoot>
-    </table>
-</div>
-
-
-<br>
-<?php
-    Public_Page::titleTemplate('PRODUCTOS CON POCAS EXISTENCIAS');
-?>
-<br>
-
-<div class="container">
-    <table class="table table-striped table-bordered mydatatable" >
-        <thead>
-            <tr>
-                <th>Código</th>
-                <th>Producto</th>
-                <th>Categoría</th>
-                <th>Existencia</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Top con flores</td>
-                <td>Blusas</td>
-                <td>7</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Vestido de noche</td>
-                <td>Vestidos</td>
-                <td>14</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Bracelete dorado</td>
-                <td>Accesorios</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Aretes de mariposa</td>
-                <td>Accesorios</td>
-                <td>10</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Jeans negro</td>
-                <td>Pantalones</td>
-                <td>12</td>
-            </tr>
-        </tbody>
-
-        <tfoot>
-            <tr>
-                <th>Código</th>
-                <th>Producto</th>
-                <th>Categoría</th>
-                <th>Existencia</th>
-            </tr>
-        </tfoot>
-    </table>
-</div>
-
-<?php
-    Private_Page::footerTemplate();
-?>
+        <!-- LINKS DE SWEET ALERT -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    </body>
+</html>

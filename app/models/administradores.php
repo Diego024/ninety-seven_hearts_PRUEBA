@@ -184,12 +184,13 @@ class Administradores extends Validator {
     //Funciones para realizar los mantenimientos a la tabla
 
     public function checkUser($usuario) {
+        // print($usuario);
         $query = 'SELECT id_administrador FROM administradores WHERE usuario = ?';
         $params = array($usuario);
-        if ($data = Database::getRow($sql, $params)) {
-            $this->id_adminsitrador = $data['id_administrador'];
+        if ($data = Database::getRow($query, $params)) {
+            $this->id_adminsitrador = $data[0]['id_administrador'];
             $this->usuario = $usuario;
-            return true;
+            return Database::getRow($query, $params);
         } else {
             return false;
         }
@@ -197,9 +198,10 @@ class Administradores extends Validator {
 
     public function checkPassword($password) {
         $query = 'SELECT clave FROM administradores WHERE id_administrador = ?';
-        $params = array($this->id);
+        $params = array($this->id_administrador);
+        // print_r($params);
         $data = Database::getRow($query, $params);
-        if(password_verify($password, $data['clave'])) {
+        if(password_verify($password, $data[0]['clave'])) {
             return true;
         } else {
             return false;
