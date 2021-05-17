@@ -123,11 +123,11 @@ const openUpdateDialog = id => {
             document.getElementById('apellidos').value = response.dataset[0].apellidos
             document.getElementById('usuario').value = response.dataset[0].usuario
             document.getElementById('correo_electronico').value = response.dataset[0].correo_electronico
-            document.getElementById('clave').value = response.dataset[0].clave
-            document.getElementById('confirmar_clave').value = response.dataset[0].clave
+            // document.getElementById('clave').value = response.dataset[0].clave
+            // document.getElementById('confirmar_clave').value = response.dataset[0].clave
             document.getElementById('telefono').value = response.dataset[0].telefono
-            document.getElementById('id_genero').selected = response.dataset[0].genero
-            document.getElementById('id_estado_cuenta').selected = response.dataset[0].estado_cuenta
+            document.getElementById('id_genero').value = response.dataset[0].id_genero
+            document.getElementById('id_estado_cuenta').value = response.dataset[0].id_estado_cuenta
             document.getElementById('fecha_nacimiento').value = response.dataset[0].fecha_nacimiento
             document.getElementById('direccion').value = response.dataset[0].direccion
             

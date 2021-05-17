@@ -81,7 +81,7 @@
                         <div class="form-group col-md-6 search_select_box">
                             <label for="inputState">Genero</label>
                             <select id="id_genero" class="form-control" name="id_genero">
-                                <option selected value=2>Femenino</option>
+                                <option value=2>Femenino</option>
                                 <option value=1>Masculino</option>
                             </select>
                         </div>
@@ -91,8 +91,9 @@
                         <div class="form-group col-md-6 search_select_box">
                             <label for="inputState">Estado de la cuenta</label>
                             <select id="id_estado_cuenta" class="form-control" name="id_estado_cuenta">
-                                <option selected value=1>Activa</option>
-                                <option value=2>Inactiva</option>
+                                <option value=1>Activo</option>
+                                <option value=2>Inactivo</option>
+                                <option value=3>Bloqueado</option>
                                 <!-- <option value=3>Bloqueada</option> -->
                             </select>
                         </div>

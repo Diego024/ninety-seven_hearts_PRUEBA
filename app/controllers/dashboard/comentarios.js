@@ -1,9 +1,9 @@
 // Constantes para establecer comunicación con la API
-const API_FAQS = '../../app/api/dashboard/faqs.php?action=';
+const API_COMENTARIOS = '../../app/api/dashboard/comentarios.php?action=';
 
 // Función manejadora de eventos, para ejecutar justo cuando termine de cardar.
 document.addEventListener('DOMContentLoaded', () => {
-    readRows(API_FAQS);
+    readRows(API_COMENTARIOS);
 })
 
 // Función para llenar la tabla con los datos de los registros. Se usa en la función readRows()
@@ -13,31 +13,35 @@ const fillTable = dataset => {
     let content = ''
     if(dataset == [].length) {
         //console.log(dataset)
-        content+=`<h4>No hay FAQs registradas</h4>`
+        content+=`<h4>No hay comentarios registradas</h4>`
         document.getElementById('warning-message').innerHTML = content
     } else {
         //Se agregan los titulos de las columnas
         content += `
             <tr>
-                <th>Código</th>
-                <th>Pregunta</th>
-                <th>Respuesta</th>
+                <th>Cliente</th>
+                <th>Producto</th>
+                <th>Valoración</th>
+                <th>Estado</th>
+                <th>Fecha</th>
                 <th>Acciones</th>
             </tr>
         `
         dataset.map( row => {
             content+= `
                 <tr>
-                    <td>${row.id_faq}</td>
-                    <td>${row.pregunta}</td>
-                    <td>${row.respuesta}</td>
+                    <td>${row.cliente}</td>
+                    <td>${row.catalogo_producto}</td>
+                    <td>${row.valoracion}</td>
+                    <td>${row.estado_comentario}</td>
+                    <td>${row.fecha_comentario}</td>
                     <td class="icons">
-                        <a onclick="openUpdateDialog(${row.id_faq})" data-toggle="tooltip" data-placement="bottom" title="Editar">
+                        <a onclick="openUpdateDialog(${row.id_comentario})" data-toggle="tooltip" data-placement="bottom" title="Editar">
                             <span class="material-icons blue" data-tooltip="Actualizar">
                                 edit
                             </span>
                         </a>
-                        <a onclick="openDeleteDialog(${row.id_faq})" title="Eliminar">
+                        <a onclick="openDeleteDialog(${row.id_comentario})" title="Eliminar">
                             <span class="material-icons red" data-tooltip="Eliminar">   
                                 delete
                             </span>
@@ -47,26 +51,18 @@ const fillTable = dataset => {
             `
         })
         content += `
-                <tr>
-                    <th>Código</th>
-                    <th>Pregunta</th>
-                    <th>Respuesta</th>
-                    <th>Acciones</th>
-                </tr>
+            <tr>
+                <th>Cliente</th>
+                <th>Producto</th>
+                <th>Valoración</th>
+                <th>Estado</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
             `
             //Se agrega el contenido a la tabla mediante su id
             document.getElementById('tbody-rows').innerHTML = content;
     }
-}
-
-//Evento ejecutado para preparar el form antes de hacer un insert
-const openCreateDialog = () => {
-    //Se restauran los elementos del form
-    document.getElementById('save-form').reset();
-    //Se abre el form
-    $('#modal-form').modal('show');
-    //Asignamos el titulo al modal
-    document.getElementById('modal-title').textContent = 'Registrar Pregunta Frecuente'
 }
 
 const openUpdateDialog = id => {
@@ -74,26 +70,31 @@ const openUpdateDialog = id => {
     //Se restauran los elementos del form
     document.getElementById('save-form').reset();
     $('#modal-form').modal('show');
-    document.getElementById('modal-title').textContent = 'Actualizar Pregunta Frecuente'
+    document.getElementById('modal-title').textContent = 'Actualizar Comentario'
 
     const data = new FormData();
-    data.append('id_faq', id)
+    data.append('id_comentario', id)
 
-    fetch(API_FAQS + 'readOne', {
+    fetch(API_COMENTARIOS + 'readOne', {
         method: 'post',
         body: data
     })
     .then( request => {
         if(request.ok) {
+            // console.log(request.text())
             return request.json()
         } else {
             console.log(`${request.status}  ${request.statusText}`);
         }
     }).then(response => {
         if(response.status) {
-            document.getElementById('id_faq').value = response.dataset[0].id_faq
-            document.getElementById('pregunta').value = response.dataset[0].pregunta
-            document.getElementById('respuesta').value = response.dataset[0].respuesta
+            document.getElementById('id_comentario').value = response.dataset[0].id_comentario
+            document.getElementById('cliente').value = response.dataset[0].cliente
+            document.getElementById('catalogo_producto').value = response.dataset[0].catalogo_producto
+            document.getElementById('valoracion').value = response.dataset[0].valoracion
+            document.getElementById('comentario').value = response.dataset[0].comentario
+            document.getElementById('fecha_comentario').value = response.dataset[0].fecha_comentario
+            document.getElementById('id_estado_comentario').value = response.dataset[0].id_estado_comentario
         } else {
             sweetAlert(2, response.exception, null);
         }
@@ -109,20 +110,17 @@ document.getElementById('save-form').addEventListener('submit', event => {
     //Se declara la variable para definir la action para la API
     let action = ''
     //Se comprueba que exista un id en el campo oculto
-    if(document.getElementById('id_faq').value) {
+    if(document.getElementById('id_comentario').value) {
         action = 'update'
-    } else {
-        action = 'create'
     }
-    saveRow(API_FAQS, action, 'save-form', 'modal-form');
-    $('#modal-form').modal('hide');
+    saveRow(API_COMENTARIOS, action, 'save-form', 'modal-form');
 })
 
-// Función para establecer el registro a eliminar y abrir una caja de dialogo de confirmación.
-function openDeleteDialog(id) {
-    // Se define un objeto con los datos del registro seleccionado.
-    const data = new FormData();
-    data.append('id_faq', id);
-    // Se llama a la función que elimina un registro. Se encuentra en el archivo components.js
-    confirmDelete(API_FAQS, data);
+// Función para confirmar que desea eliminar un registro
+const openDeleteDialog = id => {
+    //Se define un objeto con los datos del registro
+    const data = new FormData()
+    data.append('id_comentario', id)
+    //Se llama la función para eliminar el registro
+    confirmDelete(API_COMENTARIOS, data)
 }

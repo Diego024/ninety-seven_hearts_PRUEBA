@@ -226,7 +226,9 @@ class Administradores extends Validator {
     }
 
     public function selectOneAdmin() {
-        $query = 'SELECT id_administrador, nombres, apellidos, fecha_nacimiento, telefono, direccion, correo_electronico, foto_administrador, usuario, id_estado_cuenta, id_genero  FROM administradores WHERE id_administrador = ?';
+        $query="SELECT *
+                FROM administradores 
+                WHERE id_administrador = ?";
         $params = array($this->id_administrador);
         return Database::getRow($query, $params);
     }
