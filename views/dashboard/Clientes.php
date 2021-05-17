@@ -1,201 +1,137 @@
 <?php
-    include('../../app/helpers/private_page.php');
+include('../../app/helpers/private_page.php');
 
-    Private_Page::sidebarTemplate('Clientes');
+Private_Page::sidebarTemplate('Clientes');
 ?>
 
 <!-- TITULO DE LA SECCIÓN -->
 <br>
 <?php
-    include('../../app/helpers/public_page.php');
-    Public_Page::titleTemplate('CLIENTES');
+include('../../app/helpers/public_page.php');
+Public_Page::titleTemplate('CLIENTES');
 ?>
 <br>
-<!-- BOTÓN PARA EL MODAL DE CLIENTES -->
-<div class="add--icon__container">
-    <a href="" data-toggle="modal" data-target="#insertClientes">
-        <span class="material-icons green">
-        add
-        </span>
-    </a>
-</div>
-<!-- INICIO DEL MODAL DE CLIENTES -->
-<div class="modal fade" id="insertClientes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agrege un cliente</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-                <!-- NOMBRES Y APELLIDO -->
-                <div class="form-row">
-            <div class="form-group col-md-6">
-            <label for="inputCity">Nombres</label>
-            <input type="text" class="form-control" id="inputCity">
-            </div>
-
-            <div class="form-group col-md-6">
-                <label for="inputCity">Apellidos</label>
-                <input type="text" class="form-control" id="inlineFormInputGroupUsername2">
+<!-- BOTÓN PARA EL MODAL DE CLIENTES Y FORMULARIO DE BÚSQUEDA-->
+<div class="container">
+    <div class="row">
+        <div>
+            <form method="post" id="search-form" class="form-inline my-2 my-lg-0">
+                <input id="search" name="search" class="form-control mr-sm-2" type="search" placeholder="Buscador" aria-label="Search" required>
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+        </div>
+        <div class="col">
+            <div class="add--icon__container" data-toggle="tooltip" data-placement="bottom" title="Agregar">
+                <a onclick="openCreateDialog()">
+                    <span class="material-icons green">
+                        add
+                    </span>
+                </a>
             </div>
         </div>
-        <!-- TELEFONO Y EMAIL -->
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputCity">Teléfono</label>
-                <input type="text" class="form-control" id="inputCity">
-            </div>
-
-            <div class="form-group col-md-6">
-                <label for="inputCity">Email</label>
-                <input type="text" class="form-control" id="inlineFormInputGroupUsername2">
-            </div>
-        </div>
-
-        <!-- FECHA DE NACIMIENTO Y GENERO-->
-        <div class="form-row"> 
-            <div class="col">
-                <label for="inputState">Fecha de nacimiento</label>
-                <input type="date" class="form-control" id="inputAddress" placeholder="1234 Main St">
-            </div>
-            
-            <div class="form-group col-md-6 search_select_box">
-                <label for="inputState">Género</label>
-                <select id="inputState" class="form-control" data-live-search="false">
-                    <option selected>Femenino</option>
-                    <option>Masculino</option>
-                </select>
-            </div>       
-        </div>
-        <!-- DIRECCION Y ESTADO -->
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputCity">Dirección</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-
-            <div class="form-group col-md-6 search_select_box">
-                <label for="inputState">Estado de la cuenta</label>
-                <select id="inputState" class="form-control" data-live-search="false">
-                    <option selected>Activa</option>
-                    <option>Inactiva</option>
-                    <option>Bloqueada</option>    
-                </select>
-            </div>
-        </div>
-        <!-- FOTO -->
-        <div class="form-row"> 
-            
-            <div class="form-group col-md-12">
-                <label for="inputCity">Foto</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-            </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
-      </div>
     </div>
-  </div>
+</div>
+
+
+
+<!-- INICIO DEL MODAL DE CLIENTES Y FORM DE BÚSQUEDA-->
+<div class="modal fade" id="modal-form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="save-form" enctype="multipart/form-data">
+                    <!-- Campo invicible del ID -->
+                    <input class="d-none" type="number" id="id_cliente" name="id_cliente" />
+                    <!-- NOMBRES Y APELLIDO -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="nombres">Nombres</label>
+                            <input type="text" class="form-control" id="nombres" name="nombres">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="apellidos">Apellidos</label>
+                            <input type="text" class="form-control" id="apellidos" name="apellidos">
+                        </div>
+                    </div>
+                    <!-- TELEFONO Y EMAIL -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="telefono">Teléfono</label>
+                            <input type="text" class="form-control" id="telefono" name="telefono">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="correo_electronico">Email</label>
+                            <input type="text" class="form-control" id="correo_electronico" name="correo_electronico">
+                        </div>
+                    </div>
+
+                    <!-- FECHA DE NACIMIENTO Y GENERO-->
+                    <div class="form-row">
+                        <div class="col">
+                            <label for="fecha_nacimiento">Fecha de nacimiento</label>
+                            <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="1234 Main St">
+                        </div>
+
+                        <div class="form-group col-md-6 search_select_box">
+                            <label for="id_genero">Género</label>
+                            <select id="id_genero" name="id_genero" class="form-control">
+                                <!--data-live-search="false"-->
+                                <option selected value=2>Femenino</option>
+                                <option value=1>Masculino</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- DIRECCION Y ESTADO -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="direccion">Dirección</label>
+                            <textarea class="form-control" id="direccion" name="direccion" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group col-md-6 search_select_box">
+                            <label for="id_estado_cuenta">Estado de la cuenta</label>
+                            <select id="id_estado_cuenta" name="id_estado_cuenta" class="form-control">
+                                <option selected value=1>Activo</option>
+                                <option value=2>Inactivo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- CLAVE Y CONFIRMAR CLAVE -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="clave">Contraseña</label>
+                            <input type="password" class="form-control" id="clave" name="clave">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="confirmar_clave">Confirme la contraseña</label>
+                            <input type="password" class="form-control" id="confirmar_clave" name="confirmar_clave">
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- COMIENZO DE LA TABLA -->
-<div class="container">
-    <table class="table table-striped table-bordered mydatatable" >
-        <thead>
-            <tr>
-                <th>Código</th>
-                <th>Nombres</th>
-                <th>Apellidos</th>
-                <th>Usuario</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Diego Josué</td>
-                <td>Rosa Pacheco</td>
-                <td>Pacheco</td>
-                <td>Activo</td>
-                <td class="icons">
-                    <a href="">
-                        <span class="material-icons red">   
-                            delete
-                        </span>
-                    </a>
-                    <a href="" data-toggle="modal" data-target="#insertClientes">
-                        <span class="material-icons blue">
-                            edit
-                        </span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Fernando José</td>
-                <td>Alvarenza Muñoz</td>
-                <td>Alvarenga</td>
-                <td>Bloqueado</td>
-                <td class="icons">
-                    <a href="">
-                        <span class="material-icons red">   
-                            delete
-                        </span>
-                    </a>
-                    <a href="" data-toggle="modal" data-target="#insertClientes">
-                        <span class="material-icons blue">
-                            edit
-                        </span>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Diego Fernando</td>
-                <td>Moys Romero</td>
-                <td>Moys</td>
-                <td>Inactivo</td>
-                <td class="icons">
-                    <a href="">
-                        <span class="material-icons red">   
-                            delete
-                        </span>
-                    </a>
-                    <a href="" data-toggle="modal" data-target="#insertClientes">
-                        <span class="material-icons blue">
-                            edit
-                        </span>
-                    </a>
-                </td>
-            <tr>
-                <td>6</td>
-                <td>Samuel Eduardo</td>
-                <td>Herrera Tobar</td>
-                <td>Sam</td>
-                <td>Bloqueado</td>
-                <td class="icons">
-                    <a href="">
-                        <span class="material-icons red">   
-                            delete
-                        </span>
-                    </a>
-                    <a href="" data-toggle="modal" data-target="#insertClientes">
-                        <span class="material-icons blue">
-                            edit
-                        </span>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
+<div class="container" id="table-container">
+    <h4 id="warning-message" style="text-align:center"></h4>
+    <table class="table table-striped table-bordered mydatatable" id="tbody-rows">
     </table>
 </div>
 <?php
-    Private_Page::footerTemplate();
+Private_Page::footerTemplate('clientes');
 ?>

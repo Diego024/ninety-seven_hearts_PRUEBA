@@ -90,6 +90,14 @@ class Categorias extends Validator
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
+    public function searchCategorias($value) {
+        $query = 'SELECT id_categoria, categoria, descripcion_categoria, foto_categoria
+                  FROM categorias
+                  WHERE categoria ILIKE ? OR descripcion_categoria ILIKE ?
+                  ORDER BY categoria';
+         $params = array("%$value%", "%$value%");
+         return Database::getRows($query, $params);
+    }
 
     public function InsertCategoria()
     {

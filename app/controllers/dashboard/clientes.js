@@ -1,20 +1,19 @@
 // Constantes para establecer comunicación con la API
-const API_ADMINISTRADORES = '../../app/api/dashboard/administradores.php?action=';
+const API_CLIENTES = '../../app/api/dashboard/clientes.php?action=';
 
 // Función manejadora de eventos, para ejecutar justo cuando termine de cardar.
 document.addEventListener('DOMContentLoaded', () => {
-    //Se llama a la función para llenar la tabla
-    readRows(API_ADMINISTRADORES)
+    readRows(API_CLIENTES);
 })
 
 // Función para llenar la tabla con los datos de los registros. Se usa en la función readRows()
 const fillTable = dataset => {
     $('#warning-message').empty();
     $('#tbody-rows').empty();
-    let content = '';
-    // console.log(dataset)
-    if(dataset == [].length) {
-        content+=`<h4>No hay Administradores registradas</h4>`
+    let content = ''
+    if (dataset == [].length) {
+        //console.log(dataset)
+        content += `<h4>No hay clientes registradas</h4>`
         document.getElementById('warning-message').innerHTML = content
     } else {
         //Se agregan los titulos de las columnas
@@ -23,56 +22,61 @@ const fillTable = dataset => {
                 <th>Código</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
-                <th>Usuario</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
         `
-        //Recorremos el arreglo de registros fila por fila, a travez del objeto row
-        dataset.map( row => {
-            //Se crean y concatenan las filas de la tabla con los datos del registro
+        dataset.map(row => {
             content += `
                 <tr>
-                    <td>${row.id_administrador}</td>
+                    <td>${row.id_cliente}</td>
                     <td>${row.nombres}</td>
                     <td>${row.apellidos}</td>
-                    <td>${row.usuario}</td>
+                    <td>${row.telefono}</td>
+                    <td>${row.correo_electronico}</td>
                     <td>${row.estado_cuenta}</td>
                     <td class="icons">
-                        <a onclick="openUpdateDialog(${row.id_administrador})" data-toggle="tooltip" data-placement="bottom" title="Editar">
+                        <a onclick="openUpdateDialog(${row.id_cliente})" data-toggle="tooltip" data-placement="bottom" title="Editar">
                             <span class="material-icons blue" data-tooltip="Actualizar">
                                 edit
                             </span>
                         </a>
-                        <a onclick="openDeleteDialog(${row.id_administrador})" title="Eliminar">
+                        <a onclick="openDeleteDialog(${row.id_cliente})" title="Eliminar">
                             <span class="material-icons red" data-tooltip="Eliminar">   
                                 delete
                             </span>
                         </a>
                     </td>
                 </tr>
-            `;  
+            `
         })
-
-        content+=`
+        content += `
             <tr>
                 <th>Código</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
-                <th>Usuario</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
         `
         //Se agrega el contenido a la tabla mediante su id
         document.getElementById('tbody-rows').innerHTML = content;
-        //Se debería ver todos los registros
     }
-    
 }
 
+// Método manejador de eventos que se ejecuta cuando se envía el formulario de buscar.
+document.getElementById('search-form').addEventListener('submit', function (event) {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Se llama a la función que realiza la búsqueda. Se encuentra en el archivo components.js
+    searchRows(API_CLIENTES, 'search-form');
+});
+
 const toggleDisableAtributtes = state => {
-    document.getElementById('usuario').disabled = state;
     document.getElementById('clave').disabled = state;
     document.getElementById('confirmar_clave').disabled = state;
 }
@@ -84,59 +88,52 @@ const openCreateDialog = () => {
     //Se abre el form
     $('#modal-form').modal('show');
     //Asignamos el titulo al modal
-    document.getElementById('modal-title').textContent = 'Registrar administrador'
-    //Se habilitan los campos de alias y contraseña
+    document.getElementById('modal-title').textContent = 'Registrar Cliente'
+    //Se habilitan los campos de contraseña
     toggleDisableAtributtes(false);
 }
 
 const openUpdateDialog = id => {
+    //console.log(id)
     //Se restauran los elementos del form
     document.getElementById('save-form').reset();
-    //Se abre el form
     $('#modal-form').modal('show');
-    document.getElementById('modal-title').textContent = 'Actualizar administrador'
-    //Se deshabilitan los campos de alias y contraseña
+    document.getElementById('modal-title').textContent = 'Actualizar Cliente'
+    //Se deshabilitan los campos de contraseña
     toggleDisableAtributtes(true);
-    // Se establece el campo de archivo como opcional.
-    document.getElementById('foto_administrador').required = false
 
-    //Se define un objeto con los datos del registro seleccionado
     const data = new FormData();
-    data.append('id_administrador', id)
+    data.append('id_cliente', id)
 
-    fetch(API_ADMINISTRADORES + 'readOne', {
+    fetch(API_CLIENTES + 'readOne', {
         method: 'post',
         body: data
     })
     .then( request => {
-        //Verificamos que la peticion se completó correctamente
-        if( request.ok) {
+        if(request.ok) {
             //console.log(request.text())
             return request.json()
         } else {
             console.log(`${request.status}  ${request.statusText}`);
         }
-    }).then( response => {
-        //Se comprueba si la request es satisfactoria
+    }).then(response => {
+        // console.log(response)
         if(response.status) {
-            document.getElementById('id_administrador').value = response.dataset[0].id_administrador
+            document.getElementById('id_cliente').value = response.dataset[0].id_cliente
             document.getElementById('nombres').value = response.dataset[0].nombres
             document.getElementById('apellidos').value = response.dataset[0].apellidos
-            document.getElementById('usuario').value = response.dataset[0].usuario
+            document.getElementById('fecha_nacimiento').value = response.dataset[0].fecha_nacimiento
+            document.getElementById('telefono').value = response.dataset[0].telefono
+            document.getElementById('direccion').value = response.dataset[0].direccion
             document.getElementById('correo_electronico').value = response.dataset[0].correo_electronico
             document.getElementById('clave').value = response.dataset[0].clave
-            document.getElementById('confirmar_clave').value = response.dataset[0].clave
-            document.getElementById('telefono').value = response.dataset[0].telefono
-            document.getElementById('id_genero').selected = response.dataset[0].genero
-            document.getElementById('id_estado_cuenta').selected = response.dataset[0].estado_cuenta
-            document.getElementById('fecha_nacimiento').value = response.dataset[0].fecha_nacimiento
-            document.getElementById('direccion').value = response.dataset[0].direccion
-            
+            document.getElementById('id_estado_cuenta').value = response.dataset[0].id_estado_cuenta
+            document.getElementById('id_genero').value = response.dataset[0].id_genero
         } else {
             sweetAlert(2, response.exception, null);
         }
     }).catch( error => {
-        console.log(error)
+        console.error(error);
     })
 }
 
@@ -147,19 +144,19 @@ document.getElementById('save-form').addEventListener('submit', event => {
     //Se declara la variable para definir la action para la API
     let action = ''
     //Se comprueba que exista un id en el campo oculto
-    if(document.getElementById('id_administrador').value) {
+    if(document.getElementById('id_cliente').value) {
         action = 'update'
     } else {
         action = 'create'
     }
-    saveRow(API_ADMINISTRADORES, action, 'save-form', 'modal-form');
+    saveRow(API_CLIENTES, action, 'save-form', 'modal-form');
 })
 
 // Función para confirmar que desea eliminar un registro
 const openDeleteDialog = id => {
     //Se define un objeto con los datos del registro
     const data = new FormData()
-    data.append('id_administrador', id)
+    data.append('id_cliente', id)
     //Se llama la función para eliminar el registro
-    confirmDelete(API_ADMINISTRADORES, data)
+    confirmDelete(API_CLIENTES, data)
 }

@@ -31,6 +31,33 @@ const readRows = api => {
     })
 }
 
+//Función para búsqueda
+function searchRows(api, form) {
+    fetch(api + 'search', {
+        method: 'post',
+        body: new FormData(document.getElementById(form))
+    }).then(function (request) {
+        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
+        if (request.ok) {
+            //console.log(request.text())
+            request.json().then(function (response) {
+                // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+                if (response.status) {
+                    // Se envían los datos a la función del controlador para que llene la tabla en la vista.
+                    fillTable(response.dataset);
+                    sweetAlert(1, response.message, null);
+                } else {
+                    sweetAlert(2, response.exception, null);
+                }
+            });
+        } else {
+            console.log(request.status + ' ' + request.statusText);
+        }
+    }).catch(function (error) {
+        console.log(error);
+    });
+}
+
 //Funciones para crear o actualizar un registro.
 const saveRow = (api, action, form, modal)  => {
     // let formulario = new FormData(document.getElementById(form)).entries();
@@ -54,7 +81,7 @@ const saveRow = (api, action, form, modal)  => {
         //Se comprueba que el status de la request sea satisfactorio
         if(response.status) {
             //Se cierra el modal
-            // console.log(modal)
+            //console.log(modal)
             $(`#${modal}`).modal('hide');
             sweetAlert(1, response.message, null)
             readRows(api)
@@ -87,7 +114,7 @@ const confirmDelete = (api, data) => {
     }).then( request => {
         //Verificando que la request sea correcta
         if(request.ok) {
-            // console.log(request.text())
+            //console.log(request.text())
             return request.json()
         } else {
             console.log(`${request.status} ${request.statusText}`)
