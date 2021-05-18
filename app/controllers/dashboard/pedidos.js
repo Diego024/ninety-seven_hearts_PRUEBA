@@ -87,7 +87,7 @@ const openUpdateDialog = id => {
     })
     .then( request => {
         if(request.ok) {
-            //console.log(request.text())
+            // console.log(request.text())
             return request.json()
         } else {
             console.log(`${request.status}  ${request.statusText}`);
@@ -95,8 +95,9 @@ const openUpdateDialog = id => {
     }).then(response => {
         //console.log(response)
         if(response.status) {
-            document.getElementById('id_orden_compra').value = response.dataset.id_orden_compra
-            document.getElementById('id_estado_orden').value = response.dataset.id_estado_orden
+            //console.log(response.dataset);
+            document.getElementById('id_orden_compra').value = response.dataset[0].id_orden_compra
+            document.getElementById('id_estado_orden').value = response.dataset[0].id_estado_orden
         } else {
             sweetAlert(2, response.exception, null);
         }
@@ -110,12 +111,6 @@ document.getElementById('save-form').addEventListener('submit', event => {
     //Se evita que se recargue la página
     event.preventDefault();
     //Se declara la variable para definir la action para la API
-    let action = ''
-    //Se comprueba que exista un id en el campo oculto
-    if(document.getElementById('id_orden_compra').value) {
-        action = 'update'
-    } else {
-        action = 'create'
-    }
+    let action = 'update'
     saveRow(API_PEDIDOS, action, 'save-form', 'modal-form');
 })

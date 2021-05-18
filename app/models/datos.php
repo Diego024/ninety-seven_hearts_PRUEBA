@@ -140,8 +140,8 @@ class Datos extends Validator {
                     ON c.id_cliente = oc.id_cliente
                   INNER JOIN estados_orden eo
                     ON eo.id_estado_orden = oc.id_estado_orden
-                  WHERE oc.id_estado_orden BETWEEN 2 AND 5
-                  ORDER BY Cliente";
+                  WHERE oc.id_estado_orden BETWEEN 2 AND 4
+                  ORDER BY estado_orden DESC";
         $params = null;
         return Database::getRow($query, $params); 
     }
@@ -160,17 +160,17 @@ class Datos extends Validator {
     }
 
     public function selectOnePedido() {
-        $query = "SELECT id_orden_compra, id_cliente, fecha_orden, total, id_estado_orden, orden_regalo, comentario
-                  FROM public.orden_compra
-                  WHERE id_orden_compra = ?";
+        $query = 'SELECT id_orden_compra, id_cliente, fecha_orden, total, id_estado_orden, orden_regalo, comentario
+                  FROM orden_compra
+                  WHERE id_orden_compra = ?';
         $params = array($this->id_orden_compra);
-        return Database::executeRow($query, $params);   
+        return Database::getRow($query, $params);   
     }
 
     public function updatePedidos() {
-        $query = "UPDATE public.orden_compra
+        $query = 'UPDATE orden_compra
                   SET id_estado_orden = ?
-                  WHERE id_orden_compra = ?";
+                  WHERE id_orden_compra = ?';
         $params = array($this->id_estado_orden, $this->id_orden_compra);
         return Database::executeRow($query, $params);  
     }

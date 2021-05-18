@@ -16,7 +16,8 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['id_administrador'])) {
         // if (true) {
         //Se evalua la acción a realizar
-        switch ($_GET['action']) {
+        //print($_GET['action']);
+        switch ($_GET['action']) {    
             case 'readAll':
                 if ($result['dataset'] = $datos->selectPedidos()) {
                     $result['status'] = 1;
@@ -53,13 +54,16 @@ if (isset($_GET['action'])) {
 
             case 'readOne':
                 if ($datos->setIdOrdenCompra($_POST['id_orden_compra'])) {
-                    if ($result['dataset'] = $datos->selectOnePedido()) {
+                    //rint($_POST['id_orden_compra']);
+                    if ($datos->selectOnePedido()) {
+                        $result['dataset'] = $datos->selectOnePedido();
                         $result['status'] = 1;
                     } else {
+                        // print('text');
                         if (Database::getException()) {
                             $result['exception'] = Database::getException();
                         } else {
-                            $result['exception'] = 'Pedido no registrad';
+                            $result['exception'] = 'Pedido no registrado';
                         }
                     }
                 } else {

@@ -34,7 +34,7 @@ if (isset($_GET['action'])) {
                     //print_r($_POST['search']);
                     if ($result['dataset'] = $inventario->searchInventarioProducto($_POST['search'])) {
                         $result['status'] = 1;
-                        print_r($result['dataset']);
+                        //print_r($result['dataset']);
                         $rows = count($result['dataset']);
                         if ($rows > 1) {
                             $result['message'] = 'Se encontraron ' . $rows . ' coincidencias';
