@@ -5,6 +5,8 @@ const API_CATEGORIAS = '../../app/api/dashboard/categorias.php?action=readAll';
 document.addEventListener('DOMContentLoaded', () => {
     //Se llama a la función para llenar la tabla
     readRows(API_CATALOGO);
+    //Se llama a la función para poner la foto del admin
+    setInfoAdmin();
 })
 
 const fillTable = dataset => {

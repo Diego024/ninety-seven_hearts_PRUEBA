@@ -185,7 +185,7 @@ class Administradores extends Validator {
 
     public function checkUser($usuario) {
         // print($usuario);
-        $query = 'SELECT id_administrador FROM administradores WHERE usuario = ?';
+        $query = 'SELECT foto_administrador, id_administrador FROM administradores WHERE usuario = ?';
         $params = array($usuario);
         if ($data = Database::getRow($query, $params)) {
             $this->id_adminsitrador = $data[0]['id_administrador'];

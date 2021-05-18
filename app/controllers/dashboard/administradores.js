@@ -5,6 +5,8 @@ const API_ADMINISTRADORES = '../../app/api/dashboard/administradores.php?action=
 document.addEventListener('DOMContentLoaded', () => {
     //Se llama a la función para llenar la tabla
     readRows(API_ADMINISTRADORES)
+    //Se llama a la función para poner la foto del admin
+    setInfoAdmin();
 })
 
 // Función para llenar la tabla con los datos de los registros. Se usa en la función readRows()

@@ -13,10 +13,21 @@ if(isset($_GET['action'])) {
     //Creamos el array donde guardaremos los resultados de la API
     $result = array('status' => 0, 'message' => null, 'exception' => null);
     //Se verifica que haya una sesión iniciada como administrador
-    // if(isset($_SESSION['id_administrador'])) {
-    if(true) {
+    if(isset($_SESSION['id_administrador'])) {
+    // if(true) {
         //Se evalua la acción a realizar
         switch($_GET['action']) {
+            case 'readLowStock':
+                if($result['dataset'] = $catalogo->selectLowStock()) {
+                    $result['status'] = 1;
+                } else {
+                    if(Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No hay productos con poca existencia';
+                    }
+                }
+                break;
             case 'readAll':
                 if($result['dataset'] = $catalogo->selectProducts()) {
                     $result['status'] = 1;

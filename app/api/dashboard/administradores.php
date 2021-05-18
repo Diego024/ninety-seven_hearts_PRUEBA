@@ -207,6 +207,23 @@ if( isset($_GET['action'])) {
                     $result['exception'] = 'Administrador incorrecto';
                 }
                 break;
+            case 'getAdminPicture':
+                if(isset($_SESSION['id_administrador'])) {
+                    if($administrador->setIdAdministrador($_SESSION['id_administrador'])) {
+                        if($data = $administrador->selectOneAdmin()) {
+                            $result['status'] = 1;
+                            $result['dataset'] = $data;
+                        } else {
+                            $result['exception'] = 'No se ha podido obtener la foto';  
+                        }
+                    } else {
+                        $result['exception'] = 'Administrador incorrecto';
+                    }
+                } else {    
+                    $result['exception'] = 'Tiene que ingresar como administrador';
+                }
+                break;
+
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

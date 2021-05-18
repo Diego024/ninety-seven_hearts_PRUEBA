@@ -4,6 +4,8 @@ const API_FAQS = '../../app/api/dashboard/faqs.php?action=';
 // Función manejadora de eventos, para ejecutar justo cuando termine de cardar.
 document.addEventListener('DOMContentLoaded', () => {
     readRows(API_FAQS);
+    //Se llama a la función para poner la foto del admin
+    setInfoAdmin();
 })
 
 // Función para llenar la tabla con los datos de los registros. Se usa en la función readRows()

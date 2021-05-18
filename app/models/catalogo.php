@@ -136,6 +136,15 @@ class Catalogo extends Validator {
         return Database::getRow($query, $params);
     }
 
+    public function selectLowStock() {
+        $query="SELECT cp.id_catalogo_producto, cp.catalogo_producto, c.categoria, cp.existencia
+                FROM catalogo_productos cp
+                INNER JOIN categorias c
+                    ON cp.id_categoria = c.id_categoria";
+        $params = null;
+        return Database::getRow($query, $params);
+    }
+
     public function updateProduct($current_image) {
         ($this->foto_producto) ? $this->deleteFile($this->getRuta(), $current_image) : $this->foto_producto = $current_image;
         

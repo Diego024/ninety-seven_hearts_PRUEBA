@@ -190,3 +190,32 @@ const fillSelect = (endpoint, select, selected) => {
         console.log(error)
     })
 }
+
+const API_ADMIN_PICTURE = '../../app/api/dashboard/administradores.php?action=getAdminPicture';
+
+const setInfoAdmin = () => {
+    fetch(API_ADMIN_PICTURE)
+    .then( request => {
+        if(request.ok) {
+            // console.log(request.text())
+            return request.json()
+        } else {
+            console.log(`${request.status} ${request.statusText}`)
+        }
+    })
+    .then( response => {
+        //Se comprueba que el status de la request sea satisfactorio
+        if(response.status) {
+            const picturePath = '../../resources/imageFiles/dashboard/administradores/'
+
+            document.getElementById('info--img__user').src = `${picturePath}${response.dataset[0].foto_administrador}`
+            document.getElementById('admin--name').innerHTML = response.dataset[0].usuario
+        } else {
+            sweetAlert(4, response.exception, null)
+        }
+    })
+    .catch( error => {
+        console.log(error);
+    })
+    
+}

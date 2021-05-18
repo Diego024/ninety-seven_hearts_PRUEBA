@@ -37,11 +37,11 @@
                             </div>
                             <div class="sidebar--info__container">
                                 <div class="sidebar--info__img">
-                                    <img src="../../resources/statics/images/profile-cuadrado.jpg" alt="" id="info--img__user">
+                                    <img src="" alt="" id="info--img__user">
                                 </div>
                                 <div class="sidebar--info__data">
                                     <p class="sidebar--info__text">Bienvenido,</p>
-                                    <p class="sidebar--info__name">Diego Pacheco</p>
+                                    <p class="sidebar--info__name" id="admin--name">Diego Pacheco</p>
                                 </div>
                             </div>
                             <div class="sidebar--separator">
