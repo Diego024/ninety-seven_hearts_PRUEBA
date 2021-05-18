@@ -13,7 +13,7 @@ class Database {
         $server = 'localhost';
         $database = 'Ninety-Seven_Heart';
         $username = 'postgres';
-        $password = 'hola';
+        $password = '123';
 
         // Se crea la conexión mediante la extensión PDO y el controlador para PostgreSQL.
         self::$connection = new PDO('pgsql:host='.$server.';dbname='.$database.';port=5432', $username, $password);

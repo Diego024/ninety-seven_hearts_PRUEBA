@@ -41,31 +41,31 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-xl-6 col-sm-12 col-md-12">
-            <div class="card" style="">
-                <img src="../../resources/statics/images/titulo.jpeg" class="card-img-top" alt="..." style="Height: 24rem; Width: 95%">
+            <div class="card" >
+                <img src="../../resources/imageFiles/dashboard/index/titulo.jpeg" class="card-img-top" alt="..." style="Height: 24rem; Width: 95%">
             </div>
         </div>
         <div class="col-xl-6 col-sm-12 col-md-12">
-            <div class="card" style="">
-                <img src="../../resources/statics/images/grafico_barras.jpeg" class="card-img-top" alt="..." style="Height: 24rem; Width: 95%">
+            <div class="card" >
+                <img src="../../resources/imageFiles/dashboard/index/grafico_barras.jpeg" class="card-img-top" alt="..." style="Height: 24rem; Width: 95%">
             </div>
         </div>
     </div>
     <br>
     <div class="row justify-content-center">
         <div class="col-xl-6 col-sm-12 col-md-12">
-            <div class="card" style="">
-                <img src="../../resources/statics/images/grafico_lineas.jpeg" class="card-img-top" alt="..." style="Height: 24rem; Width: 95%">
+            <div class="card" >
+                <img src="../../resources/imageFiles/dashboard/index/grafico_lineas.jpeg" class="card-img-top" alt="..." style="Height: 24rem; Width: 95%">
             </div>
         </div>
         <div class="col-xl-6 col-sm-12 col-md-12">
-            <div class="card" style="">
-                <img src="../../resources/statics/images/grafico_pastel.jpeg" class="card-img-top" alt="..." style="Height: 24rem; Width: 95%">
+            <div class="card" >
+                <img src="../../resources/imageFiles/dashboard/index/grafico_pastel.jpeg" class="card-img-top" alt="..." style="Height: 24rem; Width: 95%">
             </div>
         </div>
     </div>
 </div>
 <br>
 <?php
-    Private_Page::footerTemplate();
+    Private_Page::footerTemplate('estadisticas');
 ?>

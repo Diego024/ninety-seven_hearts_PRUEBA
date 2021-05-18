@@ -84,7 +84,7 @@ class Inventario extends Validator {
                   FROM inventario_productos i
                   INNER JOIN catalogo_productos c
                     ON i.id_catalogo_producto = c.id_catalogo_producto
-                  WHERE c.catalogo_producto ILIKE ? 
+                  WHERE c.catalogo_producto ILIKE ?
                   ORDER BY fecha_registro';
         $params = array("%$value%");
         return Database::getRows($query, $params);
