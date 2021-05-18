@@ -182,6 +182,19 @@ class Administradores extends Validator {
     }
 
     //Funciones para realizar los mantenimientos a la tabla
+    public function searchAdmins($value)
+    {
+        $query="SELECT a.id_administrador, a.nombres, a.apellidos, a.fecha_nacimiento, a.telefono, a.direccion, a.correo_electronico, a.foto_administrador, a.usuario, ea.estado_cuenta, g.genero 
+                FROM administradores a 
+                INNER JOIN generos g 
+                    ON g.id_genero = a.id_genero 
+                INNER JOIN estado_cuenta ea 
+                    ON ea.id_estado_cuenta = a.id_estado_cuenta
+                WHERE apellidos ILIKE ? OR nombres ILIKE ?
+                ORDER BY apellidos";
+        $params = array("%$value%", "%$value%");
+        return Database::getRows($query, $params);
+    }
 
     public function checkUser($usuario) {
         // print($usuario);

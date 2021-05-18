@@ -53,6 +53,16 @@ class Faqs extends Validator {
         return Database::executeRow($query, $params);
     }
 
+    public function searchFaqs($value)
+    {
+        $query="SELECT id_faq, pregunta, respuesta 
+                FROM faq
+                WHERE pregunta ILIKE ? 
+                OR respuesta ILIKE ?";
+        $params = array("%$value%", "%$value%");
+        return Database::getRows($query, $params);
+    }
+
     public function selectFaqs() {
         $query = "SELECT id_faq, pregunta, respuesta FROM faq";
         $params = null;

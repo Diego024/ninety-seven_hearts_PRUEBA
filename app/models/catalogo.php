@@ -120,12 +120,26 @@ class Catalogo extends Validator {
     }
 
     public function selectProducts(){
-        $query = 'SELECT cp.id_catalogo_producto, cp.catalogo_producto, cp.descripcion, cp.existencia, cp.precio_venta, c.categoria, cp.foto_producto
-                  FROM catalogo_productos cp
-                  INNER JOIN categorias c
+        $query='SELECT cp.id_catalogo_producto, cp.catalogo_producto, cp.descripcion, cp.existencia, cp.precio_venta, c.categoria, cp.foto_producto
+                FROM catalogo_productos cp
+                INNER JOIN categorias c
                     ON c.id_categoria = cp.id_categoria';
         $params = null;
         return Database::getRow($query, $params);
+    }
+
+    public function searchProducts($value)
+    {
+        $query="SELECT cp.id_catalogo_producto, cp.catalogo_producto, cp.descripcion, cp.existencia, cp.precio_venta, c.categoria, cp.foto_producto
+                FROM catalogo_productos cp
+                INNER JOIN categorias c
+                    ON c.id_categoria = cp.id_categoria
+                WHERE categoria ILIKE ? 
+                OR catalogo_producto ILIKE ? 
+                OR descripcion ILIKE ?
+                ORDER BY categoria";
+        $params = array("%$value%", "%$value%", "%$value%");
+        return Database::getRows($query, $params);
     }
 
     public function selectOneProduct(){

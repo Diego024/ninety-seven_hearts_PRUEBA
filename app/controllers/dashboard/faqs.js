@@ -61,6 +61,14 @@ const fillTable = dataset => {
     }
 }
 
+// Método manejador de eventos que se ejecuta cuando se envía el formulario de buscar.
+document.getElementById('search-form').addEventListener('submit', function (event) {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Se llama a la función que realiza la búsqueda. Se encuentra en el archivo components.js
+    searchRows(API_FAQS, 'search-form');
+});
+
 //Evento ejecutado para preparar el form antes de hacer un insert
 const openCreateDialog = () => {
     //Se restauran los elementos del form

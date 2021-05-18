@@ -49,6 +49,24 @@ class Comentarios extends Validator {
         return Database::getRow($query, $params);
     }
 
+    public function searchComments($value)
+    {
+        $query="SELECT c.id_comentario, c.comentario, c.valoracion, cp.catalogo_producto, ec.estado_comentario, CONCAT(cl.nombres, ' ', cl.apellidos) as cliente, c.fecha_comentario
+                FROM comentarios c
+                INNER JOIN catalogo_productos cp
+                    ON cp.id_catalogo_producto = c.id_catalogo_producto
+                INNER JOIN estados_comentario ec
+                    ON ec.id_estado_comentario = c.id_estado_comentario
+                INNER JOIN clientes cl
+                    ON cl.id_cliente = c.id_cliente
+                WHERE c.comentario ILIKE ? 
+                OR cp.catalogo_producto ILIKE ?
+                OR cl.nombres ILIKE ?
+                OR cl.apellidos ILIKE ?";
+        $params = array("%$value%", "%$value%", "%$value%", "%$value%");
+        return Database::getRows($query, $params);
+    }
+
     public function selectOneComment() {
         $query="SELECT c.id_comentario, c.comentario, c.valoracion, cp.catalogo_producto, c.id_estado_comentario, ec.estado_comentario, CONCAT(cl.nombres, ' ', cl.apellidos) as cliente, c.fecha_comentario
                 FROM comentarios c

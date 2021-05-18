@@ -39,7 +39,7 @@ function searchRows(api, form) {
     }).then(function (request) {
         // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
         if (request.ok) {
-            //console.log(request.text())
+            // console.log(request.text())
             request.json().then(function (response) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {

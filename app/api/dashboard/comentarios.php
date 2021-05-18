@@ -28,6 +28,28 @@ if(isset($_GET['action'])) {
                     }
                 }
             break;
+            case 'search':
+                $_POST = $comentario->validateForm($_POST);
+                if ($_POST['search'] != '') {
+                    if ($result['dataset'] = $comentario->searchComments($_POST['search'])) {
+                        $result['status'] = 1;
+                        $rows = count($result['dataset']);
+                        if ($rows > 0) {
+                            // $result['message'] = 'Se encontraron ' . $rows . ' coincidencias';
+                        } else {
+                            // $result['message'] = 'Solo existe una coincidencia';
+                        }
+                    } else {
+                        if (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'No hay coincidencias';
+                        }
+                    }
+                } else {
+                    $result['exception'] = 'Ingrese un valor para buscar';
+                }
+                break;
             case 'readOne':
                 if($comentario->setIdComentario($_POST['id_comentario'])) {
                     if($result['dataset'] = $comentario->selectOneComment()) {

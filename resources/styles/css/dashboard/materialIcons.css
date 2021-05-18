@@ -25,16 +25,16 @@
     background-color: #00a816;
     border-radius: 5px;
     padding: 8px;
-    margin: 0px 5px;
+    /* margin: 0px 5px; */
 }
 
 .add--icon__container {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
 
-    margin-right: 10px;
-    margin-bottom: 20px;
+    /* margin-right: 10px;
+    margin-bottom: 20px; */
 }
 
 tr th{

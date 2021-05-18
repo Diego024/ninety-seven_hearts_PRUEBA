@@ -5,6 +5,8 @@ const API_CATEGORIAS = '../../app/api/dashboard/categorias.php?action=';
 document.addEventListener('DOMContentLoaded', () => {
     // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js
     readRows(API_CATEGORIAS);
+    //Se llama a la función para poner la foto del admin
+    setInfoAdmin();
 });
 
 // Función para llenar la tabla con los datos de los registros. Se manda a llamar en la función readRows().
