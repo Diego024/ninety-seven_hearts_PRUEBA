@@ -33,77 +33,20 @@
             <div class="modal-body">
                 <form method="post" id="save-form" enctype="multipart/form-data">
                     <!-- Campo invicible del ID -->
-                    <input class="d-none" type="number" id="id_orden" name="id_cliente" />
-                    <!-- NOMBRES Y APELLIDO -->
+                    <input class="d-none" type="number" id="id_orden_compra" name="id_orden_compra" />
+                    <!-- ESTADO -->
                     <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="nombres">Nombres</label>
-                            <input type="text" class="form-control" id="nombres" name="nombres">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="apellidos">Apellidos</label>
-                            <input type="text" class="form-control" id="apellidos" name="apellidos">
-                        </div>
-                    </div>
-                    <!-- TELEFONO Y EMAIL -->
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="telefono">Teléfono</label>
-                            <input type="text" class="form-control" id="telefono" name="telefono">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="correo_electronico">Email</label>
-                            <input type="text" class="form-control" id="correo_electronico" name="correo_electronico">
-                        </div>
-                    </div>
-
-                    <!-- FECHA DE NACIMIENTO Y GENERO-->
-                    <div class="form-row">
-                        <div class="col">
-                            <label for="fecha_nacimiento">Fecha de nacimiento</label>
-                            <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="1234 Main St">
-                        </div>
-
                         <div class="form-group col-md-6 search_select_box">
-                            <label for="id_genero">Género</label>
-                            <select id="id_genero" name="id_genero" class="form-control">
-                                <!--data-live-search="false"-->
-                                <option selected value=2>Femenino</option>
-                                <option value=1>Masculino</option>
+                            <label for="id_estado_orden">Estado de la orden</label>
+                            <select id="id_estado_orden" name="id_estado_orden" class="form-control">
+                                <option selected value=1>Finalizada</option>
+                                <option value=2>Entregando</option>
+                                <option value=3>Pendiente</option>
+                                <option value=4>Anuladas</option>
+                                <option value=5>En proceso</option>
                             </select>
                         </div>
                     </div>
-                    <!-- DIRECCION Y ESTADO -->
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="direccion">Dirección</label>
-                            <textarea class="form-control" id="direccion" name="direccion" rows="3"></textarea>
-                        </div>
-
-                        <div class="form-group col-md-6 search_select_box">
-                            <label for="id_estado_cuenta">Estado de la cuenta</label>
-                            <select id="id_estado_cuenta" name="id_estado_cuenta" class="form-control">
-                                <option selected value=1>Activo</option>
-                                <option value=2>Inactivo</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- CLAVE Y CONFIRMAR CLAVE -->
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="clave">Contraseña</label>
-                            <input type="password" class="form-control" id="clave" name="clave">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="confirmar_clave">Confirme la contraseña</label>
-                            <input type="password" class="form-control" id="confirmar_clave" name="confirmar_clave">
-                        </div>
-                    </div>
-
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
@@ -115,10 +58,10 @@
 <!-- COMIENZO DE LA TABLA -->
 <div class="container" id="table-container">
     <h4 id="warning-message" style="text-align:center"></h4>
-    <table class="table table-striped table-bordered mydatatable" id="tbody-rows">
+    <table class="table table-striped table-bordered mydatatable" id="tbody-rows-pedidos">
     </table>
 </div>
 <br>
 <?php
-    Private_Page::footerTemplate('datos');
+    Private_Page::footerTemplate('pedidos');
 ?>

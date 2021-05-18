@@ -23,9 +23,9 @@ Public_Page::titleTemplate('HISTORIAL DE VENTAS');
 <!-- COMIENZO DE LA TABLA -->
 <div class="container" id="table-container">
     <h4 id="warning-message" style="text-align:center"></h4>
-    <table class="table table-striped table-bordered mydatatable" id="tbody-rows">
+    <table class="table table-striped table-bordered mydatatable" id="tbody-rows-historial">
     </table>
 </div>
 <?php
-Private_Page::footerTemplate('datos');
+Private_Page::footerTemplate('historial');
 ?>
