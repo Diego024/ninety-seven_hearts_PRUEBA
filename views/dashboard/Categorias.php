@@ -10,26 +10,6 @@ include('../../app/helpers/public_page.php');
 Public_Page::titleTemplate('CATEGORÍAS');
 ?>
 <br>
-<!-- BOTÓN PARA EL MODAL DE CATEGORIAS -->
-<div class="container">
-  <div class="row">
-    <div>
-      <form method="post" id="search-form" class="form-inline my-2 my-lg-0">
-        <input id="search" name="search" class="form-control mr-sm-2" type="search" placeholder="Buscador" aria-label="Search" required>
-        <button class="btn btn-outline-success" type="submit">Buscar</button>
-      </form>
-    </div>
-    <div class="col">
-      <div class="add--icon__container" data-toggle="tooltip" data-placement="bottom" title="Agregar">
-        <a onclick="openCreateDialog()">
-          <span class="material-icons green">
-            add
-          </span>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- INICIO DEL MODAL DE CATEGORIAS -->
 <div class="modal fade" id="Form-categorias" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -73,6 +53,22 @@ Public_Page::titleTemplate('CATEGORÍAS');
 
 <!-- COMIENZO DE LA TABLA -->
 <div class="container">
+  <div class="search-container">
+    <div class="add--icon__container" data-toggle="tooltip" data-placement="bottom" title="Agregar">
+      <!-- BOTÓN PARA EL MODAL DE CATÁLOGO -->
+      <a onclick="openCreateDialog()">
+          <span class="material-icons green">
+          add
+          </span>
+      </a>
+      <!-- FORM DEL SEARCH -->
+      <form method="post" id="search-form" class="form-inline my-2 my-lg-0">
+          <input id="search" name="search" class="form-control mr-sm-2" type="search" placeholder="Buscador" aria-label="Search" required>
+          <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+
   <h4 id="warning-message" style="text-align:center"></h4>
   <table class="table table-striped table-bordered mydatatable" id="tbody-categorias">
   </table>

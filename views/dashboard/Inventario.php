@@ -10,26 +10,6 @@ include('../../app/helpers/public_page.php');
 Public_Page::titleTemplate('INVENTARIO');
 ?>
 <br>
-<!-- BOTÓN PARA EL MODAL DE INVENTARIO -->
-<div class="container">
-    <div class="row">
-        <div>
-            <form method="post" id="search-form" class="form-inline my-2 my-lg-0">
-                <input id="search" name="search" class="form-control mr-sm-2" type="search" placeholder="Buscador" aria-label="Search" required>
-                <button class="btn btn-outline-success" type="submit">Buscar</button>
-            </form>
-        </div>
-        <div class="col">
-            <div class="add--icon__container" data-toggle="tooltip" data-placement="bottom" title="Agregar">
-                <a onclick="openCreateDialog()">
-                    <span class="material-icons green">
-                        add
-                    </span>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- INICIO DEL MODAL DE CLIENTES -->
 <div class="modal fade" id="modal-form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -79,6 +59,22 @@ Public_Page::titleTemplate('INVENTARIO');
 
 <!-- COMIENZO DE LA TABLA -->
 <div class="container" id="table-container">
+    <div class="search-container">
+        <div class="add--icon__container" data-toggle="tooltip" data-placement="bottom" title="Agregar">
+        <!-- BOTÓN PARA EL MODAL DE CATÁLOGO -->
+        <a onclick="openCreateDialog()">
+            <span class="material-icons green">
+            add
+            </span>
+        </a>
+        <!-- FORM DEL SEARCH -->
+        <form method="post" id="search-form" class="form-inline my-2 my-lg-0">
+            <input id="search" name="search" class="form-control mr-sm-2" type="search" placeholder="Buscador" aria-label="Search" required>
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+        </div>
+    </div>
+
     <h4 id="warning-message" style="text-align:center"></h4>
     <table class="table table-striped table-bordered mydatatable" id="tbody-rows">
     </table>

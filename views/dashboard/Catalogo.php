@@ -74,7 +74,6 @@
 
 <!-- COMIENZO DE LA TABLA -->
 <div class="container" id="table-container">
-    <h4 id="warning-message" style="text-align:center"></h4>
     <div class="search-container">
         <div class="add--icon__container" data-toggle="tooltip" data-placement="bottom" title="Agregar">
             <!-- BOTÓN PARA EL MODAL DE CATÁLOGO -->
@@ -90,6 +89,8 @@
             </form>
         </div>
     </div>
+    
+    <h4 id="warning-message" style="text-align:center"></h4>
     <table class="table table-striped table-bordered mydatatable" id="tbody-rows">
     </table>
 </div>
