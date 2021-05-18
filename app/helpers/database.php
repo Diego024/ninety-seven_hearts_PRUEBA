@@ -40,7 +40,7 @@ class Database {
         try{
             self::connect();
             self::$statement = self::$connection->prepare($query);
-            if(sel::$statement->execute($values)) {
+            if(self::$statement->execute($values)) {
                 $id = self::$connection->lastInsertId();
             } else {
                 $id = 0;

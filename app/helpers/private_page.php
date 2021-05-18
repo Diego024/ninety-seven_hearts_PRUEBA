@@ -29,7 +29,7 @@
                         <div class="bg-light border-right" id="sidebar-wrapper">
                             <div class="sidebar--img">
                                 <a href="Home.php">
-                                    <img src="../../resources/statics/images/logo-ready.png" alt="" id="sidebar--img__logo">
+                                    <img src="../../resources/imageFiles/dashboard/index/logo-ready.png" alt="" id="sidebar--img__logo">
                                 </a>
                             </div>
                             <div class="sidebar--separator">

@@ -9,3 +9,8 @@ resources/imageFiles/dashboard/administradores/*gif
 resources/imageFiles/dashboard/catalogo/*jpg
 resources/imageFiles/dashboard/catalogo/*png
 resources/imageFiles/dashboard/catalogo/*gif
+
+# Ignorando las imagenes de las categorias
+resources/imageFiles/dashboard/categorias/*jpg
+resources/imageFiles/dashboard/categorias/*png
+resources/imageFiles/dashboard/categorias/*gif
