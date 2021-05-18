@@ -1,9 +1,9 @@
 // Constantes para establecer comunicación con la API
-const API_DATOS = '../../app/api/dashboard/datos.php?action=';
+const API_PEDIDOS = '../../app/api/dashboard/pedidos.php?action=';
 
 // Función manejadora de eventos, para ejecutar justo cuando termine de cardar.
 document.addEventListener('DOMContentLoaded', () => {
-    readRows(API_DATOS);
+    readRows(API_PEDIDOS);
     //Se llama a la función para poner la foto del admin
     setInfoAdmin();
 })
@@ -67,7 +67,7 @@ document.getElementById('search-form').addEventListener('submit', function (even
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se llama a la función que realiza la búsqueda. Se encuentra en el archivo components.js
-    searchRows(API_DATOS, 'search-form');
+    searchRows(API_PEDIDOS, 'search-form');
 });
 
 //Evento ejecutado para preparar el form antes de actualizar
@@ -81,7 +81,7 @@ const openUpdateDialog = id => {
     const data = new FormData();
     data.append('id_orden_compra', id)
 
-    fetch(API_DATOS + 'readOne', {
+    fetch(API_PEDIDOS + 'readOne', {
         method: 'post',
         body: data
     })
@@ -95,8 +95,8 @@ const openUpdateDialog = id => {
     }).then(response => {
         //console.log(response)
         if(response.status) {
-            document.getElementById('id_orden_compra').value = response.dataset[0].id_orden_compra
-            document.getElementById('id_estado_orden').value = response.dataset[0].id_estado_orden
+            document.getElementById('id_orden_compra').value = response.dataset.id_orden_compra
+            document.getElementById('id_estado_orden').value = response.dataset.id_estado_orden
         } else {
             sweetAlert(2, response.exception, null);
         }
@@ -117,5 +117,5 @@ document.getElementById('save-form').addEventListener('submit', event => {
     } else {
         action = 'create'
     }
-    saveRow(API_DATOS, action, 'save-form', 'modal-form');
+    saveRow(API_PEDIDOS, action, 'save-form', 'modal-form');
 })

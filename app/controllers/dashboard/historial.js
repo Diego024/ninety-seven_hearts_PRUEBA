@@ -1,9 +1,9 @@
 // Constantes para establecer comunicación con la API
-const API_DATOS = '../../app/api/dashboard/datos.php?action=';
+const API_HISTORIAL = '../../app/api/dashboard/historial.php?action=';
 
 // Función manejadora de eventos, para ejecutar justo cuando termine de cardar.
 document.addEventListener('DOMContentLoaded', () => {
-    readRows(API_DATOS);
+    readRows(API_HISTORIAL);
     //Se llama a la función para poner la foto del admin
     setInfoAdmin();
 })
@@ -58,5 +58,5 @@ document.getElementById('search-form').addEventListener('submit', function (even
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se llama a la función que realiza la búsqueda. Se encuentra en el archivo components.js
-    searchRows(API_DATOS, 'search-form');
+    searchRows(API_HISTORIAL, 'search-form');
 });
