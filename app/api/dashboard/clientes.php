@@ -13,8 +13,8 @@ if (isset($_GET['action'])) {
     //Creamos el array donde guardaremos los resultados de la API
     $result = array('status' => 0, 'message' => null, 'exception' => null);
     //Se verifica que haya una sesión iniciada como administrador
-    // if(isset($_SESSION['id_administrador'])) {
-    if (true) {
+    if(isset($_SESSION['id_administrador'])) {
+    // if (true) {
         //Se evalua la acción a realizar
         switch ($_GET['action']) {
             case 'readAll':

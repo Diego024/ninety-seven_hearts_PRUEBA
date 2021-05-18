@@ -5,6 +5,8 @@ const API_CATALOGO = '../../app/api/dashboard/catalogo.php?action=readAll';
 // Función manejadora de eventos, para ejecutar justo cuando termine de cardar.
 document.addEventListener('DOMContentLoaded', () => {
     readRows(API_INVENTARIO);
+    //Se llama a la función para poner la foto del admin
+    setInfoAdmin();
 })
 
 // Función para llenar la tabla con los datos de los registros. Se usa en la función readRows()
