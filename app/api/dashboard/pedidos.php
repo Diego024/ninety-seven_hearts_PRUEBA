@@ -87,39 +87,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Pedido incorrecto';
                 }
                 break;
-            case 'readAllHistorial':
-                if ($result['dataset'] = $datos->selectHistorial()) {
-                    $result['status'] = 1;
-                } else {
-                    if (Database::getException()) {
-                        $result['exception'] = Database::getException();
-                    } else {
-                        $result['exception'] = 'No hay ventas registradas';
-                    }
-                }
-                break;
-            case 'searchHistorial':
-                $_POST = $datos->validateForm($_POST);
-                if ($_POST['search'] != '') {
-                    if ($result['dataset'] = $datos->searchHistorial($_POST['search'])) {
-                        $result['status'] = 1;
-                        $rows = count($result['dataset']);
-                        if ($rows > 1) {
-                            $result['message'] = 'Se encontraron ' . $rows . ' coincidencias';
-                        } else {
-                            $result['message'] = 'Solo existe una coincidencia';
-                        }
-                    } else {
-                        if (Database::getException()) {
-                            $result['exception'] = Database::getException();
-                        } else {
-                            $result['exception'] = 'No hay coincidencias';
-                        }
-                    }
-                } else {
-                    $result['exception'] = 'Ingrese un valor para buscar';
-                }
-                break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
                 break;
