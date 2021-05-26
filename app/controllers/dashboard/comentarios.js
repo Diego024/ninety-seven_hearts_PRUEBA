@@ -18,6 +18,7 @@ const fillTable = dataset => {
         content+=`<h4>No hay comentarios registradas</h4>`
         document.getElementById('warning-message').innerHTML = content
     } else {
+        // console.log(dataset);
         //Se agregan los titulos de las columnas
         content += `
             <tr>

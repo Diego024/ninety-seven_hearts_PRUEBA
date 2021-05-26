@@ -46,9 +46,9 @@ if(isset($_GET['action'])) {
                         $result['status'] = 1;
                         $rows = count($result['dataset']);
                         if ($rows > 0) {
-                            // $result['message'] = 'Se encontraron ' . $rows . ' coincidencias';
+                            $result['message'] = 'Se encontraron ' . $rows . ' coincidencias';
                         } else {
-                            // $result['message'] = 'Solo existe una coincidencia';
+                            $result['message'] = 'Solo existe una coincidencia';
                         }
                     } else {
                         if (Database::getException()) {
