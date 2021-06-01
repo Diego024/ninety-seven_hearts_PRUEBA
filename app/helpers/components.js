@@ -71,7 +71,7 @@ const saveRow = (api, action, form, modal)  => {
     .then( request => {
         //Se verifica que la request se completó correctamente
         if(request.ok) {
-            //console.log(request.text())
+            // console.log(request.text())
             return request.json()
         } else {
             console.log(`${request.status} ${request.statusText}`)
@@ -80,9 +80,10 @@ const saveRow = (api, action, form, modal)  => {
     .then( response => {
         //Se comprueba que el status de la request sea satisfactorio
         if(response.status) {
-            //Se cierra el modal
-            //console.log(modal)
-            $(`#${modal}`).modal('hide');
+            //Se cierra el modal, solo si se recibe un modal
+            if(modal) {
+                $(`#${modal}`).modal('hide');
+            } 
             sweetAlert(1, response.message, null)
             readRows(api)
         } else {
@@ -104,33 +105,31 @@ const confirmDelete = (api, data) => {
         closeonEsc: false,
     }).then( value => {
         if(value) {
-            return ( 
-                fetch(api + 'delete', {
+            fetch(api + 'delete', {
                 method: 'post',
                 body: data
-                }) 
-            )
+            }).then( request => {
+                //Verificando que la request sea correcta
+                if(request.ok) {
+                    //console.log(request.text())
+                    return request.json()
+                } else {
+                    console.log(`${request.status} ${request.statusText}`)
+                }
+            }).then( response => {
+                //Se comprueba que el status de la request sea satisfactorio
+                if(response.status) {
+                    //Se recarga la vista de los registros en la tabla
+                    sweetAlert(1, response.message, null);
+                    readRows(api);
+                } else {
+                    sweetAlert(2, response.exception, null);
+                }
+            }).catch(error => {
+                console.log(error)
+            })
+
         }
-    }).then( request => {
-        //Verificando que la request sea correcta
-        if(request.ok) {
-            //console.log(request.text())
-            return request.json()
-        } else {
-            console.log(`${request.status} ${request.statusText}`)
-        }
-    })
-    .then( response => {
-        //Se comprueba que el status de la request sea satisfactorio
-        if(response.status) {
-            //Se recarga la vista de los registros en la tabla
-            sweetAlert(1, response.message, null);
-            readRows(api);
-        } else {
-            sweetAlert(2, response.exception, null);
-        }
-    }).catch(error => {
-        console.log(error)
     })
 }
 

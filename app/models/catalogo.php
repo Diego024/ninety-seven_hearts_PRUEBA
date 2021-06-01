@@ -150,6 +150,16 @@ class Catalogo extends Validator {
         return Database::getRow($query, $params);
     }
 
+    public function selectCommentsProducto() {
+        $query="SELECT co.id_comentario, co.comentario, CONCAT(c.nombres, ' ', c.apellidos) as nombre, co.fecha_comentario, co.valoracion
+                FROM comentarios co
+                INNER JOIN clientes c
+                    ON c.id_cliente = co.id_cliente
+                WHERE id_catalogo_producto = ? AND co.id_estado_comentario = 1";
+        $params = array($this->id_catalogo_producto);
+        return Database::getRow($query, $params);
+    }
+
     public function selectLowStock() {
         $query="SELECT cp.id_catalogo_producto, cp.catalogo_producto, c.categoria, cp.existencia
                 FROM catalogo_productos cp

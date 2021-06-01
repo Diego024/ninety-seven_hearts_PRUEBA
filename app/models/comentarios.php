@@ -6,8 +6,50 @@ class Comentarios extends Validator {
     //Declaración de atributos
     private $id_comentario;
     private $id_estado_comentario;
+
+    private $comentario;
+    private $id_cliente;
+    private $id_catalogo_producto;
+    private $valoracion;
     
     //Funciones para asignar valores a los atributos
+
+    public function setValoracion($valoracion) {
+        if($valoracion > 0 && $valoracion <= 10 ){
+            $this->valoracion = $valoracion;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setComentario($comentario) {
+        if(strlen($comentario) <= 700) {
+            $this->comentario = $comentario;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setIdCliente($idCliente) {
+        if($this->validateNaturalNumber($idCliente)) {
+            $this->id_cliente = $idCliente;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setIdCatalogoProducto($idProducto) {
+        if($this->validateNaturalNumber($idProducto)) {
+            $this->id_catalogo_producto = $idProducto;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function setIdComentario($idComentario) {
         if($this->validateNaturalNumber($idComentario)) {
             $this->id_comentario = $idComentario;
@@ -27,12 +69,28 @@ class Comentarios extends Validator {
     }
 
     //Funciones para obtener valores de los atributos
+    public function getValoracion() {
+        return $this->valoracion;
+    }
+    
     public function getIdComentario(){
         return $this->id_comentario;
     }
 
     public function getIdEstadoComentario(){
         return $this->id_estado_comentario;
+    }
+
+    public function getComentario() {
+        return $this->comentario;
+    }
+
+    public function getIdCatalogoProd() {
+        return $this->id_cliente;
+    }
+
+    public function getIdCatalogoProducto() {
+        return $this->id_catalogo_producto;
     }
 
     //Funciones para realizar los mantenimientos a la tabla
@@ -65,6 +123,13 @@ class Comentarios extends Validator {
                 OR cl.apellidos ILIKE ?";
         $params = array("%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($query, $params);
+    }
+
+    public function insertComment() {
+        $query="INSERT INTO comentarios(comentario, id_catalogo_producto, id_estado_comentario, id_cliente, fecha_comentario, valoracion) 
+                VALUES ( ?, ?, 1, ?, ?, ?)";
+        $params = array($this->comentario, $this->id_catalogo_producto, $this->id_cliente, date('Y-m-d'), $this->valoracion);
+        return Database::executeRow($query, $params);
     }
 
     public function selectOneComment() {

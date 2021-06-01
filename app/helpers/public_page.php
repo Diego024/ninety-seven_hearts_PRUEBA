@@ -55,104 +55,6 @@
             ');
         }
 
-        //NAVBAR
-        public static function navbarTemplate($page) {
-            switch($page) {
-                case 'Vestidos':
-                    $opciones = '
-                    <a href="Vestidos.php" class="categoria categoria__selected" id="btnVestidos">Vestidos</a>
-                    <a href="Pantalones.php" class="categoria" id="btnPantalones">Pantalones</a>
-                    <a href="Trajes_baño.php" class="categoria" id="btnTrajesBaño">Trajes de baño</a>
-                    <a href="Hogareña.php" class="categoria" id="btnHogar">Hogareña</a>
-                    <a href="Camisetas.php" class="categoria" id="btnCamisetas">Camisetas</a>
-                    <a href="Accesorios.php" class="categoria" id="btnAccesorios">Accesorios</a>
-                    <a href="Lenceria.php" class="categoria" id="btnLenceria">Lencería</a>';
-                break;
-                case 'Pantalones':
-                    $opciones = '
-                    <a href="Vestidos.php" class="categoria" id="btnVestidos">Vestidos</a>
-                    <a href="Pantalones.php" class="categoria categoria__selected" id="btnPantalones">Pantalones</a>
-                    <a href="Trajes_baño.php" class="categoria" id="btnTrajesBaño">Trajes de baño</a>
-                    <a href="Hogareña.php" class="categoria" id="btnHogar">Hogareña</a>
-                    <a href="Camisetas.php" class="categoria" id="btnCamisetas">Camisetas</a>
-                    <a href="Accesorios.php" class="categoria" id="btnAccesorios">Accesorios</a>
-                    <a href="Lenceria.php" class="categoria" id="btnLenceria">Lencería</a>';
-                break;
-                case 'TrajesBaño':
-                    $opciones = '
-                    <a href="Vestidos.php" class="categoria" id="btnVestidos">Vestidos</a>
-                    <a href="Pantalones.php" class="categoria" id="btnPantalones">Pantalones</a>
-                    <a href="Trajes_baño.php" class="categoria categoria__selected" id="btnTrajesBaño">Trajes de baño</a>
-                    <a href="Hogareña.php" class="categoria" id="btnHogar">Hogareña</a>
-                    <a href="Camisetas.php" class="categoria" id="btnCamisetas">Camisetas</a>
-                    <a href="Accesorios.php" class="categoria" id="btnAccesorios">Accesorios</a>
-                    <a href="Lenceria.php" class="categoria" id="btnLenceria">Lencería</a>';
-                break;
-                case 'Hogar':
-                    $opciones = '
-                    <a href="Vestidos.php" class="categoria" id="btnVestidos">Vestidos</a>
-                    <a href="Pantalones.php" class="categoria" id="btnPantalones">Pantalones</a>
-                    <a href="Trajes_baño.php" class="categoria" id="btnTrajesBaño">Trajes de baño</a>
-                    <a href="Hogareña.php" class="categoria categoria__selected" id="btnHogar">Hogareña</a>
-                    <a href="Camisetas.php" class="categoria" id="btnCamisetas">Camisetas</a>
-                    <a href="Accesorios.php" class="categoria" id="btnAccesorios">Accesorios</a>
-                    <a href="Lenceria.php" class="categoria" id="btnLenceria">Lencería</a>';
-                break;
-                case 'Camisetas':
-                    $opciones = '
-                    <a href="Vestidos.php" class="categoria" id="btnVestidos">Vestidos</a>
-                    <a href="Pantalones.php" class="categoria" id="btnPantalones">Pantalones</a>
-                    <a href="Trajes_baño.php" class="categoria" id="btnTrajesBaño">Trajes de baño</a>
-                    <a href="Hogareña.php" class="categoria" id="btnHogar">Hogareña</a>
-                    <a href="Camisetas.php" class="categoria categoria__selected" id="btnCamisetas">Camisetas</a>
-                    <a href="Accesorios.php" class="categoria" id="btnAccesorios">Accesorios</a>
-                    <a href="Lenceria.php" class="categoria" id="btnLenceria">Lencería</a>';
-                break;
-                case 'Accesorios':
-                    $opciones = '
-                    <a href="Vestidos.php" class="categoria" id="btnVestidos">Vestidos</a>
-                    <a href="Pantalones.php" class="categoria" id="btnPantalones">Pantalones</a>
-                    <a href="Trajes_baño.php" class="categoria" id="btnTrajesBaño">Trajes de baño</a>
-                    <a href="Hogareña.php" class="categoria" id="btnHogar">Hogareña</a>
-                    <a href="Camisetas.php" class="categoria" id="btnCamisetas">Camisetas</a>
-                    <a href="Accesorios.php" class="categoria categoria__selected" id="btnAccesorios">Accesorios</a>
-                    <a href="Lenceria.php" class="categoria" id="btnLenceria">Lencería</a>';
-                break;
-                case 'Lenceria':
-                    $opciones = '
-                    <a href="Vestidos.php" class="categoria" id="btnVestidos">Vestidos</a>
-                    <a href="Pantalones.php" class="categoria" id="btnPantalones">Pantalones</a>
-                    <a href="Trajes_baño.php" class="categoria" id="btnTrajesBaño">Trajes de baño</a>
-                    <a href="Hogareña.php" class="categoria" id="btnHogar">Hogareña</a>
-                    <a href="Camisetas.php" class="categoria" id="btnCamisetas">Camisetas</a>
-                    <a href="Accesorios.php" class="categoria" id="btnAccesorios">Accesorios</a>
-                    <a href="Lenceria.php" class="categoria categoria__selected" id="btnLenceria">Lencería</a>';
-                break;
-                default:
-                    $opciones = '
-                    <a href="Vestidos.php" class="categoria" id="btnVestidos">Vestidos</a>
-                    <a href="Pantalones.php" class="categoria" id="btnPantalones">Pantalones</a>
-                    <a href="Trajes_baño.php" class="categoria" id="btnTrajesBaño">Trajes de baño</a>
-                    <a href="Hogareña.php" class="categoria" id="btnHogar">Hogareña</a>
-                    <a href="Camisetas.php" class="categoria" id="btnCamisetas">Camisetas</a>
-                    <a href="Accesorios.php" class="categoria" id="btnAccesorios">Accesorios</a>
-                    <a href="Lenceria.php" class="categoria" id="btnLenceria">Lencería</a>';
-                break;
-            }
-
-            print('
-                <nav class="menu sticky-top">
-                    <div class="menu--titulo">
-                        <a href="#" class="menu--titulo__texto">CATEGORIAS</a>
-                    </div>
-                    <div class="menu--categorias menu--hidden" id="categories">
-                        '.$opciones.'
-                    </div>
-                </nav>
-                <!--FIN DEL HEADER Y NAV-->
-            ');
-        }
-
         //TITULO
         public static function titleTemplate($title) {
             print('
@@ -163,7 +65,7 @@
         }
 
         //FOOTER
-        public static function footerTemplate() {
+        public static function footerTemplate($controller) {
             print('
                 <!--INICIO DEL FOOTER-->
                 <footer class="pie">
@@ -195,11 +97,14 @@
                     </div>        
                     </div>
                 </footer>
-                <!-- App -->
-                <script type="module" src="../../app/features/public/index.js"></script>
+                <!-- Controller -->
+                <script src="../../app/controllers/public/'.$controller.'.js"></script>
+                <script src="../../app/helpers/components.js"></script>
                 <!-- Bootstrap -->
                 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+                <!-- LINKS DE SWEET ALERT -->
+                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             </body>
             </html>
             ');

@@ -7,10 +7,6 @@
 <div class="separador"></div>
 
 <?php
-    Public_Page::navbarTemplate('');
-?>
-
-<?php
     Public_Page::titleTemplate('MIS ARTÍCULOS')
 ?>
 
@@ -209,5 +205,5 @@
 <div class="separador"></div>
 
 <?php
-    Public_Page::footerTemplate();
+    Public_Page::footerTemplate('ordenes');
 ?>

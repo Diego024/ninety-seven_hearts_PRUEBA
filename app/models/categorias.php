@@ -51,7 +51,7 @@ class Categorias extends Validator
 
     public function setFotoCategoria($file)
     {
-        if ($this->validateImageFile($file, 500, 500)) {
+        if ($this->validateImageFile($file, 1900, 600)) {
             $this->foto_categoria = $this->getImageName();
             return true;
         } else {
@@ -146,5 +146,15 @@ class Categorias extends Validator
         $query = "DELETE FROM categorias WHERE id_categoria = ?";
         $params = array($this->id_categoria);
         return Database::executeRow($query, $params);
+    }
+
+    public function readProductosCategoria() {
+        $query="SELECT cp.id_catalogo_producto, cp.catalogo_producto, cp.descripcion, cp.existencia, cp.precio_venta, c.categoria, cp.foto_producto, c.descripcion_categoria, c.foto_categoria
+                FROM catalogo_productos cp
+                INNER JOIN categorias c
+                    ON c.id_categoria = cp.id_categoria
+                WHERE cp.id_categoria = ?";
+        $params = array($this->id_categoria);
+        return Database::getRows($query, $params);
     }
 }

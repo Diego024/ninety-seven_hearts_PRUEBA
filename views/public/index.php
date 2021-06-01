@@ -7,9 +7,17 @@
 
 <div class="separador"></div>
 
-<?php
-    Public_Page::navbarTemplate('');
-?>
+
+<!-- Public_Page::navbarTemplate(''); -->
+
+<nav class="menu sticky-top">
+    <div class="menu--titulo">
+        <a href="#" class="menu--titulo__texto">CATEGORIAS</a>
+    </div>
+    <div class="menu--categorias menu--hidden" id="categories">
+    </div>
+</nav>
+<!--FIN DEL HEADER Y NAV-->
 
 <!--INICIO CARRUSEL-->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -141,5 +149,5 @@
 <div class="separador"></div>
 
 <?php
-    Public_Page::footerTemplate()
+    Public_Page::footerTemplate('index')
 ?>

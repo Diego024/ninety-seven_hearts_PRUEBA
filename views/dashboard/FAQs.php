@@ -60,9 +60,9 @@
         </a>
         <!-- FORM DEL SEARCH -->
         <form method="post" id="search-form" class="form-inline my-2 my-lg-0">
-                <input id="search" name="search" class="form-control mr-sm-2" type="search" placeholder="Buscador" aria-label="Search" required>
-                <button class="btn btn-outline-success" type="submit">Buscar</button>
-            </form>
+            <input id="search" name="search" class="form-control mr-sm-2" type="search" placeholder="Buscador" aria-label="Search" required>
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
       </div>
     </div>
     
