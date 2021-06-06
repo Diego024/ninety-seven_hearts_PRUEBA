@@ -29,14 +29,17 @@
                 $49.99
             </h3>
 
-            <form action="submit">
+            <form method="post" id="carrito-form" class="my-2 my-lg-0">
                 <div>
+                    <!-- Campo invicible del ID del producto -->
+                    <input class="d-none" type="number" id="id_producto-carrito" name="id_catalogo_producto">
+
                     <label for="inputState">Cantidad: </label>
                     <input name="cantidad" id="cantidad" type="number" min="1" max="4">
                 </div>
 
                 <div>
-                    <button type="button" class="bbtn btn-dark rounded" id="agregarCarrito--boton" data-toggle="modal" data-target="#confirmarPedido">
+                    <button type="submit" class="bbtn btn-dark rounded" id="agregarCarrito--boton">
                         Agregar al carrito
                     </button>
                 </div>

@@ -59,7 +59,7 @@ function searchRows(api, form) {
 }
 
 //Funciones para crear o actualizar un registro.
-const saveRow = (api, action, form, modal)  => {
+const saveRow = (api, action, form, modal, isNotTable)  => {
     // let formulario = new FormData(document.getElementById(form)).entries();
     // for(value of formulario) {
     //     console.log(value)
@@ -84,8 +84,10 @@ const saveRow = (api, action, form, modal)  => {
             if(modal) {
                 $(`#${modal}`).modal('hide');
             } 
+            if(!isNotTable) {
+                readRows(api)
+            }
             sweetAlert(1, response.message, null)
-            readRows(api)
         } else {
             sweetAlert(2, response.exception, null)
         }

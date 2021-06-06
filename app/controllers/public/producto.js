@@ -1,4 +1,5 @@
 const API_CATALOGO = '../../app/api/public/catalogo.php?action=';
+const API_ORDENES = '../../app/api/public/ordenes.php?action=';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     readAllCategories();
     //Obteniendo el ID del producto para el FORM de comentarios
     document.getElementById('id_catalogo_producto').value = ID;
+    //Obteniendo el ID del producto para el FORM de agregar al carrito
+    document.getElementById('id_producto-carrito').value = ID;
 });
 
 const readCommentsProduct = id => {
@@ -145,4 +148,14 @@ document.getElementById('comment-form').addEventListener('submit', event => {
     readCommentsProduct(ID)
     document.getElementById('comentario').value = null;
     document.getElementById('valoracion').value = null;
+})
+
+//Función para menejar el evento de agregar al carrito
+document.getElementById('carrito-form').addEventListener('submit', event => {
+    //Se evita que se recargue la página
+    event.preventDefault();
+
+    saveRow(API_ORDENES, 'createDetail', 'carrito-form', null, true)
+    document.getElementById('cantidad').value = null;
+
 })
