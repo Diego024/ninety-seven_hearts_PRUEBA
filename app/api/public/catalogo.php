@@ -80,10 +80,8 @@ if(isset($_GET['action'])) {
         case 'createComment':
         //Este caso es para guardar los comentarios
             $_POST = $comentario->validateForm($_POST);
-            // if(isset($_SESSION['id_cliente'])) {
-            if(true) {
-                // if($comentario->setIdCliente($_SESSION['id_cliente'])) {
-                if($comentario->setIdCliente(1)) {
+            if(isset($_SESSION['id_cliente'])) {
+                if($comentario->setIdCliente($_SESSION['id_cliente'])) {
                     if($comentario->setComentario($_POST['comentario'])) {
                         if($comentario->setIdCatalogoProducto($_POST['id_catalogo_producto'])) {
                             if($comentario->setValoracion($_POST['valoracion'])) {
@@ -113,9 +111,9 @@ if(isset($_GET['action'])) {
                 $result['exception'] = 'Antes tiene que ingresar o crearse una cuenta.';
             }
             break;
+        //Este caso es para mostrar los favoritos de un usuario
         case 'readFavoritos':
-            // if(isset($_SESSION['id_cliente'])) {
-            if(true) {
+            if(isset($_SESSION['id_cliente'])) {
                 if($result['dataset'] = $catalogo->readFavoritos()) {
                     $result['status'] = 1;
                 } else {
@@ -129,9 +127,9 @@ if(isset($_GET['action'])) {
                 $result['exception'] = 'Antes tiene que ingresar o crearse una cuenta.';
             }
             break;
+        //Este caso es para agregar un producto a favoritos
         case 'createFavorito':
-            // if(isset($_SESSION['id_cliente'])) {
-            if(true) {
+            if(isset($_SESSION['id_cliente'])) {
                 if($catalogo->setIdCatalogoProducto($_POST['id_catalogo_producto'])){
                     if($catalogo->verifyFavorito() == null) {
                         if($catalogo->createFavorito()) {
@@ -154,6 +152,7 @@ if(isset($_GET['action'])) {
                 $result['exception'] = 'Antes tiene que ingresar o crearse una cuenta.';
             }
             break;
+        //Este caso es para eliminar un producto de los favoritos
         case 'deleteFavorito':
             if($catalogo->setIdCatalogoProducto($_POST['id_catalogo_producto'])){
                 if($catalogo->deleteFavorito()) {

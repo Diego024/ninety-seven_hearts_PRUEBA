@@ -129,8 +129,7 @@ class Ordenes extends Validator {
         $query="SELECT id_orden_compra
                 FROM orden_compra
                 WHERE id_cliente = ? AND id_estado_orden = ?";
-        // $params = array($_SESSION['id_cliente'], $this->id_estado_orden);
-        $params = array(3, $this->id_estado_orden);
+        $params = array($_SESSION['id_cliente'], $this->id_estado_orden);
         //Se ejecuta y se verifica que si hay una orden en proceso
         if($data = Database::getRow($query, $params)) {
             $this->id_orden_compra = $data[0]['id_orden_compra'];
@@ -138,8 +137,7 @@ class Ordenes extends Validator {
         } else {
             $insertQuery="INSERT INTO orden_compra(id_cliente, id_estado_orden) 
                     VALUES (?, ?)";
-            // $params = array($_SESSION['id_cliente'], $this->id_estado_orden);
-            $params = array(3, $this->id_estado_orden);
+            $params = array($_SESSION['id_cliente'], $this->id_estado_orden);
             if($this->id_orden_compra = Database::getLastRow($insertQuery, $params)) {
                 return true;
             } else {
@@ -155,8 +153,7 @@ class Ordenes extends Validator {
                     INNER JOIN orden_compra oc
                         ON oc.id_orden_compra = de.id_orden_compra
                     WHERE de.id_catalogo_producto = ? AND oc.id_cliente = ? AND oc.id_estado_orden = 5";
-            // $params = array($this->id_catalogo_producto, $_SESSION['id_cliente']);
-            $params = array($this->id_catalogo_producto, 3);
+            $params = array($this->id_catalogo_producto, $_SESSION['id_cliente']);
             return Database::getRow($query, $params);
         }
 

@@ -16,8 +16,7 @@ if(isset($_GET['action'])) {
     switch ($_GET['action']) {
         //Este caso es para crear un detalle o actualizarle la cantidad a uno existente.
         case 'createDetail':
-            // if(isset($_POST['id_cliente'])) {
-            if(true) {
+            if(isset($_POST['id_cliente'])) {
                 //Se crea o se continua una orden
                 if($orden->startOrder()) {
                     $_POST = $orden->validateForm($_POST);
@@ -137,15 +136,19 @@ if(isset($_GET['action'])) {
                 $_SESSION['id_orden_compra'] = $orden->getIdOrdenCompra();
                 $orderInfo = $orden->readOrderInfo();
                 if($orden->setTotal($orderInfo[0]['sum'])) {
+                    //Se verifica si la el pedido es un regalo
                     if(isset($_POST['orden_regalo'])) {
                         if($orden->setOrdenRegalo($_POST['orden_regalo'])) {
+                            //Se verifiica si existe un comentario del pedido
                             if(isset($_POST['comentario'])) {
                                 if($orden->setComentario($_POST['comentario'])) {
+                                    //Se realiza la orden
                                     if($orden->makeOrder()) {
                                         if($carrito = $orden->readCarrito()) {
                                             
                                             $contador = 0;
-        
+                                            
+                                            //Se descuentan los productos del inventario
                                             foreach ($carrito as &$detalle) {
                                                 $orden->setIdCatalogoProducto($detalle['id_catalogo_producto']);
                                                 $orden->setCantidad($detalle['cantidad']);
@@ -173,12 +176,15 @@ if(isset($_GET['action'])) {
                                     $result['exception'] = 'Comentario incorrecto';
                                 }
                             } else {
+                                //Se realiza el pedido sin comentario
                                 if($orden->setComentario('')) {
+                                    //Se realiza la orden
                                     if($orden->makeOrder()) {
                                         if($carrito = $orden->readCarrito()) {
                                             
                                             $contador = 0;
-        
+                                            
+                                            //Se descuentan los productos del inventario
                                             foreach ($carrito as &$detalle) {
                                                 $orden->setIdCatalogoProducto($detalle['id_catalogo_producto']);
                                                 $orden->setCantidad($detalle['cantidad']);
@@ -211,13 +217,17 @@ if(isset($_GET['action'])) {
                             $result['exception'] = 'No se ha podido verificar si el pedido es un regalo';
                         }
                     } else {
+                        //Se crea el pedido cuando no es un regalo
                         if(isset($_POST['comentario'])) {
+                            //Se verifiica si existe un comentario del pedido
                             if($orden->setComentario($_POST['comentario'])) {
+                                //Se realiza la orden
                                 if($orden->makeOrder()) {
                                     if($carrito = $orden->readCarrito()) {
                                         
                                         $contador = 0;
-    
+                                        
+                                        //Se descuentan los productos del inventario
                                         foreach ($carrito as &$detalle) {
                                             $orden->setIdCatalogoProducto($detalle['id_catalogo_producto']);
                                             $orden->setCantidad($detalle['cantidad']);
@@ -245,12 +255,15 @@ if(isset($_GET['action'])) {
                                 $result['exception'] = 'Comentario incorrecto';
                             }
                         } else {
+                            //Se realiza el pedido sin comentario
                             if($orden->setComentario('')) {
+                                //Se realiza la orden
                                 if($orden->makeOrder()) {
                                     if($carrito = $orden->readCarrito()) {
                                         
                                         $contador = 0;
     
+                                        //Se descuentan los productos del inventario
                                         foreach ($carrito as &$detalle) {
                                             $orden->setIdCatalogoProducto($detalle['id_catalogo_producto']);
                                             $orden->setCantidad($detalle['cantidad']);

@@ -114,7 +114,6 @@ class Categorias extends Validator
                 FROM categorias
                 ORDER BY categoria';
         $params = null;
-        //print_r(Database::getRows($sql, $params));
         print($params);
         return Database::getRows($sql, $params);
     }

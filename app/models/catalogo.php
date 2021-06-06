@@ -190,29 +190,25 @@ class Catalogo extends Validator {
                 ON cp.id_catalogo_producto = f.id_catalogo_producto
                 WHERE f.id_cliente = ?";
         $params = array($_SESSION['id_cliente']);
-        // $params = array(1);
         return Database::getRows($query, $params);
     }
 
     public function createFavorito() {
         $query="INSERT INTO favoritos(id_cliente, id_catalogo_producto)
                 VALUES (?,?)";
-        // $params = array($_SESSION['id_cliente'], $this->id_catalogo_producto);
-        $params = array(1, $this->id_catalogo_producto);
+        $params = array($_SESSION['id_cliente'], $this->id_catalogo_producto);
         return Database::executeRow($query, $params);
     }
 
     public function verifyFavorito() {
         $query="SELECT * FROM favoritos WHERE id_cliente = ? AND id_catalogo_producto = ?";
-        // $params = array($_SESSION['id_cliente'], $this->id_catalogo_producto);
-        $params = array(1, $this->id_catalogo_producto);
+        $params = array($_SESSION['id_cliente'], $this->id_catalogo_producto);
         return Database::getRow($query, $params);
     }
 
     public function deleteFavorito () {
         $query="DELETE FROM favoritos WHERE id_cliente = ? AND id_catalogo_producto = ?";
-        // $params = array($_SESSION['id_cliente'], $this->id_catalogo_producto);
-        $params = array(1, $this->id_catalogo_producto);
+        $params = array($_SESSION['id_cliente'], $this->id_catalogo_producto);
         return Database::executeRow($query, $params);
     }
 }
