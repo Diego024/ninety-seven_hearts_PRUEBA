@@ -286,8 +286,9 @@ if(isset($_GET['action'])) {
             } else {
                 $result['exception'] = 'Ocurrió un problema al obtener el pedido';
             }
-
-            
+            break;
+        default: 
+            $result['exception'] = 'Acción no disponible dentro de la sesión';
             break;
     }
      // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.

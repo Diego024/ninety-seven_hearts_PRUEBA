@@ -19,6 +19,40 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('id_producto-carrito').value = ID;
 });
 
+const crearFavorito = () => {
+    //Se busca en la URL los parámetros disponibles
+    const params = new URLSearchParams(location.search);
+    //Se obtienen los datos localizados por medio de las variables
+    const ID = params.get('id');
+    
+    //Se crea una variable para guardar el id del producto para usarlo en la request
+    const data = new FormData;
+    data.append('id_catalogo_producto', ID);
+    //Se realiza la request
+    fetch(API_CATALOGO + 'createFavorito', {
+        method: 'post',
+        body: data
+    }).then( request => {
+        //Verificando que la request sea correcta
+        if(request.ok) {
+            // console.log(request.text())
+            return request.json()
+        } else {
+            console.log(`${request.status} ${request.statusText}`)
+        }
+    }).then( response => {
+        //Se comprueba que el status de la request sea satisfactorio
+        if(response.status) {
+            //Se recarga la vista de los registros en la tabla
+            sweetAlert(1, response.message, null);
+        } else {
+            sweetAlert(2, response.exception, null);
+        }
+    }).catch(error => {
+        console.log(error)
+    })
+}
+
 const readCommentsProduct = id => {
     //Se crea una constante con los datos del registro
     const data = new FormData();

@@ -37,6 +37,15 @@
     margin-bottom: 15px;
 }
 
+#btn_eliminar {
+    color:  #8C000E;
+    margin: 5px;
+}
+
+#btn_eliminar:hover {
+    cursor:pointer;
+}
+
 /****************************** COMENTARIOS ******************************/
 
 .comentarios--contenedor {

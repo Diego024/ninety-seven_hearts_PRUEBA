@@ -2,7 +2,7 @@
 
     include('../../app/helpers/public_page.php');
 
-    Public_Page::headerTemplate('Camisa Vogue', 'Vestido');
+    Public_Page::headerTemplate('Camisa Vogue', 'Producto');
 ?>
 
 <div class="separador"></div>
@@ -19,14 +19,14 @@
 <div class="container producto--contenedor mt-4">
     <div class="row">
         <div class="col-md-4">
-            <img src="https://i.pinimg.com/originals/05/b4/12/05b412352c9377a2fcf28f86a7038fac.jpg" class="img-fluid" id="producto--img" alt="...">
+            <img src="" class="img-fluid" id="producto--img" alt="...">
         </div>
         <div class="col-lg-8">
             <h3 class="producto--info__titulo" id="catalogo_producto">
-                Camisa Vogue
+                
             </h3>
             <h3 class="producto--info__precio mt-4" id="precio">
-                $49.99
+                
             </h3>
 
             <form method="post" id="carrito-form" class="my-2 my-lg-0">
@@ -39,17 +39,19 @@
                 </div>
 
                 <div>
-                    <button type="submit" class="bbtn btn-dark rounded" id="agregarCarrito--boton">
+                    <button type="submit" class="bbtn btn-dark rounded mb-2" id="agregarCarrito--boton">
                         Agregar al carrito
                     </button>
                 </div>
             </form>
             
+            <a onclick=crearFavorito() id="btn_eliminar"><b>Agregar a favoritos</b></a>
+
             <h3 class="producto--info__descripcion mt-4" style="margin-top: 25px;">
                 Descripción:
             </h3>
             
-            <p id='producto-descripcion'>El nuevo capítulo de Ann Demeulemeester sin Ann Demeulemeester no podría ser más fiel a la diseñadora belga</p>
+            <p id='producto-descripcion'></p>
             
         </div>
         <div class="col comentarios--contenedor mt-4">

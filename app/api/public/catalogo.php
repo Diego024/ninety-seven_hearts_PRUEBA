@@ -7,6 +7,8 @@ require_once('../../models/comentarios.php');
 
 //Se comprueba que exista una acción a realizar, sino, se muestra un error
 if(isset($_GET['action'])) {
+    // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
+    session_start();
     //Se instancian las clases correspondientes
     $categoria = new Categorias;
     $catalogo = new Catalogo;
@@ -110,6 +112,66 @@ if(isset($_GET['action'])) {
             } else {
                 $result['exception'] = 'Antes tiene que ingresar o crearse una cuenta.';
             }
+            break;
+        case 'readFavoritos':
+            // if(isset($_SESSION['id_cliente'])) {
+            if(true) {
+                if($result['dataset'] = $catalogo->readFavoritos()) {
+                    $result['status'] = 1;
+                } else {
+                    if(Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'Producto inexistente';
+                    }
+                }
+            } else {
+                $result['exception'] = 'Antes tiene que ingresar o crearse una cuenta.';
+            }
+            break;
+        case 'createFavorito':
+            // if(isset($_SESSION['id_cliente'])) {
+            if(true) {
+                if($catalogo->setIdCatalogoProducto($_POST['id_catalogo_producto'])){
+                    if($catalogo->verifyFavorito() == null) {
+                        if($catalogo->createFavorito()) {
+                            $result['status'] = 1;
+                            $result['message'] = 'Producto agregado a favoritos';
+                        } else {
+                            if(Database::getException()) {
+                                $result['exception'] = Database::getException();
+                            } else {
+                                $result['exception'] = 'Producto inexistente';
+                            }
+                        }
+                    } else {
+                        $result['exception'] = 'Este producto ya pertenece a sus favoritos';    
+                    }
+                } else {
+                    $result['exception'] = 'Producto incorrecto';    
+                }
+            } else {
+                $result['exception'] = 'Antes tiene que ingresar o crearse una cuenta.';
+            }
+            break;
+        case 'deleteFavorito':
+            if($catalogo->setIdCatalogoProducto($_POST['id_catalogo_producto'])){
+                if($catalogo->deleteFavorito()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Producto eliminado de favoritos';
+                } else {
+                    if(Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'Producto inexistente';
+                    }
+                }
+            } else {
+                $result['exception'] = 'Producto incorrecto';    
+            }
+            break;
+        default: 
+            $result['exception'] = 'Acción no disponible dentro de la sesión';
             break;
     }
     // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
