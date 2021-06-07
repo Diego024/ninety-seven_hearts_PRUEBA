@@ -169,6 +169,29 @@ if(isset($_GET['action'])) {
                 $result['exception'] = 'Producto incorrecto';    
             }
             break;
+        //Este caso es para realizar la busqueda de productos
+        case 'search':
+            $_POST = $catalogo->validateForm($_POST);
+            if ($_POST['search'] != '') {
+                if ($result['dataset'] = $catalogo->searchProducts($_POST['search'])) {
+                    $result['status'] = 1;
+                    $rows = count($result['dataset']);
+                    if ($rows > 0) {
+                        $result['message'] = 'Se encontraron ' . $rows . ' coincidencias';
+                    } else {
+                        $result['message'] = 'Solo existe una coincidencia';
+                    }
+                } else {
+                    if (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No hay coincidencias';
+                    }
+                }
+            } else {
+                $result['exception'] = 'Ingrese un valor para buscar';
+            }
+            break;
         default: 
             $result['exception'] = 'Acción no disponible dentro de la sesión';
             break;

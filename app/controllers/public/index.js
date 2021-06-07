@@ -7,8 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     readAllNovedades();
     //Se llama a la función para mostrar las categorías disponibles
     readAllCategories();
-    //Se llama a la función para mostrar la información del producto
-    readProductInfo(ID)
 })
 
 function readAllNovedades() {
@@ -84,6 +82,7 @@ const readAllCategories = () => {
         } else {
             // Se presenta un mensaje de error cuando no existen datos para mostrar.
             document.getElementById('categories').innerHTML = `<p>No se han registrado categorías</p>`;
+            // document.getElementById('categories').innerHTML = `${resp.exception}`;
         }
     }).catch(function (error) {
         console.log(error);

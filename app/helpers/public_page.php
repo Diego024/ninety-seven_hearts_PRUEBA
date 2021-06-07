@@ -60,8 +60,8 @@ class Public_Page
                             </div>
                             <div class="opciones--buscar">
                                 <form action="" class="buscar">
-                                    <input type="search" class="buscar--input" placeholder="Buscar" size="45" spellcheck="true">
-                                    <button class="buscar--button">Buscar</button>
+                                    <input type="search" class="buscar--input" id="input-search" placeholder="Buscar" size="45" spellcheck="true">
+                                    <a href="#" onclick="setSearchLink()" id="input-button" class="buscar--button">Buscar</a>
                                 </form>
                             </div>
                         </div>
@@ -99,8 +99,8 @@ class Public_Page
                             </div>
                             <div class="opciones--buscar">
                                 <form action="" class="buscar">
-                                    <input type="search" class="buscar--input" placeholder="Buscar" size="45" spellcheck="true">
-                                    <button class="buscar--button">Buscar</button>
+                                    <input type="search" class="buscar--input" id="input-search" placeholder="Buscar" size="45" spellcheck="true">
+                                    <a href="#" onclick="setSearchLink()" id="input-button" class="buscar--button">Buscar</a>
                                 </form>
                             </div>
                         </div>
