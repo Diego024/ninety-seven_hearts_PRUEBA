@@ -53,6 +53,7 @@ class Public_Page
                                     <img src="../../resources/statics/icons/usuarios.png" id="icono--usuario" alt="">
                                     <div class="usuario--opciones">
                                         <a href="#" onclick="logOut()" class="usuario--contenedor__enlace">Cerrar Sesión</a>
+                                        <a href="Historial.php" class="usuario--contenedor__enlace">Historial de compra</a>
                                     </div>
                                 </div>
                                 

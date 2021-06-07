@@ -174,6 +174,30 @@ class Datos extends Validator {
         $params = array($this->id_estado_orden, $this->id_orden_compra);
         return Database::executeRow($query, $params);  
     }
-}
 
-?>
+    public function selectHistorialCliente() {
+        $query = "SELECT c.id_cliente, oc.id_orden_compra, CONCAT(c.nombres,' ',c.apellidos) AS Cliente, oc.fecha_orden, oc.total, eo.estado_orden
+                 FROM orden_compra oc
+                 INNER JOIN clientes c
+                 ON c.id_cliente = oc.id_cliente
+                 INNER JOIN estados_orden eo
+                 ON eo.id_estado_orden = oc.id_estado_orden
+                 WHERE (oc.id_estado_orden = 1 OR oc.id_estado_orden = 2 OR oc.id_estado_orden = 3) AND c.id_cliente = ?
+                 ORDER BY fecha_orden DESC";
+        $params =array($_SESSION['id_cliente']);
+        return Database::getRow($query, $params);                  
+    }
+
+    public function selectDetalle() {
+        $query = "SELECT d.id_detalle_orden, oc.id_orden_compra, cp.catalogo_producto, d.cantidad, d.subtotal
+                 FROM detalle_orden d
+                 INNER JOIN orden_compra oc
+                        ON oc.id_orden_compra = d.id_orden_compra
+                 INNER JOIN catalogo_productos cp
+                        ON cp.id_catalogo_producto = d.id_catalogo_producto
+                 WHERE d.id_orden_compra = ?
+                 ORDER BY catalogo_producto";
+        $params =array($this->id_orden_compra);
+        return Database::getRow($query, $params);                  
+    }
+}
