@@ -211,5 +211,14 @@ class Catalogo extends Validator {
         $params = array($_SESSION['id_cliente'], $this->id_catalogo_producto);
         return Database::executeRow($query, $params);
     }
+
+    public function selectNovedades(){
+        $query= "SELECT DISTINCT cp.id_catalogo_producto, cp.catalogo_producto, cp.precio_venta, cp.foto_producto
+                 FROM inventario_productos ip
+                 INNER JOIN catalogo_productos cp ON ip.id_catalogo_producto = cp.id_catalogo_producto
+                 WHERE fecha_registro >= CURRENT_DATE + interval '-1 month'";
+        $params = null;
+        return Database::getRow($query, $params);
+    }
 }
 ?>

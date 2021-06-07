@@ -1,7 +1,7 @@
 <?php
-
 //Clase para manejar las tablas de ordenes de compra y detalle_orden de la base de datos.
 class Ordenes extends Validator {
+    
     //Se declaran los atributos
 
     private $id_orden_compra = null;
@@ -137,8 +137,11 @@ class Ordenes extends Validator {
         } else {
             $insertQuery="INSERT INTO orden_compra(id_cliente, id_estado_orden) 
                     VALUES (?, ?)";
-            $params = array($_SESSION['id_cliente'], $this->id_estado_orden);
+            $idcliente = $_SESSION['id_cliente'];
+            $params = array($idcliente, $this->id_estado_orden);
+            
             if($this->id_orden_compra = Database::getLastRow($insertQuery, $params)) {
+                // print("a");
                 return true;
             } else {
                 return false;

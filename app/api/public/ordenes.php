@@ -16,7 +16,7 @@ if(isset($_GET['action'])) {
     switch ($_GET['action']) {
         //Este caso es para crear un detalle o actualizarle la cantidad a uno existente.
         case 'createDetail':
-            if(isset($_POST['id_cliente'])) {
+            if(isset($_SESSION['id_cliente'])) {
                 //Se crea o se continua una orden
                 if($orden->startOrder()) {
                     $_POST = $orden->validateForm($_POST);

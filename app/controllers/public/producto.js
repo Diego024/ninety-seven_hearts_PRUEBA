@@ -126,7 +126,7 @@ const readProductInfo = (id) => {
             document.getElementById('cantidad').max = resp.dataset[0].existencia
             document.getElementById('producto--img').src = `../../resources/imageFiles/dashboard/catalogo/${resp.dataset[0].foto_producto}`
         } else {
-            sweetAlert(2, response.exception, null);
+            sweetAlert(2, resp.exception, null);
         }
     }).catch(function (error) {
         console.log(error);

@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     readAllNovedades();
     //Se llama a la función para mostrar las categorías disponibles
     readAllCategories();
+    //Se llama a la función para mostrar la información del producto
+    readProductInfo(ID)
 })
 
 function readAllNovedades() {
@@ -23,17 +25,19 @@ function readAllNovedades() {
                     response.dataset.map(function (row) {
                         // Se crean y concatenan los acordeones donde van las FAQ's.
                         content += `
-                        <div class="col">
-                            <div class="card text-center" style="width: 18rem; margin-top:20px;">
-                                <img src="../../resources/imageFiles/dashboard/catalogo/${row.foto_producto}" class="card-img-top" alt="..." style="height: 18rem">
+                        <div class="col mb-4">
+                            <div class="card text-center" style="width: 20rem;">
+                                <a href="Producto.php?id=${row.id_catalogo_producto}">
+                                    <img src="../../resources/imageFiles/dashboard/catalogo/${row.foto_producto}" class="card-img-top" alt="...">
+                                </a>
                                 <div class="card-body">
-                                    <h5 class="card-title">${row.catalogo_producto}</h5>
+                                    <a href="Producto.php?id=${row.id_catalogo_producto}"><h5 class="card-title">${row.catalogo_producto}</h5></a>
                                     <p class="card-text">${row.precio_venta}</p>
-                                    <a href="Producto.php" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
+                                    ${/*<a href="#" class="btn btn-danger" id="btn_card">Añadir al carrito</a>*/' '}
                                 </div>
                             </div>
                         </div>
-                        `;
+                    `;
                     });
                     // Se agregan las tarjetas a la etiqueta div mediante su id para mostrar las categorías.
                     document.getElementById('novedades').innerHTML = content;

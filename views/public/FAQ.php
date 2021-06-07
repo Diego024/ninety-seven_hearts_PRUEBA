@@ -7,9 +7,6 @@ Public_Page::headerTemplate('Preguntas Frecuentes', 'FAQ');
 
 <div class="separador"></div>
 
-<?php
-Public_Page::navbarTemplate('');
-?>
 <br>
 <!--JUMBOTRON -->
 <div class="container-fluid">

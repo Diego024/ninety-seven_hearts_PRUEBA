@@ -177,6 +177,7 @@ const deleteDetail = id => {
                     //Se recarga la vista de los registros en la tabla
                     sweetAlert(1, response.message, null);
                     readCarrito();
+                    readOrderInfo();
                 } else {
                     sweetAlert(2, response.exception, null);
                 }

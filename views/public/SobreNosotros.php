@@ -5,9 +5,6 @@
     Public_Page::headerTemplate('Sobre Nosotros', 'SobreNosotros');
 ?>
 
-<?php
-    Public_Page::navbarTemplate('')
-?>
 <br>
 <!--JUMBOTRON-->
 <div class="container-fluid">

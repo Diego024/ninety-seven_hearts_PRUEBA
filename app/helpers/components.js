@@ -245,6 +245,6 @@ const setInfoAdmin = () => {
     })
     .catch( error => {
         console.log(error);
-    })
-    
+    })  
 }
+
