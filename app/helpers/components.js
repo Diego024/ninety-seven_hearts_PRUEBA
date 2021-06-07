@@ -248,3 +248,18 @@ const setInfoAdmin = () => {
     })  
 }
 
+const setSearchLink = () => {
+    if(document.getElementById('input-search').value) {
+        document.getElementById('input-button').setAttribute('href', `busqueda.php?search=${document.getElementById('input-search').value}`);
+    } else {
+        sweetAlert(3, 'Primero tiene que ingresar algo para buscar')
+    }
+}
+
+document.getElementById('input-search').addEventListener('keypress', event => {
+    if(event.charCode === 13) {
+        event.preventDefault();
+        document.getElementById('input-button').click();
+    }
+})
+

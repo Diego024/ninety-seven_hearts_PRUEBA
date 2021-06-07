@@ -124,6 +124,15 @@
     border: 1px solid #8C000E;
     border-radius: 15px;
     padding: 0px 15px;
+    color: black;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.buscar--button:hover {
+    text-decoration: none;
 }
 
 .buscar--button:hover {
