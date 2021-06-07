@@ -7,94 +7,81 @@
 
 <div class="separador"></div>
 
-<?php
-    Public_Page::navbarTemplate('');
-?>
+<nav class="menu sticky-top">
+    <div class="menu--titulo">
+        <a href="#" class="menu--titulo__texto">CATEGORIAS</a>
+    </div>
+    <div class="menu--categorias menu--hidden" id="categories">
+    </div>
+</nav>
+<!--FIN DEL HEADER Y NAV-->
 
-<div class="container producto--contenedor">
+<div class="container producto--contenedor mt-4">
     <div class="row">
         <div class="col-md-4">
-            <img src="https://i.pinimg.com/originals/05/b4/12/05b412352c9377a2fcf28f86a7038fac.jpg" class="img-fluid" id="producto--img" alt="...">
+            <img src="" class="img-fluid" id="producto--img" alt="...">
         </div>
         <div class="col-lg-8">
-            <h3 class="producto--info__titulo">
-                Camisa Vogue
+            <h3 class="producto--info__titulo" id="catalogo_producto">
+                
             </h3>
-            <h3 class="producto--info__precio">
-                $49.99
+            <h3 class="producto--info__precio mt-4" id="precio">
+                
             </h3>
-            
-            <div>
-                <label for="inputState">Talla: </label>
-                <select id="inputState" class="form-control-sm">
-                    <option selected>Seleccione una talla</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                </select>
-            </div>
 
-            <div>
-                <label for="inputState">Cantidad: </label>
-                <select id="inputState" class="form-control-sm">
-                    <option selected>Seleccione una cantidad</option>
-                    <option value="1">1</option>  
-                    <option value="2">2</option>
-                    <option value="2">3</option>
-                    <option value="3">4</option>
-                    <option value="4">5</option>
-                    <option value="5">6</option>
-                    <option value="6">7</option>
-                </select>
-            </div>
+            <form method="post" id="carrito-form" class="my-2 my-lg-0">
+                <div>
+                    <!-- Campo invicible del ID del producto -->
+                    <input class="d-none" type="number" id="id_producto-carrito" name="id_catalogo_producto">
 
-            <div>
-                <button type="button" class="bbtn btn-dark" id="agregarCarrito--boton" data-toggle="modal" data-target="#confirmarPedido">
-                    Agregar al carrito
-                </button>
-            </div>
+                    <label for="inputState">Cantidad: </label>
+                    <input name="cantidad" id="cantidad" type="number" min="1" max="4">
+                </div>
+
+                <div>
+                    <button type="submit" class="bbtn btn-dark rounded mb-2" id="agregarCarrito--boton">
+                        Agregar al carrito
+                    </button>
+                </div>
+            </form>
             
-            <h3 class="producto--info__descripcion" style="margin-top: 25px;">
+            <a onclick=crearFavorito() id="btn_eliminar"><b>Agregar a favoritos</b></a>
+
+            <h3 class="producto--info__descripcion mt-4" style="margin-top: 25px;">
                 Descripción:
             </h3>
             
-            <p>El nuevo capítulo de Ann Demeulemeester sin Ann Demeulemeester no podría ser más fiel a la diseñadora belga</p>
-
-            <div class="agregarComentario--contenedor">
-                <a href="" class="agregarComentario--enlace">
-                    Agregar comentario
-                </a>
-            </div>
+            <p id='producto-descripcion'></p>
             
         </div>
-        <div class="col comentarios--contenedor">
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Nuevo comentario:</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                <button type="button" class="bbtn btn-dark" id="comentario--boton" data-toggle="modal" data-target="#confirmarPedido">
+        <div class="col comentarios--contenedor mt-4">
+            
+            <form method="post" id="comment-form" class="my-2 my-lg-0">
+                <!-- Campo invicible del ID del producto -->
+                <input class="d-none" type="number" id="id_catalogo_producto" name="id_catalogo_producto">
+
+                <label for="comentario">Nuevo comentario:</label>
+                <textarea class="form-control" id="comentario" name="comentario" rows="3"></textarea>
+
+                <div class="form-row mt-2 w-25">
+                    <label for="valoracion">Valoración:</label>
+                    <input name="valoracion" step="any" class="form-control" id="valoracion" type="number" min="1" max="10">
+                </div>
+
+                <button type="submit" id="comentario--boton" class="bbtn btn-dark mt-4 rounded">
                     Guardar comentario
                 </button>
+            </form>
+ 
+            <div class="container mb-4 mt-4">
+                <div class="row" id="comments-container">
+                   
+                </div>
             </div>
-            <div class="media">
-                <img src="../../resources/statics/icons/usuarios.png" class="mr-3 comentario--img" alt="...">
-                <div class="media-body">
-                    <h5 class="mt-0">Diego Moys</h5>
-                    <p>Me pareció buen producto y el horario de entrega bastante óptimo para acoplarse a mis horarios.</p>
-                
-                    <div class="media mt-3">
-                    <a class="mr-3" href="#">
-                        <img src="../../resources/statics/icons/usuarios.png" alt="..." class="comentario--img">
-                    </a>
-                    <div class="media-body">
-                        <h5 class="mt-0">Ninety-Seven Hearts</h5>
-                        <p>Muchas gracias por tu comentario, apreciamos tu valoración</p>
-                    </div>
-                    </div>
-                </div>
-                </div>
         </div>
     </div>
 </div>
 <div class="separador"></div>
 <?php
-    Public_Page::footerTemplate();
+    Public_Page::footerTemplate('producto');
 ?>

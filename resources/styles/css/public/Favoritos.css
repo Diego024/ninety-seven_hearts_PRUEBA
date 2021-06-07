@@ -10,3 +10,7 @@
     color:  #8C000E;
     margin: 50px;
 }
+
+#btn_eliminar:hover {
+    cursor:pointer;
+}
