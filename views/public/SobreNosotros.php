@@ -67,5 +67,5 @@
 <br>
 <div class="separador"></div>
 <?php
-    Public_Page::footerTemplate();
+    Public_Page::footerTemplate('nosotros');
 ?>

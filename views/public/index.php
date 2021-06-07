@@ -43,103 +43,19 @@
 
 <!-- TITULO DE LA SECION -->
 <?php
-    Public_Page::titleTemplate('OFERTAS ESPECIALES');
-?>
-<br>
-
-<!-- OFERTAS -->
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="card text-center" style="width: 20rem;">
-                <img src="../../resources/statics/images/blusa_negra.jpeg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Blusa negra</h5>
-                    <p class="card-text">$35.99</p>
-                    <a href="Producto.php" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
-                </div>
-            </div>
-        </div>
-        <div class="col text-center">
-            <div class="card" style="width: 20rem;">
-                <img src="../../resources/statics/images/blusa_blanca.jpeg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Blusa blanca</h5>
-                    <p class="card-text">$40.99</p>
-                    <a href="Producto.php" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card text-center" style="width: 20rem;">
-                <img src="../../resources/statics/images/blusa_dorada.jpeg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Blusa dorada</h5>
-                    <p class="card-text">$36.99</p>
-                    <a href="Producto.php" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col">
-        <a href="Ofertas.php" class="btn btn-secondary" id="btn_ver">Ver más...</a>
-        </div>
-    </div>
-</div>
-<br>
-
-<!-- TITULO DE LA SECION -->
-<?php
     Public_Page::titleTemplate('NOVEDADES');
 ?>
 <!-- NOVEDADES -->
 <br>
-<div class="container">
-    <div class="row align-items-center">
-        <div class="col">
-            <div class="card text-center" style="width: 20rem;">
-                <img src="../../resources/statics/images/regalo.jpeg" class="card-img-top" alt="..." style="height: 18rem">
-                <div class="card-body">
-                    <h5 class="card-title">Regalo bonito (opción 1)</h5>
-                    <p class="card-text">$35.99</p>
-                    <a href="Producto.php" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card text-center" style="width: 20rem;">
-                <img src="../../resources/statics/images/regalo2.jpeg" class="card-img-top" alt="..." style="height: 18rem">
-                <div class="card-body">
-                    <h5 class="card-title">Regalo bonito (opción 2)</h5>
-                    <p class="card-text">$40.99</p>
-                    <a href="Producto.php" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card text-center" style="width: 20rem;">
-                <img src="../../resources/statics/images/regalo3.jpeg" class="card-img-top" alt="..." style="height: 18rem">
-                <div class="card-body">
-                    <h5 class="card-title">Regalo bonito (opción 3)</h5>
-                    <p class="card-text">$36.99</p>
-                    <a href="Producto.php" class="btn btn-danger" id="btn_card">Añadir al carrito</a>
-                </div>
-            </div>
-        </div>
+<div class="container d-flex flex-row justify-content-center">
+    <div class="row" id="novedades">
     </div>
     <br>
-    <div class="row">
-        <div class="col">
-        <a href="Novedades.php" class="btn btn-secondary" id="btn_ver">Ver más...</a>
-        </div>
-    </div>
 </div>
 <br>
 
 <div class="separador"></div>
 
 <?php
-    Public_Page::footerTemplate()
+    Public_Page::footerTemplate('index')
 ?>

@@ -148,6 +148,34 @@ class Clientes extends Validator {
         return $this->id_genero;
     }
 
+    // Funciones para controlar la cuenta del cliente
+
+    public function checkUser($correo)
+    {
+        $sql = 'SELECT id_cliente, id_estado_cuenta FROM clientes WHERE correo_electronico = ?';
+        $params = array($correo);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id_cliente = $data[0]['id_cliente'];
+            $this->id_estado_cuenta = $data[0]['id_estado_cuenta'];
+            $this->correo_electronico = $correo;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function checkPassword($password)
+    {
+        $sql = 'SELECT clave FROM clientes WHERE id_cliente = ?';
+        $params = array($this->id_cliente);
+        $data = Database::getRow($sql, $params);
+        if (password_verify($password, $data[0]['clave'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     //Funciones para realizar los mantenimientos a la tabla
     public function searchClientes($value)
     {
@@ -164,9 +192,11 @@ class Clientes extends Validator {
     }
 
     public function insertClientes() {
-        $query = 'INSERT INTO clientes(nombres, apellidos, fecha_nacimiento, telefono, direccion, correo_electronico, clave, id_estado_cuenta, id_genero)
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombres, $this->apellidos, $this->fecha_nacimiento, $this->telefono, $this->direccion, $this->correo_electronico, $this->clave, $this->id_estado_cuenta, $this->id_genero);
+        $hash = password_hash($this->clave, PASSWORD_DEFAULT);
+
+        $query = 'INSERT INTO clientes(nombres, apellidos, fecha_nacimiento, telefono, direccion, correo_electronico, clave, id_genero)
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombres, $this->apellidos, $this->fecha_nacimiento, $this->telefono, $this->direccion, $this->correo_electronico, $hash, $this->id_genero);
         return Database::executeRow($query, $params);
     }
 

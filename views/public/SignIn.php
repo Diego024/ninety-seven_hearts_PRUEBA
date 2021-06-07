@@ -1,8 +1,8 @@
 <?php
 
-    include('../../app/helpers/public_page.php');
+include('../../app/helpers/public_page.php');
 
-    Public_Page::headerTemplate('Inicio de sesión', 'SignIn');
+Public_Page::headerTemplate('Inicio de sesión', 'SignIn');
 ?>
 
 
@@ -25,38 +25,38 @@
 <!--INICIO DE FORM-->
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-sm-6"  id="frm_inicio">
-        <form>
-            <br>
-        <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Correo electrónico:</label>
-            <div class="col">
-            <input type="email" class="form-control" id="inputEmail3">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña:</label>
-            <div class="col">
-            <input type="password" class="form-control" id="inputPassword3">
-            </div>
-        </div>
-        <div class="form-group row justify-content-center">
-            <div class="col-xs-5">
-            ¿Aún no tienes una cuenta? <a href="SignUp.php">¡Regístrate ahora!</a>
-            </div>
-        </div>
-        <div class="form-group row justify-content-center">
-            <div class="col-xs-5">
-            <button type="submit" class="btn btn-danger" id="btn_card" href="Prueba.php">Iniciar sesión</button>
-            </div>
-        </div>
-    </form>
+        <div class="col-sm-6" id="frm_inicio">
+            <form method="post" id="session-form">
+                <br>
+                <div class="form-group row">
+                    <label for="usuario" class="col-sm-2 col-form-label">Correo electrónico:</label>
+                    <div class="col">
+                        <input type="email" class="form-control" id="usuario" name="usuario">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña:</label>
+                    <div class="col">
+                        <input type="password" class="form-control" id="clave" name="clave">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <div class="col-xs-5">
+                        ¿Aún no tienes una cuenta? <a href="SignUp.php">¡Regístrate ahora!</a>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <div class="col-xs-5">
+                        <button type="submit" class="btn btn-danger" id="btn_card" href="Prueba.php">Iniciar sesión</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-    
+
 </div>
 <br>
 <div class="separador"></div>
 <?php
-    Public_Page::footerTemplate();
+Public_Page::footerTemplate('login');
 ?>

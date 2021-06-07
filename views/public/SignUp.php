@@ -1,8 +1,8 @@
 <?php
 
-    include('../../app/helpers/public_page.php');
+include('../../app/helpers/public_page.php');
 
-    Public_Page::headerTemplate('Registrarse', 'SignUp');
+Public_Page::headerTemplate('Registrarse', 'SignUp');
 ?>
 
 <div class="separador"></div>
@@ -23,68 +23,74 @@
 <br>
 <!--INICIO DEL FORM-->
 <div class="container">
-        <form id="formulario">
-            <div class="form-row"> <!--PARA NOMBRES Y APELLIDOS-->
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Nombres</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="Diego Fernando">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Apellidos</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="Moys Romero">
-                </div>
+    <form method="post" id="register-form">
+    <input class="d-none" type="text" id="g-recaptcha-response" name="g-recaptcha-response"/>
+        <div class="form-row">
+            <!--PARA NOMBRES Y APELLIDOS-->
+            <div class="form-group col-md-6">
+                <label for="nombres">Nombres</label>
+                <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Diego Fernando" required>
             </div>
-            <div class="form-row"> <!--PARA FECHA DE NACIMIENTO Y GÉNERO--> 
-                <div class="col">
-                    <label for="inputState">Fecha de nacimiento</label>
-                    <input type="date" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                </div>                   
-                <div class="col-sm-6 text-align-center"> <!--RADIO BUTTONS-->
-                    <p>Género</p>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline1" name="customRadioInline" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadioInline1">Masculino</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline2" name="customRadioInline" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadioInline2">Femenino</label>
-                    </div>
-                </div>
+            <div class="form-group col-md-6">
+                <label for="apellidos">Apellidos</label>
+                <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Moys Romero" required>
             </div>
-            <br>
-            <div class="form-row"><!--PARA TELÉFONO Y CORREO ELECTRÓNICO-->
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Teléfono</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="2222-2222">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Correo electrónico</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="jhondoe@example.com">
-                </div>
+        </div>
+        <div class="form-row">
+            <!--PARA FECHA DE NACIMIENTO Y GÉNERO-->
+            <div class="col">
+                <label for="fecha_nacimiento">Fecha de nacimiento</label>
+                <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="1234 Main St" required>
             </div>
-            <div class="form-group"><!--PARA LA DIRECCIÓN-->
-                <label for="inputAddress2">Dirección</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Ej. Recidendial Villas de San Patricio, San Salvador, San Salvador">
+            <div class="form-group col-md-6 search_select_box">
+                <label for="inputState">Genero</label>
+                <select id="id_genero" class="form-control" name="id_genero" required>
+                    <option value=2>Femenino</option>
+                    <option value=1>Masculino</option>
+                </select>
             </div>
-            <div class="form-row"> <!--PARA LAS CONTRASEÑAS-->
-                <div class="form-group col-md-6">
-                    <label for="inputPassword4">Contraseña</label>
-                    <input type="password" class="form-control" id="inputPassword4">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputPassword4">Confirmar Contraseña</label>
-                    <input type="password" class="form-control" id="inputPassword4">
-                </div>
+        </div>
+        <br>
+        <div class="form-row">
+            <!--PARA TELÉFONO Y CORREO ELECTRÓNICO-->
+            <div class="form-group col-md-6">
+                <label for="telefono">Teléfono</label>
+                <input type="text" class="form-control" id="telefono" name="telefono" placeholder="2222-2222" required>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-sm-5">
+            <div class="form-group col-md-6">
+                <label for="correo_electronico">Correo electrónico</label>
+                <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" placeholder="jhondoe@example.com" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <!--PARA LA DIRECCIÓN-->
+            <label for="direccion">Dirección</label>
+            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ej. Recidendial Villas de San Patricio, San Salvador, San Salvador" required>
+        </div>
+        <div class="form-row">
+            <!--PARA LAS CONTRASEÑAS-->
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Contraseña</label>
+                <input type="password" class="form-control" id="clave" name="clave" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Confirmar Contraseña</label>
+                <input type="password" class="form-control" id="confirmar_clave" name="confirmar_clave" required> 
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-5">
                 <button type="submit" class="btn btn-danger" id="btn_card">REGISTRARSE</button>
-                </div>
             </div>
-        </form>
+        </div>
+    </form>
 </div>
 <br>
 <div class="separador"></div>
+
+<!-- Importación del archivo para que funcione el reCAPTCHA. Para más información https://developers.google.com/recaptcha/docs/v3 -->
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render=6LdBzLQUAAAAAJvH-aCUUJgliLOjLcmrHN06RFXT"></script>
+
 <?php
-    Public_Page::footerTemplate();
+Public_Page::footerTemplate('signin');
 ?>
