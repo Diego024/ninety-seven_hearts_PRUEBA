@@ -288,6 +288,74 @@ if( isset($_GET['action'])) {
                     }
                 }
                 break;
+            case 'create':
+                $_POST = $administrador->validateForm($_POST);
+                if ($administrador->setNombres($_POST['nombres'])) {
+                    if($administrador->setApellidos($_POST['apellidos'])) {
+                        if($administrador->setFechaNacimiento($_POST['fecha_nacimiento'])) {
+                            if($administrador->setTelefono($_POST['telefono'])) {
+                                if($administrador->setDireccion($_POST['direccion'])) {
+                                    if($administrador->setCorreo($_POST['correo_electronico'])) {
+                                        if(is_uploaded_file($_FILES['foto_administrador']['tmp_name'])) {
+                                            if($administrador->setFotoAdministrador($_FILES['foto_administrador'])) {
+                                                if($administrador->setUsuario($_POST['usuario'])) {
+                                                    if ($_POST['clave'] == $_POST['confirmar_clave']) {
+                                                        if($administrador->setClave($_POST['clave'])) {
+                                                            if($administrador->setEstadoCuenta($_POST['id_estado_cuenta'])) {
+                                                                if($administrador->setGenero($_POST['id_genero'])) {
+                                                                    if($administrador->insertAdmin()) {
+                                                                        $result['status'] = 1;
+                                                                        // print_r($_FILES['foto_administrador']);
+                                                                        // print($administrador->getRuta());
+                                                                        // print($administrador->getFotoAdministrador());
+                                                                        if ($administrador->saveFile($_FILES['foto_administrador'], $administrador->getRuta(), $administrador->getFotoAdministrador())) {
+                                                                            $result['message'] = 'Administrador creado correctamente';
+                                                                            } else {
+                                                                                $result['message'] = 'Administrador creado pero no se guardó la imagen';
+                                                                            }
+                                                                    } else {
+                                                                        $result['exception'] = Database::getException();;
+                                                                    }
+                                                                } else {
+                                                                    $result['exception'] = 'Seleccione un genero';
+                                                                }
+                                                            } else {
+                                                                $result['exception'] = 'Seleccione un estado de cuenta';
+                                                            }
+                                                        } else {
+                                                            $result['exception'] = $administrador->getPasswordError();
+                                                        }                                                        
+                                                    } else {
+                                                        $result['exception'] = 'Claves diferentes';
+                                                    }
+                                                } else {
+                                                    $result['exception'] = 'Usuario incorrecto';
+                                                }
+                                            } else {
+                                                $result['exception'] = $Administrador->getImageError();
+                                            }
+                                        } else {
+                                            $result['exception'] = 'Seleccione una imagen';
+                                        }
+                                    } else {
+                                        $result['exception'] = 'Correo electrónico incorrecto';
+                                    }
+                                } else {
+                                    $result['exception'] = 'Dirección incorrecta';
+                                }
+                            } else {
+                                $result['exception'] = 'Teléfono incorrecto';
+                            }
+                        } else {
+                            $result['exception'] = 'Fecha de nacimiento incorrecta';    
+                        }
+                    } else {
+                        $result['exception'] = 'Apellidos incorrectos';
+                    }
+                } else {
+                    $result['exception'] = 'Nombres incorrectos';
+                }
+                break;
             default:
                 $result['exception'] = 'Acción no disponible fuera de la sesión';
                 break;

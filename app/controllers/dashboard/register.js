@@ -21,7 +21,8 @@ const createAdmin = () => {
     }).then( response => {
         //Se comprueba que el status de la request sea satisfactorio
         if(response.status) {
-            sweetAlert(1, response.message, 'Home.php')
+            // swal('ohayo')
+            sweetAlert(1, response.message, 'Index.php')
         } else {
             sweetAlert(2, response.exception, null)
         }

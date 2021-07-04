@@ -111,7 +111,7 @@ class Catalogo extends Validator {
         return $this->ruta;
     }
 
-    //Funciones para realizar los mantenimientos a la tabla
+    //Funciones para realizar los mantenimientos a la tabla    
     public function insertProducts(){
         $query = 'INSERT INTO catalogo_productos (catalogo_producto, descripcion, existencia, precio_venta, foto_producto, id_categoria)
                   VALUES (?, ?, ?, ?, ?,?)';

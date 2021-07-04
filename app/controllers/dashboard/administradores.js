@@ -140,6 +140,7 @@ const openUpdateDialog = id => {
             document.getElementById('id_genero').value = response.dataset[0].id_genero
             document.getElementById('id_estado_cuenta').value = response.dataset[0].id_estado_cuenta
             document.getElementById('fecha_nacimiento').value = response.dataset[0].fecha_nacimiento
+            console.log(response.dataset[0].fecha_nacimiento)
             document.getElementById('direccion').value = response.dataset[0].direccion
             
         } else {

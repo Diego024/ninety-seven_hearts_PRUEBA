@@ -8,7 +8,7 @@
     <body>
         <img class="fondo" src="../../resources/imageFiles/dashboard/index/fondo.png" alt="">
         <div class="container">
-        <!-- IMAGEN DE FONDO -->
+            <!-- IMAGEN DE FONDO -->
             <div class="img">
                 <img src="../../resources/imageFiles/dashboard/index/data1.svg" alt="">
             </div>
