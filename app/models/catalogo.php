@@ -128,6 +128,27 @@ class Catalogo extends Validator {
         return Database::getRow($query, $params);
     }
 
+    public function SelectCategoria()
+    {
+        $sql = 'SELECT id_categoria, categoria, descripcion_categoria, foto_categoria
+                FROM categorias
+                ORDER BY categoria';
+        $params = null;
+        print($params);
+        return Database::getRows($sql, $params);
+    }
+
+
+    public function selectProductosPorCategoria(){
+        $query='SELECT cp.id_catalogo_producto, cp.catalogo_producto, cp.existencia, cp.precio_venta
+                FROM catalogo_productos cp
+                INNER JOIN categorias c
+                ON c.id_categoria = cp.id_categoria
+                WHERE cp.id_categoria = ?';
+        $params = array($this->id_categoria);
+        return Database::getRow($query, $params);
+    }
+
     public function searchProducts($value)
     {
         $query="SELECT cp.id_catalogo_producto, cp.catalogo_producto, cp.descripcion, cp.existencia, cp.precio_venta, c.categoria, cp.foto_producto
