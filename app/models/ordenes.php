@@ -235,5 +235,15 @@ class Ordenes extends Validator {
         $params = array($this->id_catalogo_producto, $this->cantidad, $this->id_catalogo_producto);
         return Database::executeRow($query, $params);
     }
+
+    public function getVentasMensuales() {
+        $query="SELECT EXTRACT(MONTH FROM fecha_orden) as mes, SUM(total) 
+        FROM orden_compra 
+        WHERE id_estado_orden = 1
+        GROUP BY (mes)
+        LIMIT 12";
+        $params=null;
+        return Database::getRows($query, $params);
+    }
 }
 ?>

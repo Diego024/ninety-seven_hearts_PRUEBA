@@ -3,6 +3,7 @@
 require_once('../../helpers/database.php');
 require_once('../../helpers/validator.php');
 require_once('../../models/datos.php');
+require_once('../../models/ordenes.php');
 
 //Se comprueba que exista una acción a realizar
 if (isset($_GET['action'])) {
@@ -10,6 +11,7 @@ if (isset($_GET['action'])) {
     session_start();
     //Creamos un objeto de la case del model
     $datos = new Datos;
+    $orden = new Ordenes;
     //Creamos el array donde guardaremos los resultados de la API
     $result = array('status' => 0, 'message' => null, 'exception' => null);
     //Se verifica que haya una sesión iniciada como administrador
@@ -89,6 +91,17 @@ if (isset($_GET['action'])) {
                     }
                 } else {
                     $result['exception'] = 'Pedido incorrecto';
+                }
+                break;
+            case 'getVentasMensuales':
+                if($result['dataset'] = $orden->getVentasMensuales()) {
+                    $result['status'] = 1;
+                } else {
+                    if (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
                 }
                 break;
             default:

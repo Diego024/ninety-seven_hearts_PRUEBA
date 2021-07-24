@@ -198,6 +198,28 @@ if(isset($_GET['action'])) {
                     $result['exception'] = 'Producto incorrecto';
                 }
                 break;
+            case 'getMasVendidos':
+                if($result['dataset'] = $catalogo->getMasVendidos()) {
+                    $result['status'] = 1;
+                } else {
+                    if (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                }
+                break;
+            case 'getUsuariosMasCompran':
+                if($result['dataset'] = $catalogo->getUsuariosMasCompran()) {
+                    $result['status'] = 1;
+                } else {
+                    if (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                }
+                break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
                 break;

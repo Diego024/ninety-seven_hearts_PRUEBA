@@ -220,5 +220,32 @@ class Catalogo extends Validator {
         $params = null;
         return Database::getRow($query, $params);
     }
+
+    public function getMasVendidos(){
+        $query="SELECT deo.id_catalogo_producto, cp.catalogo_producto, SUM(deo.id_catalogo_producto)
+                FROM detalle_orden deo
+                INNER JOIN orden_compra oc
+                    ON deo.id_orden_compra = oc.id_orden_compra
+                INNER JOIN catalogo_productos cp
+                    ON cp.id_catalogo_producto = deo.id_catalogo_producto
+                WHERE oc.id_estado_orden = 1
+                GROUP BY deo.id_catalogo_producto, cp.catalogo_producto
+                ORDER BY sum DESC
+                LIMIT 10";
+        $params=null;
+        return Database::getRows($query, $params);
+    }
+
+    public function getUsuariosMasCompran() {
+        $query="SELECT oc.id_cliente, CONCAT(cl.nombres, ' ', cl.apellidos) as nombre_completo, COUNT(oc.id_orden_compra)
+                FROM orden_compra oc
+                INNER JOIN clientes cl
+                    ON cl.id_cliente = oc.id_cliente
+                GROUP BY oc.id_cliente, nombre_completo
+                ORDER BY count DESC
+                LIMIT 10";
+        $params=null;
+        return Database::getRows($query, $params);
+    }
 }
 ?>
