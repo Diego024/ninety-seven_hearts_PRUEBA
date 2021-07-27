@@ -154,6 +154,28 @@ if (isset($_GET['action'])) {
                     $result['message'] = 'Categoría incorrecta';
                 }
             break;
+            case 'getCategoriasMasVendidas':
+                if($result['dataset'] = $categoria->getCategoriasMasVendidas()) {
+                    $result['status'] = 1;
+                } else {
+                    if (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                }
+            break;
+            case 'getCategoriasEnCatalogo':
+                if($result['dataset'] = $categoria->getCategoriasEnCatalogo()) {
+                    $result['status'] = 1;
+                } else {
+                    if (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                }
+            break;
             default: 
                 $result['exception'] = 'Acción no disponible dentro de la sesión'; 
             break;

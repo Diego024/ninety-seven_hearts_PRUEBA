@@ -156,4 +156,31 @@ class Categorias extends Validator
         $params = array($this->id_categoria);
         return Database::getRows($query, $params);
     }
+
+    public function getCategoriasMasVendidas() {
+        $query="SELECT SUM(cp.id_categoria), ca.categoria
+                FROM orden_compra oc
+                INNER JOIN detalle_orden deo
+                    ON deo.id_orden_compra = oc.id_orden_compra
+                INNER JOIN catalogo_productos cp
+                    ON cp.id_catalogo_producto = deo.id_catalogo_producto
+                INNER JOIN categorias ca
+                    ON ca.id_categoria = cp.id_categoria
+                WHERE id_estado_orden = 1
+                GROUP BY cp.id_categoria, categoria
+                ORDER BY sum DESC
+                LIMIT 10";
+        $params=null;
+        return Database::getRows($query, $params);
+    }
+
+    public function getCategoriasEnCatalogo() {
+        $query="SELECT COUNT(cp.id_catalogo_producto), c.categoria
+                FROM catalogo_productos cp
+                INNER JOIN categorias c
+                    ON c.id_categoria = cp.id_categoria
+                GROUP BY c.categoria;";
+        $params=null;
+        return Database::getRows($query, $params);
+    }
 }
