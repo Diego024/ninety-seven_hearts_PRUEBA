@@ -67,6 +67,10 @@ Public_Page::titleTemplate('INVENTARIO');
             add
             </span>
         </a>
+
+        <!-- Enlace para generar un reporte en formato PDF -->
+        <a href="../../app/reports/dashboard/inventario.php" target="_blank" class="btn waves-effect amber tooltipped" data-tooltip="Reporte de productos por categoría"><i class="material-icons">assignment</i></a>
+
         <!-- FORM DEL SEARCH -->
         <form method="post" id="search-form" class="form-inline my-2 my-lg-0">
             <input id="search" name="search" class="form-control mr-sm-2" type="search" placeholder="Buscador" aria-label="Search" required>

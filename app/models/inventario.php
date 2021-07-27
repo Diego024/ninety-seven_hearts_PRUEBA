@@ -107,6 +107,26 @@ class Inventario extends Validator {
         return Database::getRows($query, $params);
     }
 
+    public function selectInventarioProductosSeparados() {
+        $query = 'SELECT i.id_inventario_producto, c.catalogo_producto, i.cantidad_adquirida, i.fecha_registro, i.precio_adquirido
+                FROM inventario_productos i
+                INNER JOIN catalogo_productos c
+                ON i.id_catalogo_producto = c.id_catalogo_producto
+                WHERE i.id_catalogo_producto = ?
+                ORDER BY fecha_registro DESC';
+        $params = array($this->id_catalogo_producto);
+        return Database::getRows($query, $params);
+    }
+
+    public function selectProducts(){
+        $query='SELECT cp.id_catalogo_producto, cp.catalogo_producto, cp.descripcion, cp.existencia, cp.precio_venta, c.categoria, cp.foto_producto
+                FROM catalogo_productos cp
+                INNER JOIN categorias c
+                    ON c.id_categoria = cp.id_categoria';
+        $params = null;
+        return Database::getRow($query, $params);
+    }
+
     public function selectOneInventarioProducto() {
         $query = 'SELECT i.id_inventario_producto, i.id_catalogo_producto, i.cantidad_adquirida, i.fecha_registro, i.precio_adquirido
                   FROM inventario_productos i

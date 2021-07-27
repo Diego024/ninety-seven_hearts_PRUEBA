@@ -15,6 +15,9 @@ Public_Page::titleTemplate('HISTORIAL DE VENTAS');
 <div class="container" id="table-container">
     <div class="search-container">
         <div class="add--icon__container" data-toggle="tooltip" data-placement="bottom" style="justify-content:flex-end;">
+
+        <!-- Enlace para generar un reporte en formato PDF -->
+        <a href="../../app/reports/dashboard/historialPedidos.php" target="_blank" class="btn waves-effect amber tooltipped" data-tooltip="Reporte de productos por categoría"><i class="material-icons">assignment</i></a>
             <!-- FORM DEL SEARCH -->
             <form method="post" id="search-form" class="form-inline my-2 my-lg-0">
                 <input id="search" name="search" class="form-control mr-sm-2" type="search" placeholder="Buscador" aria-label="Search" required>

@@ -49,6 +49,7 @@ const fillTable = dataset => {
                                 delete
                             </span>
                         </a>
+                        <a href="../../app/reports/dashboard/productosPedidos.php?id=${row.id_catalogo_producto}" target="_blank" class="btn waves-effect amber tooltipped" data-tooltip="Reporte de productos"><i class="material-icons">assignment</i></a>
                     </td>
                 </tr>
             `

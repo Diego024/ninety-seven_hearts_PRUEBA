@@ -43,6 +43,7 @@ const fillTable = dataset => {
                                 edit
                             </span>
                         </a>
+                        <a href="../../app/reports/dashboard/pedidosPendientes.php?id=${row.id_orden_compra}" target="_blank" class="btn waves-effect amber tooltipped" data-tooltip="Reporte de productos"><i class="material-icons">assignment</i></a>
                     </td>
                 </tr>
             `

@@ -36,12 +36,8 @@ const fillTable = dataset => {
                     <td>${row.fecha_orden}</td>
                     <td>${row.total}</td>
                     <td>${row.estado_orden}</td>
-                    <td class="icons">
-                        <a onclick="openUpdateDialog(${row.id_orden_compra})" data-toggle="tooltip" data-placement="bottom" title="Editar">
-                            <span class="material-icons blue" data-tooltip="Actualizar">
-                                edit
-                            </span>
-                        </a>
+                    <td>
+                        <a href="../../app/reports/public/detallePedido.php?id=${row.id_orden_compra}" target="_blank" class="btn waves-effect amber tooltipped" data-tooltip="Reporte de productos"><i class="material-icons">assignment</i></a>
                     </td>
                 </tr>
             `

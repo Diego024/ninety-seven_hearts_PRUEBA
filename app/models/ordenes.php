@@ -235,5 +235,25 @@ class Ordenes extends Validator {
         $params = array($this->id_catalogo_producto, $this->cantidad, $this->id_catalogo_producto);
         return Database::executeRow($query, $params);
     }
+
+    public function selectProductosVendidos() {
+        $query = "SELECT d.id_orden_compra, cp.id_catalogo_producto, cp.catalogo_producto, d.cantidad, oc.fecha_orden
+                FROM detalle_orden d
+                INNER JOIN catalogo_productos cp
+                    ON cp.id_catalogo_producto = d.id_catalogo_producto
+                INNER JOIN orden_compra oc
+                    ON d.id_orden_compra = oc.id_orden_compra
+                WHERE d.id_catalogo_producto = ? AND oc.id_estado_orden = 1";
+        $params =array($this->id_catalogo_producto);
+        return Database::getRow($query, $params);                  
+    }
+
+    public function selectOneProduct(){
+        $query = 'SELECT cp.id_catalogo_producto, cp.catalogo_producto, cp.descripcion, cp.existencia, cp.precio_venta, cp.id_categoria, cp.foto_producto
+                  FROM catalogo_productos cp
+                  WHERE id_catalogo_producto = ?';
+        $params = array($this->id_catalogo_producto);
+        return Database::getRow($query, $params);
+    }
 }
 ?>

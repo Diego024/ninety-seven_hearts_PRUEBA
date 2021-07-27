@@ -241,5 +241,17 @@ class Catalogo extends Validator {
         $params = null;
         return Database::getRow($query, $params);
     }
+
+    public function selectProductosVendidos() {
+        $query = "SELECT d.id_orden_compra, cp.id_catalogo_producto, cp.catalogo_producto, d.cantidad, oc.fecha_orden
+                FROM detalle_orden d
+                INNER JOIN catalogo_productos cp
+                    ON cp.id_catalogo_producto = d.id_catalogo_producto
+                INNER JOIN orden_compra oc
+                    ON d.id_orden_compra = oc.id_orden_compra
+                WHERE d.id_catalogo_producto = ? AND oc.id_estado_orden = 1";
+        $params =array($this->id_catalogo_producto);
+        return Database::getRow($query, $params);                  
+    }
 }
 ?>
