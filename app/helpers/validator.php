@@ -4,7 +4,8 @@
 
 // Es clase padre de los modelos
 
-class Validator {
+class Validator
+{
     // Propiedades de algunas validaciones
     private $passwordError = null;
     private $imageError = null;
@@ -12,23 +13,27 @@ class Validator {
 
 
     // Getters
-    public function getPasswordError () {
+    public function getPasswordError()
+    {
         return $this->passwordError;
     }
 
-    public function getImageName () {
+    public function getImageName()
+    {
         return $this->imageName;
     }
 
-    public function getImageError() {
+    public function getImageError()
+    {
         return $this->imageError;
     }
 
     // Función para ajustar todos los campos de un formulario (quitar los espacios en blanco al principio y al final).
-    
+
     // Parámetros: $fields (arreglo con los campos del formulario).
-    public function validateForm($fields) {
-        foreach($fields as $index => $value) {
+    public function validateForm($fields)
+    {
+        foreach ($fields as $index => $value) {
             $value = trim($value);
             $fields[$index] = $value;
         }
@@ -36,7 +41,7 @@ class Validator {
     }
 
     // Función para validar un numero natural como por ejemplo llave primaria, llave foránea, entre otros.
-    
+
     // Parámetros: $value (dato a validar).
     public function validateNaturalNumber($value)
     {
@@ -66,7 +71,7 @@ class Validator {
                         // Se obtiene la extensión del archivo.
                         $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
                         // Se establece un nombre único para el archivo.
-                        $this->imageName = uniqid().'.'.$extension;
+                        $this->imageName = uniqid() . '.' . $extension;
                         return true;
                     } else {
                         $this->imageError = 'El tipo de la imagen debe ser gif, jpg o png';
@@ -76,10 +81,10 @@ class Validator {
                     $this->imageError = 'La dimensión de la imagen es incorrecta';
                     return false;
                 }
-             } else {
+            } else {
                 $this->imageError = 'El tamaño de la imagen debe ser menor a 2MB';
                 return false;
-             }
+            }
         } else {
             $this->imageError = 'El archivo de la imagen no existe';
             return false;
@@ -110,14 +115,14 @@ class Validator {
         }
     }
 
-    
+
     // Función para validar una cadena de texto (letras, digitos, espacios en blanco y signos de puntuación).
-    
+
     // Parámetros: $value (dato a validar), $minimum (longitud mínima) y $maximum (longitud máxima).
     public function validateString($value, $minimum, $maximum)
     {
         // Se verifica el contenido y la longitud de acuerdo con la base de datos.
-        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\,\;\.]{'.$minimum.','.$maximum.'}$/', $value)) {
+        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\,\;\.]{' . $minimum . ',' . $maximum . '}$/', $value)) {
             return true;
         } else {
             return false;
@@ -126,12 +131,12 @@ class Validator {
 
 
     // Función para validar un dato alfabético (letras y espacios en blanco).
-    
+
     //Parámetros: $value (dato a validar), $minimum (longitud mínima) y $maximum (longitud máxima).
     public function validateAlphabetic($value, $minimum, $maximum)
     {
         // Se verifica el contenido y la longitud de acuerdo con la base de datos.
-        if (preg_match('/^[a-zA-ZñÑáÁéÉíÍóÓúÚ\s]{'.$minimum.','.$maximum.'}$/', $value)) {
+        if (preg_match('/^[a-zA-ZñÑáÁéÉíÍóÓúÚ\s]{' . $minimum . ',' . $maximum . '}$/', $value)) {
             return true;
         } else {
             return false;
@@ -144,7 +149,7 @@ class Validator {
     public function validateAlphanumeric($value, $minimum, $maximum)
     {
         // Se verifica el contenido y la longitud de acuerdo con la base de datos.
-        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s]{'.$minimum.','.$maximum.'}$/', $value)) {
+        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s]{' . $minimum . ',' . $maximum . '}$/', $value)) {
             return true;
         } else {
             return false;
@@ -171,10 +176,38 @@ class Validator {
     public function validatePassword($value)
     {
         // Se verifica la longitud mínima de la contraseña.
-        if (strlen($value) >= 6) {
-            return true;
+        if (strlen($value) >= 8) {
+            //return true;
+            // Se verifica que la clave tenga una letra minúscula
+            if (preg_match('`[a-z]`', $value)) {
+                //return true;
+                // Se verifica que la clave tenga una letra mayúscula
+                if (preg_match('`[A-Z]`', $value)) {
+                    //return true;
+                    // Se verifica que la clave tenga un caracter numérico
+                    if (preg_match('`[0-9]`', $value)) {
+                        //return true;
+                        // Se verifican los caracteres especiales [!@#$%]
+                        if (preg_match('`[!@#$%]`', $value)) {
+                            return true;
+                        } else {
+                            $this->passwordError = 'La clave debe tener al menos un caracter especial: (!, @, #, $, %)';
+                            return false;
+                        }
+                    } else {
+                        $this->passwordError = 'La clave debe tener al menos un caracter numérico';
+                        return false;
+                    }
+                } else {
+                    $this->passwordError = 'La clave debe tener al menos una letra mayúscula';
+                    return false;
+                }
+            } else {
+                $this->passwordError = 'La clave debe tener al menos una letra minúscula';
+                return false;
+            }
         } else {
-            $this->passwordError = 'Clave menor a 6 caracteres';
+            $this->passwordError = 'La clave es menor a 8 caracteres';
             return false;
         }
     }
@@ -230,7 +263,7 @@ class Validator {
             // Se comprueba que la ruta en el servidor exista.
             if (file_exists($path)) {
                 // Se verifica que el archivo sea movido al servidor.
-                if (move_uploaded_file($file['tmp_name'], $path.$name)) {
+                if (move_uploaded_file($file['tmp_name'], $path . $name)) {
                     return true;
                 } else {
                     return false;
@@ -251,7 +284,7 @@ class Validator {
         // Se verifica que la ruta exista.
         if (file_exists($path)) {
             // Se comprueba que el archivo sea borrado del servidor.
-            if (@unlink($path.$name)) {
+            if (@unlink($path . $name)) {
                 return true;
             } else {
                 return false;
@@ -261,4 +294,3 @@ class Validator {
         }
     }
 }
-?>

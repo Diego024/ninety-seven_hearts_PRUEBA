@@ -42,12 +42,12 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputCity">Usuario</label>
-                            <input type="text" class="form-control" id="usuario" name="usuario">
+                            <input autocomplete="off" type="text" class="form-control" id="usuario" name="usuario">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="inputCity">Email</label>
-                            <input type="text" class="form-control" id="correo_electronico" name="correo_electronico">
+                            <input autocomplete="off" type="text" class="form-control" id="correo_electronico" name="correo_electronico">
                         </div>
                     </div>
                     <!-- CLAVE Y CONFIRMACIÓN -->
@@ -66,7 +66,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputCity">Teléfono</label>
-                            <input type="text" class="form-control" id="telefono" name="telefono">
+                            <input autocomplete="off" type="text" class="form-control" id="telefono" name="telefono">
                         </div>
 
                         <div class="form-group col-md-6 search_select_box">

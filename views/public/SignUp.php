@@ -29,11 +29,11 @@ Public_Page::headerTemplate('Registrarse', 'SignUp');
             <!--PARA NOMBRES Y APELLIDOS-->
             <div class="form-group col-md-6">
                 <label for="nombres">Nombres</label>
-                <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Diego Fernando" required>
+                <input autocomplete="off" type="text" class="form-control" id="nombres" name="nombres" placeholder="Diego Fernando" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="apellidos">Apellidos</label>
-                <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Moys Romero" required>
+                <input autocomplete="off" type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Moys Romero" required>
             </div>
         </div>
         <div class="form-row">
@@ -55,11 +55,11 @@ Public_Page::headerTemplate('Registrarse', 'SignUp');
             <!--PARA TELÉFONO Y CORREO ELECTRÓNICO-->
             <div class="form-group col-md-6">
                 <label for="telefono">Teléfono</label>
-                <input type="text" class="form-control" id="telefono" name="telefono" placeholder="2222-2222" required>
+                <input autocomplete="off" type="text" class="form-control" id="telefono" name="telefono" placeholder="2222-2222" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="correo_electronico">Correo electrónico</label>
-                <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" placeholder="jhondoe@example.com" required>
+                <input autocomplete="off" type="email" class="form-control" id="correo_electronico" name="correo_electronico" placeholder="jhondoe@example.com" required>
             </div>
         </div>
         <div class="form-group">

@@ -42,12 +42,12 @@ Public_Page::titleTemplate('CLIENTES');
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="telefono">Teléfono</label>
-                            <input type="text" class="form-control" id="telefono" name="telefono">
+                            <input autocomplete="off" type="text" class="form-control" id="telefono" name="telefono">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="correo_electronico">Email</label>
-                            <input type="text" class="form-control" id="correo_electronico" name="correo_electronico">
+                            <input autocomplete="off" type="text" class="form-control" id="correo_electronico" name="correo_electronico">
                         </div>
                     </div>
 
@@ -71,7 +71,7 @@ Public_Page::titleTemplate('CLIENTES');
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="direccion">Dirección</label>
-                            <textarea class="form-control" id="direccion" name="direccion" rows="3"></textarea>
+                            <textarea autocomplete="off" class="form-control" id="direccion" name="direccion" rows="3"></textarea>
                         </div>
 
                         <div class="form-group col-md-6 search_select_box">
