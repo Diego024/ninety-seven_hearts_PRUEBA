@@ -89,7 +89,7 @@ Public_Page::headerTemplate('Registrarse', 'SignUp');
 <div class="separador"></div>
 
 <!-- Importación del archivo para que funcione el reCAPTCHA. Para más información https://developers.google.com/recaptcha/docs/v3 -->
-<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render=6LdBzLQUAAAAAJvH-aCUUJgliLOjLcmrHN06RFXT"></script>
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render=6LeP7lMcAAAAAAk4GZ3YLOROkL8JIZf0BCWWbVcj"></script>
 
 <?php
 Public_Page::footerTemplate('signin');
