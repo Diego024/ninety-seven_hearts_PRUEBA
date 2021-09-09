@@ -17,11 +17,15 @@ if (isset($_GET['action'])) {
         // print_r($_GET['action']);
         switch ($_GET['action']) {
             case 'logOut':
-                if (session_destroy()) {
+                unset($_SESSION['id_cliente']);
+                if ( isset($_SESSION['id_cliente'])) {
+
+                    $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
+
+                } else {
                     $result['status'] = 1;
                     $result['message'] = 'Sesión eliminada correctamente';
-                } else {
-                    $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
+
                 }
                 break;
             default:

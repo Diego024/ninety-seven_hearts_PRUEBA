@@ -24,6 +24,7 @@ Public_Page::headerTemplate('Registrarse', 'SignUp');
 <!--INICIO DEL FORM-->
 <div class="container">
     <form method="post" id="register-form">
+    <!-- Campo oculto para asignar el token del reCAPTCHA -->
     <input class="d-none" type="text" id="g-recaptcha-response" name="g-recaptcha-response"/>
         <div class="form-row">
             <!--PARA NOMBRES Y APELLIDOS-->

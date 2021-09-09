@@ -18,11 +18,15 @@ if( isset($_GET['action'])) {
         //Se evalua la acción a realizar
         switch ($_GET['action']) {
             case 'logOut':
-                if (session_destroy()) {
+                unset($_SESSION['id_administrador']);
+                if ( isset($_SESSION['id_administrador'])) {
+
+                    $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
+
+                } else {
                     $result['status'] = 1;
                     $result['message'] = 'Sesión eliminada correctamente';
-                } else {
-                    $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
+
                 }
                 break;
             case 'readAll':
@@ -368,5 +372,3 @@ if( isset($_GET['action'])) {
 } else {
     print(json_encode('Recurso no disponible'));
 }
-
-?>

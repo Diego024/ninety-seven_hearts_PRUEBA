@@ -2,8 +2,8 @@
 # | Custom error messages/pages                                        |
 # ----------------------------------------------------------------------
 
-ErrorDocument 403 /ninety-seven_hearts_PRUEBA/views/error/error403.php
-ErrorDocument 404 /ninety-seven_hearts_PRUEBA/views/error/error404.php
+ErrorDocument 403 /ninety-seven_hearts_PRUEBA/views/error/error403.html
+ErrorDocument 404 /ninety-seven_hearts_PRUEBA/views/error/error404.html
 
 # ----------------------------------------------------------------------
 # | Error prevention                                                   |
