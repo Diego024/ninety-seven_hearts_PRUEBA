@@ -33,7 +33,7 @@ class Public_Page
         $filename = basename($_SERVER['PHP_SELF']);
         // Se comprueba si existe una sesión de cliente para mostrar el menú de opciones, de lo contrario se muestra otro menú.
         if (isset($_SESSION['id_cliente'])) {
-            // Se verifica si la página web actual es diferente a login.php y register.php, de lo contrario se direcciona a index.php
+            // Se verifica si la página web actual es diferente a SignIn.php y SignUp.php, de lo contrario se direcciona a index.php
             if ($filename != 'SignIn.php' && $filename != 'SignUp.php') {
                 print('
                     <!--INICIO DEL HEADER Y NAV-->

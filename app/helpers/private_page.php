@@ -4,6 +4,10 @@
     class Private_Page {
 
         public static function sidebarTemplate($archivo) {
+
+            // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en las páginas web.
+            session_start();
+            // Se imprime el HTML
             print('
                 <!doctype html>
                 <html lang="en">
@@ -22,126 +26,142 @@
                     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
                 </head>
                 <body>
-                    <body>
-                
-                    <div class="d-flex " id="wrapper">
-                        <!-- Sidebar -->
-                        <div class="bg-light border-right" id="sidebar-wrapper">
-                            <div class="sidebar--img">
-                                <a href="Home.php">
-                                    <img src="../../resources/imageFiles/dashboard/index/logo-ready.png" alt="" id="sidebar--img__logo">
-                                </a>
-                            </div>
-                            <div class="sidebar--separator">
-                                <div class="sidebar--separator__line"></div>
-                            </div>
-                            <div class="sidebar--info__container">
-                                <div class="sidebar--info__img">
-                                    <img src="" alt="" id="info--img__user">
-                                </div>
-                                <div class="sidebar--info__data">
-                                    <p class="sidebar--info__text">Bienvenido,</p>
-                                    <p class="sidebar--info__name" id="admin--name">Diego Pacheco</p>
-                                </div>
-                            </div>
-                            <div class="sidebar--separator">
-                                <div class="sidebar--separator__line"></div>
-                            </div>
-                            <div class="list-group list-group-flush">
-                                <div class="accordion" id="accordionExample">
-                                    <div class="card">
-                                        <div class="card-header" id="headingOne">
-                                            <h2 class="mb-0">
-                                                <button class="btn btn-link btn-block text-left btn--header__texto" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
-                                                    Mantenimientos
-                                                </button>
-                                            </h2>
-                                        </div>
-                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                            <div class="card-body">
-                                                <a href="Administradores.php" class="list-group-item list-group-item-action btn--boton__texto">
-                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/administrators.png" alt=""> 
-                                                    Administradores
-                                                </a>
-                                                <a href="Clientes.php" class="list-group-item list-group-item-action btn--boton__texto">
-                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/clientes.png" alt=""> 
-                                                    Clientes
-                                                </a>
-                                                <a href="Categorias.php" class="list-group-item list-group-item-action btn--boton__texto">
-                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/categoria.png" alt=""> 
-                                                    Categorías
-                                                </a>
-                                                <a href="Catalogo.php" class="list-group-item list-group-item-action btn--boton__texto">
-                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/productos.png" alt=""> 
-                                                    Catalogo
-                                                </a>
-                                                <a href="Inventario.php" class="list-group-item list-group-item-action btn--boton__texto">
-                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/inventario.png" alt=""> 
-                                                    Inventario
-                                                </a>
+                ');
 
-                                                ' .
-                                                // <a href="" class="list-group-item list-group-item-action btn--boton__texto">
-                                                //     <img class="btn--boton__icon" src="../../resources/statics/icons/ofertas.png" alt=""> 
-                                                //     Ofertas
-                                                // </a>
-                                                '
-
-                                                <a href="FAQs.php" class="list-group-item list-group-item-action btn--boton__texto">
-                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/faqs.png" alt=""> 
-                                                    FAQs
-                                                </a>
-                                                <a href="Comentarios.php" class="list-group-item list-group-item-action btn--boton__texto">
-                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/comentario.png" alt=""> 
-                                                    Comentarios
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header" id="headingTwo">
-                                            <h2 class="mb-0">
-                                                <button class="btn btn-link btn-block text-left collapsed btn--header__texto" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                    Datos
-                                                </button>
-                                            </h2>
-                                        </div>
-                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                            <div class="card-body">
-                                                <a href="Pedidos.php" class="list-group-item list-group-item-action btn--boton__texto">
-                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/pedidos.png" alt=""> 
-                                                    Ordenes de compra
-                                                </a>
-                                                <a href="HistorialVentas.php" class="list-group-item list-group-item-action btn--boton__texto">
-                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/historialPedidos.png" alt=""> 
-                                                    Historial de ventas
-                                                </a>
-                                                <a href="Estadisticas.php" class="list-group-item list-group-item-action btn--boton__texto">
-                                                    <img class="btn--boton__icon" src="../../resources/statics/icons/estadisticas.png" alt=""> 
-                                                    Estadísticas
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a onclick="logOut()" id="logout--button" class="list-group-item list-group-item-action btn--boton__texto">
-                                        <img class="btn--boton__icon" src="../../resources/statics/icons/logout.png" alt=""> 
-                                        Cerrar Sesión
+            // Se obtiene el nombre del archivo de la página web actual.
+            $filename = basename($_SERVER['PHP_SELF']);
+            // Se comprueba si existe una sesión de cliente para mostrar el menú de opciones, de lo contrario se muestra otro menú.
+            if (isset($_SESSION['id_administrador'])) {
+                // Se verifica si la página web actual es diferente a SignIn.php y SignUp.php, de lo contrario se direcciona a index.php
+                if ($filename != 'Index.php' && $filename != 'register.php') {
+                    print('
+                    
+                        <body>
+                    
+                        <div class="d-flex " id="wrapper">
+                            <!-- Sidebar -->
+                            <div class="bg-light border-right" id="sidebar-wrapper">
+                                <div class="sidebar--img">
+                                    <a href="Home.php">
+                                        <img src="../../resources/imageFiles/dashboard/index/logo-ready.png" alt="" id="sidebar--img__logo">
                                     </a>
                                 </div>
+                                <div class="sidebar--separator">
+                                    <div class="sidebar--separator__line"></div>
+                                </div>
+                                <div class="sidebar--info__container">
+                                    <div class="sidebar--info__img">
+                                        <img src="" alt="" id="info--img__user">
+                                    </div>
+                                    <div class="sidebar--info__data">
+                                        <p class="sidebar--info__text">Bienvenido,</p>
+                                        <p class="sidebar--info__name" id="admin--name">Diego Pacheco</p>
+                                    </div>
+                                </div>
+                                <div class="sidebar--separator">
+                                    <div class="sidebar--separator__line"></div>
+                                </div>
+                                <div class="list-group list-group-flush">
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="card">
+                                            <div class="card-header" id="headingOne">
+                                                <h2 class="mb-0">
+                                                    <button class="btn btn-link btn-block text-left btn--header__texto" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
+                                                        Mantenimientos
+                                                    </button>
+                                                </h2>
+                                            </div>
+                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <a href="Administradores.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                        <img class="btn--boton__icon" src="../../resources/statics/icons/administrators.png" alt=""> 
+                                                        Administradores
+                                                    </a>
+                                                    <a href="Clientes.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                        <img class="btn--boton__icon" src="../../resources/statics/icons/clientes.png" alt=""> 
+                                                        Clientes
+                                                    </a>
+                                                    <a href="Categorias.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                        <img class="btn--boton__icon" src="../../resources/statics/icons/categoria.png" alt=""> 
+                                                        Categorías
+                                                    </a>
+                                                    <a href="Catalogo.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                        <img class="btn--boton__icon" src="../../resources/statics/icons/productos.png" alt=""> 
+                                                        Catalogo
+                                                    </a>
+                                                    <a href="Inventario.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                        <img class="btn--boton__icon" src="../../resources/statics/icons/inventario.png" alt=""> 
+                                                        Inventario
+                                                    </a>
+    
+                                                    ' .
+                                                    // <a href="" class="list-group-item list-group-item-action btn--boton__texto">
+                                                    //     <img class="btn--boton__icon" src="../../resources/statics/icons/ofertas.png" alt=""> 
+                                                    //     Ofertas
+                                                    // </a>
+                                                    '
+    
+                                                    <a href="FAQs.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                        <img class="btn--boton__icon" src="../../resources/statics/icons/faqs.png" alt=""> 
+                                                        FAQs
+                                                    </a>
+                                                    <a href="Comentarios.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                        <img class="btn--boton__icon" src="../../resources/statics/icons/comentario.png" alt=""> 
+                                                        Comentarios
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header" id="headingTwo">
+                                                <h2 class="mb-0">
+                                                    <button class="btn btn-link btn-block text-left collapsed btn--header__texto" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                        Datos
+                                                    </button>
+                                                </h2>
+                                            </div>
+                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <a href="Pedidos.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                        <img class="btn--boton__icon" src="../../resources/statics/icons/pedidos.png" alt=""> 
+                                                        Ordenes de compra
+                                                    </a>
+                                                    <a href="HistorialVentas.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                        <img class="btn--boton__icon" src="../../resources/statics/icons/historialPedidos.png" alt=""> 
+                                                        Historial de ventas
+                                                    </a>
+                                                    <a href="Estadisticas.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                        <img class="btn--boton__icon" src="../../resources/statics/icons/estadisticas.png" alt=""> 
+                                                        Estadísticas
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a onclick="logOut()" id="logout--button" class="list-group-item list-group-item-action btn--boton__texto">
+                                            <img class="btn--boton__icon" src="../../resources/statics/icons/logout.png" alt=""> 
+                                            Cerrar Sesión
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <!-- /#sidebar-wrapper -->
-                    
-                        <!-- Page Content -->
-                        <div id="page-content-wrapper">
-                    
-                            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                                <button class="btn btn--boton__menu" id="menu-toggle">
-                                    <img src="../../resources/statics/icons/menu.png" class="boton--menu__icon" alt="">
-                                </button>
-                            </nav>
-            ');
+                            <!-- /#sidebar-wrapper -->
+                        
+                            <!-- Page Content -->
+                            <div id="page-content-wrapper">
+                        
+                                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                                    <button class="btn btn--boton__menu" id="menu-toggle">
+                                        <img src="../../resources/statics/icons/menu.png" class="boton--menu__icon" alt="">
+                                    </button>
+                                </nav>
+                ');
+            } else {
+                header('location: index.php');
+            }
+        } else {
+            header('location: index.php');
         }
+    }
 
         public static function footerTemplate($controller) {
             print('
@@ -176,5 +196,3 @@
         }
         
     }
-
-?>
