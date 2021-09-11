@@ -1,7 +1,7 @@
 // Constantes para establecer comunicación con la API
 const API_ADMINISTRADORES = '../../app/api/dashboard/administradores.php?action=';
 
-// Función manejadora de eventos, para ejecutar justo cuando termine de cardar.
+// Función manejadora de eventos, para ejecutar justo cuando termine de cargar.
 document.addEventListener('DOMContentLoaded', () => {
     //Se llama a la función para llenar la tabla
     readRows(API_ADMINISTRADORES)
