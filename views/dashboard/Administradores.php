@@ -85,7 +85,7 @@
                                 <option value=1>Activo</option>
                                 <option value=2>Inactivo</option>
                                 <option value=3>Bloqueado</option>
-                                <!-- <option value=3>Bloqueada</option> -->
+                                <option value=4>En sesión</option>
                             </select>
                         </div>
                         <div class="col">

@@ -11,16 +11,16 @@ if( isset($_GET['action'])) {
     //Creamos un objeto de la clase del modelo
     $administrador = new Administradores;
     //Creamos un array donde guardaremos los resultados de la API
-    $result = array('status' => 0, 'message' => null, 'exception' => null);
+    $result = array('status' => 0, 'message' => null, 'exception' => null, 'isPasswordIncorrect' => null);
     //Se verifica que haya una sesión iniciada por un administrador
     if ( isset($_SESSION['id_administrador'])) {
     // if () {
         //Se evalua la acción a realizar
         switch ($_GET['action']) {
             case 'logOut':
+                $administrador->changeState($_SESSION['usuario'], 1);
                 unset($_SESSION['id_administrador']);
                 if ( isset($_SESSION['id_administrador'])) {
-
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
 
                 } else {
@@ -250,6 +250,82 @@ if( isset($_GET['action'])) {
                 }
                 break;
 
+            //Caso para cambiar la contraseña de los administradores
+            case 'changePassword':
+                $_POST = $administrador->validateForm($_POST);
+                //Se verifica que la contraseña cumpla con los requisitos
+                if($administrador->setClave($_POST['nueva_clave'])){
+                    //Se pasa el id del admin al modelo
+                    if($administrador->setIdAdministrador($_SESSION['id_administrador'])) {
+                        //Se comprueba que la contraseña actual sea correcta
+                        if($administrador->checkPassword($_POST['clave_actual'])) {
+                            //Se comprueba que las contraseña nueva coincide con la confirmación
+                            if($_POST['nueva_clave'] == $_POST['confirmacion']) {
+                                //Se comprueba que la nueva contraseña no sea igual que la anterior
+                                if(!$administrador->checkPassword($_POST['nueva_clave'])) {
+                                    // Actualizar la contraseña del usuario
+                                    if($administrador->updatePassword()) {
+                                        $result['status'] = 1;
+                                        $result['message'] = 'La contraseña se modificó correctamente.';
+                                    } else {
+                                        if ( Database::getException()) {
+                                            $result['exception'] = Database::getException();
+                                        } else {
+                                            $result['exception'] = 'La contraseña no pudo ser modificada.';
+                                        }
+                                    }
+                                } else {
+                                    $result['exception'] = 'La nueva contraseña no puede ser igual a la anterior. Verifique sus datos.';        
+                                }
+                            } else {
+                                $result['exception'] = 'Las contraseñas no coinciden. Verifique sus datos.';    
+                            }
+                        } else {
+                            $result['exception'] = 'Parece que su contraseña actual es incorrecta. Verifique sus datos.';
+                        }
+                    } else {
+                        $result['exception'] = 'Asegúrese de haber iniciado sesión.';    
+                    }
+                } else {
+                    $result['exception'] = 'Asegúrese que su contraseña cumpla con las específicaciones indicadas.';
+                }
+                break;
+            //Caso para obtener el historial de inicios de sesión
+            case 'getRecords':
+                if ($result['dataset'] = $administrador->getRecords()) {
+                    $result['status'] = 1;
+                } else {
+                    if ( Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No hay inicios de sesión registrados.';
+                    }
+                }
+                break;
+            //Caso para búsqueda filtrada en el historial
+            case 'searchRecord': 
+                $_POST = $administrador->validateForm($_POST);
+                if ($_POST['search'] != '') {
+                    if ($result['dataset'] = $administrador->searchRecord($_POST['search'])) {
+                        $result['status'] = 1;
+                        $rows = count($result['dataset']);
+                        if ($rows > 0) {
+                            $result['message'] = 'Se encontraron ' . $rows . ' coincidencias';
+                        } else {
+                            $result['message'] = 'Solo existe una coincidencia';
+                        }
+                    } else {
+                        if (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'No hay coincidencias';
+                        }
+                    }
+                } else {
+                    $result['exception'] = 'Ingrese un valor para buscar';
+                }
+                break;
+            //Caso por defecto
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
@@ -268,27 +344,52 @@ if( isset($_GET['action'])) {
                     }
                 }
                 break;
+            // Caso para bloquear el administrador después de 3 intentos fallidos
+            case 'blockAdmin': 
+                if($administrador->changeState($_POST['usuario'], 3)) {
+                    $result['status'] = 1;
+                    $result['exception'] = 'Su usuario ha sido bloqueado después de 3 intentos fallidos.';
+                } else {
+                    if(Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No se pudo bloquear correctamente el usuario';
+                    }
+                }
+                break;
             case 'logIn':
                 $_POST = $administrador->validateForm($_POST);
                 if ($data = $administrador->checkUser($_POST['usuario'])) {
                     $administrador->setIdAdministrador($data[0]['id_administrador']);
                     if($administrador->checkPassword($_POST['clave'])) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Autenticación correcta';
                         $_SESSION['id_administrador'] = $administrador->getIdAdministrador();
                         $_SESSION['usuario'] = $administrador->getUsuario();
+                        if($dia = $administrador->checkLastPasswordUpdate()) {
+                            if($dia[0]['dias'] > 90) {
+                                $result['status'] = 2;
+                                $result['message'] = 'Su contraseña no se ha actualizado en 3 meses, por favor actualice su contraseña.';
+                            } else {
+                                $result['status'] = 1;
+                                $result['message'] = 'Autenticación correcta';
+                                $administrador->createRecord();
+                                $administrador->changeState($_POST['usuario'], 4);
+                            }
+                        } else {
+                            $result['exception'] = 'No se pudo verificar la última actualización de la contraseña del usuario.';
+                        }
                     } else {
                         if(Database::getException()) {
                             $result['exception'] = Database::getException();
                         } else {
                             $result['exception'] = 'Contraseña incorrecta';
+                            $result['isPasswordIncorrect'] = true;
                         }
                     }
                 } else {
                     if(Database::getException()) {
                         $result['exception'] = Database::getException();
                     } else {
-                        $result['exception'] = 'Usuario inexistente';
+                        $result['exception'] = 'Usuario incorrecto, usuario bloqueado o usuario actualmente en uso. Consulte con el administrador.';
                     }
                 }
                 break;

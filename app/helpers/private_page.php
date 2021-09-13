@@ -66,12 +66,37 @@
                                         <div class="card">
                                             <div class="card-header" id="headingOne">
                                                 <h2 class="mb-0">
-                                                    <button class="btn btn-link btn-block text-left btn--header__texto" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
+                                                    <button class="btn btn-link btn-block text-left collapsed btn--header__texto" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                        Cuenta
+                                                    </button>
+                                                </h2>
+                                            </div>
+                                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <a href="changePassword.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                        <img class="btn--boton__icon" src="../../resources/statics/icons/change-password.png" alt=""> 
+                                                        Cambiar clave
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <a href="historial.php" class="list-group-item list-group-item-action btn--boton__texto">
+                                                        <img class="btn--boton__icon" src="../../resources/statics/icons/historial.png" alt=""> 
+                                                        Historial
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header" id="headingTwo">
+                                                <h2 class="mb-0">
+                                                    <button class="btn btn-link btn-block text-left btn--header__texto" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" >
                                                         Mantenimientos
                                                     </button>
                                                 </h2>
                                             </div>
-                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                                 <div class="card-body">
                                                     <a href="Administradores.php" class="list-group-item list-group-item-action btn--boton__texto">
                                                         <img class="btn--boton__icon" src="../../resources/statics/icons/administrators.png" alt=""> 
@@ -113,14 +138,14 @@
                                             </div>
                                         </div>
                                         <div class="card">
-                                            <div class="card-header" id="headingTwo">
+                                            <div class="card-header" id="headingThree">
                                                 <h2 class="mb-0">
-                                                    <button class="btn btn-link btn-block text-left collapsed btn--header__texto" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    <button class="btn btn-link btn-block text-left collapsed btn--header__texto" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                                         Datos
                                                     </button>
                                                 </h2>
                                             </div>
-                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                                                 <div class="card-body">
                                                     <a href="Pedidos.php" class="list-group-item list-group-item-action btn--boton__texto">
                                                         <img class="btn--boton__icon" src="../../resources/statics/icons/pedidos.png" alt=""> 

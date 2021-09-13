@@ -198,7 +198,7 @@ class Administradores extends Validator {
 
     public function checkUser($usuario) {
         // print($usuario);
-        $query = 'SELECT foto_administrador, id_administrador FROM administradores WHERE usuario = ?';
+        $query = 'SELECT foto_administrador, id_administrador FROM administradores WHERE usuario = ? AND id_estado_cuenta = 1';
         $params = array($usuario);
         if ($data = Database::getRow($query, $params)) {
             $this->id_adminsitrador = $data[0]['id_administrador'];
@@ -219,6 +219,62 @@ class Administradores extends Validator {
         } else {
             return false;
         }
+    }
+
+    //Función para actualizar la contraseña del administrador
+    public function updatePassword() {
+        $hash = password_hash($this->clave, PASSWORD_DEFAULT);
+
+        $query = 'UPDATE administradores SET clave = ?, fecha_modificacion = current_date WHERE id_administrador = ?';
+        $params = array($hash, $_SESSION['id_administrador']);
+        return Database::executeRow($query, $params);
+    }
+
+    //Función para cambiar el estado de un administrador
+    public function changeState($usuario, $estado) {
+        $query="UPDATE administradores SET id_estado_cuenta = ? WHERE usuario = ?";
+        $params=array($estado ,$usuario);
+        return Database::executeRow($query, $params);
+    }
+
+    //Función para verificar que su contraseña no haya expirado
+    public function checkLastPasswordUpdate() {
+        $query="SELECT (current_date - fecha_modificacion) AS dias FROM administradores WHERE id_administrador = ?";
+        $params=array($this->id_administrador);
+        return Database::getRow($query, $params);
+    }
+
+    //Función para registrar el inicio de sesión de los administradores
+    public function createRecord() {
+        $oS = php_uname('s');
+        $releaseName = php_uname('r');
+
+        $query="INSERT INTO historial (id_administrador, fecha, hora, sistema_info)
+                VALUES (?, current_date, localtime, ?)";
+        $params=array($_SESSION['id_administrador'], $oS . " " . $releaseName);
+        return Database::executeRow($query, $params);
+    }
+
+    //Función para obtener el historial de inicios de sesión
+    public function getRecords() {
+        $query="SELECT a.usuario, h.id_administrador, h.fecha, h.hora, h.sistema_info
+                FROM historial h
+                INNER JOIN administradores a
+                    ON a.id_administrador = h.id_administrador
+                ORDER BY h.fecha DESC LIMIT 15";
+        $params=null;
+        return Database::getRows($query, $params);
+    }
+
+    public function searchRecord($value) {
+        $query="SELECT a.usuario, h.id_administrador, h.fecha, h.hora, h.sistema_info
+                FROM historial h
+                INNER JOIN administradores a
+                    ON a.id_administrador = h.id_administrador
+                WHERE a.usuario ILIKE ? OR h.sistema_info ILIKE ?
+                ORDER BY h.fecha DESC LIMIT 15";
+        $params = array("%$value%", "%$value%");
+        return Database::getRows($query, $params);
     }
 
     public function insertAdmin() {

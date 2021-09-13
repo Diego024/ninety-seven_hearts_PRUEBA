@@ -5,30 +5,30 @@ const readRows = api => {
     fetch(api + 'readAll', {
         method: 'get',
     })
-        .then(request => {
-            if (request.ok) {
-                //console.log(request.text())
-                return request.json()
-            } else {
+    .then(request => {
+        if (request.ok) {
+            //console.log(request.text())
+            return request.json()
+        } else {
 
-                console.log(`${request.status} ${request.statusText}`);
-            }
-        })
-        .then(response => {
-            let data = []
-            //Se comprueba que el status de la request sea satisfactorio
-            if (response.status) {
-                data = response.dataset;
-            } else {
-                sweetAlert(4, response.exception, null)
-            }
-            //Se envían los datos al controlador para que llene la tabla
-            fillTable(data)
-        })
-        .catch(error => {
+            console.log(`${request.status} ${request.statusText}`);
+        }
+    })
+    .then(response => {
+        let data = []
+        //Se comprueba que el status de la request sea satisfactorio
+        if (response.status) {
+            data = response.dataset;
+        } else {
+            sweetAlert(4, response.exception, null)
+        }
+        //Se envían los datos al controlador para que llene la tabla
+        fillTable(data)
+    })
+    .catch(error => {
 
-            console.log(error);
-        })
+        console.log(error);
+    })
 }
 
 //Función para búsqueda
@@ -68,32 +68,32 @@ const saveRow = (api, action, form, modal, isNotTable) => {
         method: 'post',
         body: new FormData(document.getElementById(form))
     })
-        .then(request => {
-            //Se verifica que la request se completó correctamente
-            if (request.ok) {
-                // console.log(request.text())
-                return request.json()
-            } else {
-                console.log(`${request.status} ${request.statusText}`)
+    .then(request => {
+        //Se verifica que la request se completó correctamente
+        if (request.ok) {
+            // console.log(request.text())
+            return request.json()
+        } else {
+            console.log(`${request.status} ${request.statusText}`)
+        }
+    })
+    .then(response => {
+        //Se comprueba que el status de la request sea satisfactorio
+        if (response.status) {
+            //Se cierra el modal, solo si se recibe un modal
+            if (modal) {
+                $(`#${modal}`).modal('hide');
             }
-        })
-        .then(response => {
-            //Se comprueba que el status de la request sea satisfactorio
-            if (response.status) {
-                //Se cierra el modal, solo si se recibe un modal
-                if (modal) {
-                    $(`#${modal}`).modal('hide');
-                }
-                if (!isNotTable) {
-                    readRows(api)
-                }
-                sweetAlert(1, response.message, null)
-            } else {
-                sweetAlert(2, response.exception, null)
+            if (!isNotTable) {
+                readRows(api)
             }
-        }).catch(error => {
-            console.log(error)
-        })
+            sweetAlert(1, response.message, null)
+        } else {
+            sweetAlert(2, response.exception, null)
+        }
+    }).catch(error => {
+        console.log(error)
+    })
 }
 
 // Función para confirmar que desea eliminar un registro

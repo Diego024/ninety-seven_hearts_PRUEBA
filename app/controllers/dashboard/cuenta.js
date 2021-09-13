@@ -21,6 +21,7 @@ function logOut() {
         }
     }).then( request => {
         if (request.ok) {
+            // console.log(request.text())
             return request.json()
         } else {
             console.log(request.status + ' ' + request.statusText);
