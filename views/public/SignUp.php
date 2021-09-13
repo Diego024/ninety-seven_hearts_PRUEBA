@@ -1,6 +1,8 @@
 <?php
-
+ 
 include('../../app/helpers/public_page.php');
+
+$randomnumber = rand(1000, 9999);
 
 Public_Page::headerTemplate('Registrarse', 'SignUp');
 ?>
@@ -79,6 +81,8 @@ Public_Page::headerTemplate('Registrarse', 'SignUp');
                 <input type="password" class="form-control" id="confirmar_clave" name="confirmar_clave" required> 
             </div>
         </div>
+      
+       
         <div class="row justify-content-center">
             <div class="col-sm-5">
                 <button type="submit" class="btn btn-danger" id="btn_card">REGISTRARSE</button>

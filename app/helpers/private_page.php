@@ -38,7 +38,7 @@
                     if(isset($_SESSION['tiempo']))
                     {
                     //Tiempo en segundos para dar vida a la sesión.
-                    $inactivo = 300;//5min en este caso. (Son segundos) 
+                    $inactivo = 5;//5min en este caso. (Son segundos) 
                     //Calculamos tiempo de vida inactivo.
                     $vida_session = time() - $_SESSION['tiempo'];
                         
@@ -52,7 +52,7 @@
                             
                             session_destroy();  
                             // Se redirecciona
-                            header("Location: index.php"); 
+                            header("Location: inactivo.html"); 
     
     
                             exit();

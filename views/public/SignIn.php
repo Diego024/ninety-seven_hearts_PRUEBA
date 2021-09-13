@@ -2,6 +2,7 @@
 
 include('../../app/helpers/public_page.php');
 
+
 Public_Page::headerTemplate('Inicio de sesión', 'SignIn');
 ?>
 
@@ -45,6 +46,7 @@ Public_Page::headerTemplate('Inicio de sesión', 'SignIn');
                         ¿Aún no tienes una cuenta? <a href="SignUp.php">¡Regístrate ahora!</a>
                     </div>
                 </div>
+                
                 <div class="form-group row justify-content-center">
                     <div class="col-xs-5">
                         <button type="submit" class="btn btn-danger" id="btn_card" href="Prueba.php">Iniciar sesión</button>
