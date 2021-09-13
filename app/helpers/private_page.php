@@ -34,6 +34,36 @@
             if (isset($_SESSION['id_administrador'])) {
                 // Se verifica si la página web actual es diferente a SignIn.php y SignUp.php, de lo contrario se direcciona a index.php
                 if ($filename != 'Index.php' && $filename != 'register.php') {
+
+                    if(isset($_SESSION['tiempo']))
+                    {
+                    //Tiempo en segundos para dar vida a la sesión.
+                    $inactivo = 5;//5min en este caso. (Son segundos) 
+                    //Calculamos tiempo de vida inactivo.
+                    $vida_session = time() - $_SESSION['tiempo'];
+                        
+                        //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
+                        if($vida_session > $inactivo)
+                        {
+    
+                            //Removemos sesión.
+                            unset($_SESSION['id_administrador']); 
+                            //Destruimos sesión.
+                            
+                            session_destroy();  
+                            // Se redirecciona
+                            header("Location: inactivo.html"); 
+    
+    
+                            exit();
+                        } else {  // si no ha caducado la sesion, actualizamos
+                            $_SESSION['tiempo'] = time();
+                        }
+                    }
+                    else
+                    {
+                    $_SESSION['tiempo'] = time();
+                    }
                     print('
                     
                         <body>

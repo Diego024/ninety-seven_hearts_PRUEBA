@@ -3,6 +3,14 @@ require_once('../../helpers/database.php');
 require_once('../../helpers/validator.php');
 require_once('../../models/clientes.php');
 
+require '../../helpers/include/Exception.php';
+require '../../helpers/include/PHPMailer.php';
+require '../../helpers/include/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
@@ -18,14 +26,12 @@ if (isset($_GET['action'])) {
         switch ($_GET['action']) {
             case 'logOut':
                 unset($_SESSION['id_cliente']);
-                if ( isset($_SESSION['id_cliente'])) {
+                if (isset($_SESSION['id_cliente'])) {
 
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
-
                 } else {
                     $result['status'] = 1;
                     $result['message'] = 'Sesión eliminada correctamente';
-
                 }
                 break;
             default:
@@ -77,16 +83,39 @@ if (isset($_GET['action'])) {
                                                 if ($_POST['clave'] == $_POST['confirmar_clave']) {
                                                     if ($clientes->setClave($_POST['clave'])) {
                                                         // if ($clientes->setIdEstadoCuenta($_POST['id_estado_cuenta'])) {
-                                                            if ($clientes->setIdGenero($_POST['id_genero'])) {
+                                                        if ($clientes->setIdGenero($_POST['id_genero'])) {
+                                                            // if ($clientes->setCodigo($_POST['code'])) {
                                                                 if ($clientes->insertClientes()) {
                                                                     $result['status'] = 1;
-                                                                    $result['message'] = 'Cliente registrado correctamente';
+                                                                    $result['message'] = 'Cuenta creada correctamente';
+                                                                    // $mail = new PHPMailer();
+                                                                    // $mail->isSMTP();
+                                                                    // $mail->Host = "smtp.gmail.com";
+                                                                    // $mail->SMTPAuth = true;
+                                                                    // $mail->SMTPSecure = "tls";
+                                                                    // $mail->Port = "587";
+                                                                    // $mail->Username = "diegomoys01@gmail.com"; //Correo del sistema
+                                                                    // $mail->Password = "fernando11";
+                                                                    // $mail->Subject = "Ninety-Seven Heart, tu codigo de confirmación";
+                                                                    // $mail->setFrom("diegomoys01@gmail.com");
+                                                                    // $mail->isHTML(true);
+                                                                    // $mail->Body = ($_POST['code']);
+                                                                    // $mail->addAddress($_POST['correo_electronico']); //Correo del cliente
+                                                                    // if ($mail->Send()) {
+                                                                        // $result['message'] = 'Cuenta creada correctamente, se le ha enviado un codigo de confirmación para activar su cuenta a su correo';
+                                                                    // } else {
+                                                                    //     echo "Error", $mail->ErrorInfo;;
+                                                                    // }
+                                                                    // $mail->smtpClose();
                                                                 } else {
-                                                                    $result['exception'] = Database::getException();;
+                                                                    $result['exception'] = Database::getException();
                                                                 }
-                                                            } else {
-                                                                $result['exception'] = 'Género incorrecto';
-                                                            }
+                                                            // } else {
+                                                            //     $result['exception'] = 'Error en el codigo';
+                                                            // }
+                                                        } else {
+                                                            $result['exception'] = 'Género incorrecto';
+                                                        }
                                                         // } else {
                                                         //     $result['exception'] = 'Estado incorrecto';
                                                         // }

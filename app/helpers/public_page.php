@@ -11,6 +11,7 @@ class Public_Page
 
         // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en las páginas web.
         session_start();
+        // print_r($_SESSION['id_cliente']);
         // Se imprime el HTML
         print('
                 <!DOCTYPE html>
@@ -35,6 +36,7 @@ class Public_Page
         if (isset($_SESSION['id_cliente'])) {
             // Se verifica si la página web actual es diferente a SignIn.php y SignUp.php, de lo contrario se direcciona a index.php
             if ($filename != 'SignIn.php' && $filename != 'SignUp.php') {
+
                 print('
                     <!--INICIO DEL HEADER Y NAV-->
                     <header class="cabecera">

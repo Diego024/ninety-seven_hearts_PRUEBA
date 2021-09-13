@@ -3,6 +3,7 @@ const API_ADMINISTRADORES = '../../app/api/dashboard/administradores.php?action=
 // Contador de intentos
 let intentos = 0;
 
+
 document.addEventListener('DOMContentLoaded', () => {
     //Request para verificar que existan usuarios
     fetch(API_ADMINISTRADORES + 'readAll')

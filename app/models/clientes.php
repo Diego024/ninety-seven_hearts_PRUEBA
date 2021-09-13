@@ -15,6 +15,7 @@ class Clientes extends Validator {
     private $clave = null; 
     private $id_estado_cuenta = null;
     private $id_genero = null;
+    private $codigo = null;
 
     //Funciones para asignar valores a los atributos
     public function setIdCliente($idCliente) {
@@ -107,6 +108,15 @@ class Clientes extends Validator {
         }
     }
 
+    public function setCodigo($genero) {
+        if($this->validateNaturalNumber($genero)) {
+            $this->id_genero = $genero;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     //Funciones para obtener los valores de los atributos
     public function getIdCliente() {
         return $this->id_cliente;
@@ -148,6 +158,9 @@ class Clientes extends Validator {
         return $this->id_genero;
     }
 
+    public function getCodigo() {
+        return $this->codigo;
+    }
     // Funciones para controlar la cuenta del cliente
 
     public function checkUser($correo)
@@ -194,14 +207,14 @@ class Clientes extends Validator {
     public function insertClientes() {
         $hash = password_hash($this->clave, PASSWORD_DEFAULT);
 
-        $query = 'INSERT INTO clientes(nombres, apellidos, fecha_nacimiento, telefono, direccion, correo_electronico, clave, id_genero)
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombres, $this->apellidos, $this->fecha_nacimiento, $this->telefono, $this->direccion, $this->correo_electronico, $hash, $this->id_genero);
+        $query = 'INSERT INTO clientes(nombres, apellidos, fecha_nacimiento, telefono, direccion, correo_electronico, clave, id_genero, codigo)
+                  VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?)';
+        $params = array($this->nombres, $this->apellidos, $this->fecha_nacimiento, $this->telefono, $this->direccion, $this->correo_electronico, $hash, $this->codigo);
         return Database::executeRow($query, $params);
     }
 
     public function selectClientes() {
-        $query = 'SELECT c.id_cliente, c.nombres, c.apellidos, c.fecha_nacimiento, c.telefono, c.direccion, c.correo_electronico, c.clave, e.estado_cuenta,g.genero
+        $query = 'SELECT c.id_cliente, c.nombres, c.apellidos, c.fecha_nacimiento, c.telefono, c.direccion, c.correo_electronico, c.clave, e.estado_cuenta, g.genero, c.codigo
                   FROM public.clientes c
                   INNER JOIN estado_cuenta e
                     ON c.id_estado_cuenta = e.id_estado_cuenta
